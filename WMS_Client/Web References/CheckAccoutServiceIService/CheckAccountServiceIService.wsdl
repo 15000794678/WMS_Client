@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://service.webservice.phicomm.com/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="CheckAccountServiceIService" targetNamespace="http://service.webservice.phicomm.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://service.webservice.phicomm.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="checkAccount" type="tns:checkAccount" />
+      <xs:element name="checkAccountResponse" type="tns:checkAccountResponse" />
+      <xs:complexType name="checkAccount">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="checkAccountResponse">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:element name="Exception" type="tns:Exception" />
+      <xs:complexType name="Exception">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="checkAccountResponse">
+    <wsdl:part name="parameters" element="tns:checkAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="Exception">
+    <wsdl:part name="Exception" element="tns:Exception" />
+  </wsdl:message>
+  <wsdl:message name="checkAccount">
+    <wsdl:part name="parameters" element="tns:checkAccount" />
+  </wsdl:message>
+  <wsdl:portType name="CheckAccountServiceI">
+    <wsdl:operation name="checkAccount">
+      <wsdl:input name="checkAccount" message="tns:checkAccount" />
+      <wsdl:output name="checkAccountResponse" message="tns:checkAccountResponse" />
+      <wsdl:fault name="Exception" message="tns:Exception" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CheckAccountServiceIServiceSoapBinding" type="tns:CheckAccountServiceI">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="checkAccount">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="checkAccount">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="checkAccountResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CheckAccountServiceIService">
+    <wsdl:port name="CheckAccountServiceIPort" binding="tns:CheckAccountServiceIServiceSoapBinding">
+      <soap:address location="http://172.17.192.53:8080/webservice/wsCheckAccountaddress" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

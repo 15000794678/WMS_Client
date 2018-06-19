@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{20F584EC-5D54-42A8-9884-57021A1AE8C2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WMS_Client</RootNamespace>
+    <AssemblyName>WMS_Client</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>jiusi.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar2, Version=14.0.0.15, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.LabelManager2">
+      <HintPath>DLL\Interop.LabelManager2.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>DLL\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>DLL\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TX.Framework">
+      <HintPath>DLL\TX.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="TX.Framework.WindowUI">
+      <HintPath>DLL\TX.Framework.WindowUI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DB\BaseDbConnection.cs" />
+    <Compile Include="DB\BaseDbQuery.cs" />
+    <Compile Include="DB\BaseDbStoredProcedureCaller.cs" />
+    <Compile Include="DB\BaseDbUpdater.cs" />
+    <Compile Include="DB\F_AtStationBotContinueWorking.cs" />
+    <Compile Include="DB\F_BarcodeChecker.cs" />
+    <Compile Include="DB\F_CheckStationWorkingState.cs" />
+    <Compile Include="DB\F_InitPartialPickStation.cs" />
+    <Compile Include="DB\F_KeepAlive.cs" />
+    <Compile Include="DB\F_StopPickTask.cs" />
+    <Compile Include="DB\InsertErpWoBomInfo.cs" />
+    <Compile Include="DB\InsertOutSourceRequisitionDetail.cs" />
+    <Compile Include="DB\InsertRDeliveryRequisitionDetail.cs" />
+    <Compile Include="DB\InsertReserveRequisitionDetail.cs" />
+    <Compile Include="DB\InsertTrSn.cs" />
+    <Compile Include="DB\P_AtStationPodInfo.cs" />
+    <Compile Include="DB\P_CheckAllMaterialIntoHolders.cs" />
+    <Compile Include="DB\P_CheckAllMaterialIntoHolders2.cs" />
+    <Compile Include="DB\P_CompleteParitalPickByLocId.cs" />
+    <Compile Include="DB\P_CompletePartialPickByTrSn.cs" />
+    <Compile Include="DB\P_CompletePickMaterialByBatchCode.cs" />
+    <Compile Include="DB\P_CompletePickMaterialByLocId.cs" />
+    <Compile Include="DB\P_CompletePickMaterialByTrSn.cs" />
+    <Compile Include="DB\P_CompletePickMaterialByTrSn2.cs" />
+    <Compile Include="DB\P_CompleteReelSplit.cs" />
+    <Compile Include="DB\P_CompleteReplenishMaterial.cs" />
+    <Compile Include="DB\P_CompleteReplenishMaterial2.cs" />
+    <Compile Include="DB\P_CreatePartialPickTask.cs" />
+    <Compile Include="DB\P_CreatePickTask.cs" />
+    <Compile Include="DB\P_CreatePickTask2.cs" />
+    <Compile Include="DB\P_DeinitProcess.cs" />
+    <Compile Include="DB\P_InitPickProcess.cs" />
+    <Compile Include="DB\P_InitReplenishProcess.cs" />
+    <Compile Include="DB\P_Link_HolderMaterial.cs" />
+    <Compile Include="DB\P_PickStationBoxLocation.cs" />
+    <Compile Include="DB\P_ReplenishStaionBoxLocation.cs" />
+    <Compile Include="DB\P_ReplenishToPickDirectly.cs" />
+    <Compile Include="DB\SearchBMaterial.cs" />
+    <Compile Include="DB\SearchMaterialManualPick.cs" />
+    <Compile Include="DB\SearchMaterialPickAssign.cs" />
+    <Compile Include="DB\SearchOutSourceRequisitionDetail.cs" />
+    <Compile Include="DB\SearchRDeliveryRequisitionDetail.cs" />
+    <Compile Include="DB\SearchRequisitionDetail.cs" />
+    <Compile Include="DB\SearchRHolderLocidRelationShip.cs" />
+    <Compile Include="DB\SearchRHolderLocidRelationShipManual.cs" />
+    <Compile Include="DB\SearchRInVentoryDetail.cs" />
+    <Compile Include="DB\SearchRReserveRequisitionDetail.cs" />
+    <Compile Include="DB\SearchRSapMeterialShipping.cs" />
+    <Compile Include="DB\SearchTaskCount.cs" />
+    <Compile Include="DB\SearchTbInsertTrSn.cs" />
+    <Compile Include="DB\SearchTransferRequisitionDetail.cs" />
+    <Compile Include="DB\UpateTransferRequsitionDetail.cs" />
+    <Compile Include="DB\UpdateOutSourceRequisitionDetail.cs" />
+    <Compile Include="DB\UpdateOutSourceRequisitionQty.cs" />
+    <Compile Include="DB\UpdateReserveRequisitionDetail.cs" />
+    <Compile Include="DB\UpdateRInventoryId.cs" />
+    <Compile Include="DB\UpdateRInventoryIdSubType.cs" />
+    <Compile Include="DB\UpdateSapMaterialShipping.cs" />
+    <Compile Include="DB\UpdateSapMaterialShippingLocation.cs" />
+    <Compile Include="DB\UpdateRequisitionDetail.cs" />
+    <Compile Include="DB\UpdateTbInsertTrSn.cs" />
+    <Compile Include="OUTIO\ChangeFIFODateCode.cs" />
+    <Compile Include="OUTIO\ConvertHelper.cs" />
+    <Compile Include="OUTIO\DataCodeFunction.cs" />
+    <Compile Include="OUTIO\DataCodeProcess.cs" />
+    <Compile Include="OUTIO\DBFunc.cs" />
+    <Compile Include="OUTIO\DBPCaller.cs" />
+    <Compile Include="OUTIO\ExcelHelper.cs" />
+    <Compile Include="OUTIO\FileUtil.cs" />
+    <Compile Include="OUTIO\publicfuntion.cs" />
+    <Compile Include="OUTIO\SapHelper.cs" />
+    <Compile Include="OUTIO\tR_Tr_Sn.cs" />
+    <Compile Include="OUTIO\WebrefClass.cs" />
+    <Compile Include="OUTIO\XmlConvertor.cs" />
+    <Compile Include="UI\other\Frm_MaterialRePrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\other\Frm_MaterialRePrint.Designer.cs">
+      <DependentUpon>Frm_MaterialRePrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\other\Frm_PrintTrSn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\other\Frm_PrintTrSn.Designer.cs">
+      <DependentUpon>Frm_PrintTrSn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\other\HolderFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\other\HolderFrm.Designer.cs">
+      <DependentUpon>HolderFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pick\DownThread.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Pick\PickExecuteThread.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DB\SearchRErpWoBomInfo.cs" />
+    <Compile Include="DB\SearchRInventoryId.cs" />
+    <Compile Include="DB\SearchTbFactoryMove.cs" />
+    <Compile Include="DB\SearchDevice.cs" />
+    <Compile Include="OUTIO\MyData.cs" />
+    <Compile Include="UI\other\PasswordFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\other\PasswordFrm.Designer.cs">
+      <DependentUpon>PasswordFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\other\LogInFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\other\LogInFrm.Designer.cs">
+      <DependentUpon>LogInFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\other\MFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\other\MFrm.Designer.cs">
+      <DependentUpon>MFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OUTIO\CheckAccount.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\other\MsgFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\other\MsgFrm.Designer.cs">
+      <DependentUpon>MsgFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pick\PickFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Pick\PickFrm.Designer.cs">
+      <DependentUpon>PickFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pick\PickProcessTrSn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Pick\PickQueryThread.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Pick\SetPickStation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Pick\SetPickStation.Designer.cs">
+      <DependentUpon>SetPickStation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pick\SplitMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Pick\SplitMaterial.Designer.cs">
+      <DependentUpon>SplitMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Replenish\ReplenishExecuteThread.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Replenish\ReplenishFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Replenish\ReplenishFrm.Designer.cs">
+      <DependentUpon>ReplenishFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Replenish\ReplenishQueryThread.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Replenish\SelectionFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Replenish\SelectionFrm.Designer.cs">
+      <DependentUpon>SelectionFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\CheckAccoutServiceIService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\DeliveryList_OUT\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\GoodsMvtCreate_OUT\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ReservationDetail_OUT\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\tR_Tr_Sn\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WMS_WebServices\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ZPI_PIINTF_MES_SUBCON_PURCHASE\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\other\Frm_MaterialRePrint.resx">
+      <DependentUpon>Frm_MaterialRePrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\other\Frm_PrintTrSn.resx">
+      <DependentUpon>Frm_PrintTrSn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\other\HolderFrm.resx">
+      <DependentUpon>HolderFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\other\PasswordFrm.resx">
+      <DependentUpon>PasswordFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\other\LogInFrm.resx">
+      <DependentUpon>LogInFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\other\MFrm.resx">
+      <DependentUpon>MFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\other\MsgFrm.resx">
+      <DependentUpon>MsgFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Pick\PickFrm.resx">
+      <DependentUpon>PickFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Pick\SetPickStation.resx">
+      <DependentUpon>SetPickStation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Pick\SplitMaterial.resx">
+      <DependentUpon>SplitMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Replenish\ReplenishFrm.resx">
+      <DependentUpon>ReplenishFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Replenish\SelectionFrm.resx">
+      <DependentUpon>SelectionFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Web References\CheckAccoutServiceIService\CheckAccountServiceIService.wsdl" />
+    <None Include="Web References\CheckAccoutServiceIService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\DeliveryList_OUT\DeliveryList_OUT.wsdl" />
+    <None Include="Web References\DeliveryList_OUT\DeliveryList_Res.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DeliveryList_OUT\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\GoodsMvtCreate_OUT\GoodsMvtCreate_OUT.wsdl" />
+    <None Include="Web References\GoodsMvtCreate_OUT\GoodsMvtCreate_res.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\GoodsMvtCreate_OUT\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ReservationDetail_OUT\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ReservationDetail_OUT\ReservationDetail_OUT.wsdl" />
+    <None Include="Web References\ReservationDetail_OUT\ReservationDetail_Res.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\tR_Tr_Sn\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\tR_Tr_Sn\tR_Tr_Sn.wsdl" />
+    <None Include="Web References\WMS_WebServices\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WMS_WebServices\R_Tr_Sn.wsdl" />
+    <None Include="Web References\ZPI_PIINTF_MES_SUBCON_PURCHASE\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ZPI_PIINTF_MES_SUBCON_PURCHASE\ZPI_PIINTF_MES_SUBCON_PURCHASE.wsdl" />
+    <None Include="Web References\ZPI_PIINTF_MES_SUBCON_PURCHASE\ZPP_S_MESSAGE.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ZPI_PIINTF_MES_SUBCON_PURCHASE\ZPP_S_SUBCON_PURCHASE.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://172.17.192.53:8080/webservice/wsCheckAccountaddress%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\CheckAccoutServiceIService\</RelPath>
+      <UpdateFromURL>http://172.17.192.53:8080/webservice/wsCheckAccountaddress%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>WMS_Client_CheckAccoutServiceIService_CheckAccountServiceIService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://sappip.freecomm-networks.com:50000/dir/wsdl%3fp=sa/59a23233c43e3009ab2d5cfc271e54c0">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\GoodsMvtCreate_OUT\</RelPath>
+      <UpdateFromURL>http://sappip.freecomm-networks.com:50000/dir/wsdl%3fp=sa/59a23233c43e3009ab2d5cfc271e54c0</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>WMS_Client_GoodsMvtCreate_OUT_GoodsMvtCreate_OUTService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://sappip.freecomm-networks.com:50000/dir/wsdl%3fp=sa/a515c8deabe5386da2d00d4a69683368">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ReservationDetail_OUT\</RelPath>
+      <UpdateFromURL>http://sappip.freecomm-networks.com:50000/dir/wsdl%3fp=sa/a515c8deabe5386da2d00d4a69683368</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>WMS_Client_ReservationDetail_OUT_ReservationDetail_OUTService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://sappip.freecomm-networks.com:50000/dir/wsdl%3fp=sa/d3a0b997230030f8ab38b58c9038d665">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\DeliveryList_OUT\</RelPath>
+      <UpdateFromURL>http://sappip.freecomm-networks.com:50000/dir/wsdl%3fp=sa/d3a0b997230030f8ab38b58c9038d665</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>WMS_Client_DeliveryList_OUT_DeliveryList_OUTService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://sappip.freecomm-networks.com:50000/dir/wsdl%3fp=sa/f4e6fa36b4133f169f7077d4a17a1572">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ZPI_PIINTF_MES_SUBCON_PURCHASE\</RelPath>
+      <UpdateFromURL>http://sappip.freecomm-networks.com:50000/dir/wsdl%3fp=sa/f4e6fa36b4133f169f7077d4a17a1572</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>WMS_Client_ZPI_PIINTF_MES_SUBCON_PURCHASE_ZPI_PIINTF_MES_SUBCON_PURCHASEService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://sfis.phicomm.com.cn/SFIS_WEBSER/tR_Tr_Sn.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\tR_Tr_Sn\</RelPath>
+      <UpdateFromURL>http://sfis.phicomm.com.cn/SFIS_WEBSER/tR_Tr_Sn.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>WMS_Client_tR_Tr_Sn_tR_Tr_Sn</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://wms-client.phicomm.com/WMS_WEBSER/R_Tr_Sn.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WMS_WebServices\</RelPath>
+      <UpdateFromURL>http://wms-client.phicomm.com/WMS_WEBSER/R_Tr_Sn.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>WMS_Client_WMS_WebServices_R_Tr_Sn</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\tR_Tr_Sn\tR_Tr_Sn.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\WMS_WebServices\R_Tr_Sn.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="jiusi.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

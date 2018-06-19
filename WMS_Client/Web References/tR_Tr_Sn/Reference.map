@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://sfis.phicomm.com.cn/SFIS_WEBSER/tR_Tr_Sn.asmx?disco" filename="tR_Tr_Sn.disco" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://sfis.phicomm.com.cn/SFIS_WEBSER/tR_Tr_Sn.asmx?wsdl" filename="tR_Tr_Sn.wsdl" />
+  </Results>
+</DiscoveryClientResultsFile>

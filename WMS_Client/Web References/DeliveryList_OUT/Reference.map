@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://sappip.freecomm-networks.com:50000/dir/wsdl?p=sa/d3a0b997230030f8ab38b58c9038d665" filename="DeliveryList_OUT.wsdl" />
+  </Results>
+</DiscoveryClientResultsFile>

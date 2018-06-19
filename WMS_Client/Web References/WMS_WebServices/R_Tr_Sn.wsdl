@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetSeqTrSnAndInsert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Json" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="pring_qty" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="is_scrap" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="ROWID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="STOCK_YEAR" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSeqTrSnAndInsertResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSeqTrSnAndInsertResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Tr_Sn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Json" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Fields" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Tr_SnResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Tr_SnResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Tr_Sn_LocId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Json" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Tr_Sn_LocIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Tr_Sn_LocIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_tr_sn_current">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pring_qty" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_tr_sn_currentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_tr_sn_currentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPDATE_TR_SN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Json" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPDATE_TR_SNResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UPDATE_TR_SNResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Tr_Sn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Json" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Tr_SnResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Tr_SnResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_SAP_PO_Tr_Sn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Json" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_SAP_PO_Tr_SnResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Delete_SAP_PO_Tr_SnResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TrSn_Barcode_Import">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListJson" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Json" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="STOCK_YEAR" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TrSn_Barcode_ImportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TrSn_Barcode_ImportResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_SAP_PO_Tr_Sn_All">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Json" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_SAP_PO_Tr_Sn_AllResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Delete_SAP_PO_Tr_Sn_AllResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetSeqTrSnAndInsertSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSeqTrSnAndInsert" />
+  </wsdl:message>
+  <wsdl:message name="GetSeqTrSnAndInsertSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSeqTrSnAndInsertResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Tr_SnSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Tr_Sn" />
+  </wsdl:message>
+  <wsdl:message name="Get_Tr_SnSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Tr_SnResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Tr_Sn_LocIdSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Tr_Sn_LocId" />
+  </wsdl:message>
+  <wsdl:message name="Get_Tr_Sn_LocIdSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Tr_Sn_LocIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_tr_sn_currentSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_tr_sn_current" />
+  </wsdl:message>
+  <wsdl:message name="Get_tr_sn_currentSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_tr_sn_currentResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPDATE_TR_SNSoapIn">
+    <wsdl:part name="parameters" element="tns:UPDATE_TR_SN" />
+  </wsdl:message>
+  <wsdl:message name="UPDATE_TR_SNSoapOut">
+    <wsdl:part name="parameters" element="tns:UPDATE_TR_SNResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Tr_SnSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Tr_Sn" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Tr_SnSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Tr_SnResponse" />
+  </wsdl:message>
+  <wsdl:message name="Delete_SAP_PO_Tr_SnSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete_SAP_PO_Tr_Sn" />
+  </wsdl:message>
+  <wsdl:message name="Delete_SAP_PO_Tr_SnSoapOut">
+    <wsdl:part name="parameters" element="tns:Delete_SAP_PO_Tr_SnResponse" />
+  </wsdl:message>
+  <wsdl:message name="TrSn_Barcode_ImportSoapIn">
+    <wsdl:part name="parameters" element="tns:TrSn_Barcode_Import" />
+  </wsdl:message>
+  <wsdl:message name="TrSn_Barcode_ImportSoapOut">
+    <wsdl:part name="parameters" element="tns:TrSn_Barcode_ImportResponse" />
+  </wsdl:message>
+  <wsdl:message name="Delete_SAP_PO_Tr_Sn_AllSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete_SAP_PO_Tr_Sn_All" />
+  </wsdl:message>
+  <wsdl:message name="Delete_SAP_PO_Tr_Sn_AllSoapOut">
+    <wsdl:part name="parameters" element="tns:Delete_SAP_PO_Tr_Sn_AllResponse" />
+  </wsdl:message>
+  <wsdl:portType name="R_Tr_SnSoap">
+    <wsdl:operation name="GetSeqTrSnAndInsert">
+      <wsdl:input message="tns:GetSeqTrSnAndInsertSoapIn" />
+      <wsdl:output message="tns:GetSeqTrSnAndInsertSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Tr_Sn">
+      <wsdl:input message="tns:Get_Tr_SnSoapIn" />
+      <wsdl:output message="tns:Get_Tr_SnSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Tr_Sn_LocId">
+      <wsdl:input message="tns:Get_Tr_Sn_LocIdSoapIn" />
+      <wsdl:output message="tns:Get_Tr_Sn_LocIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_tr_sn_current">
+      <wsdl:input message="tns:Get_tr_sn_currentSoapIn" />
+      <wsdl:output message="tns:Get_tr_sn_currentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPDATE_TR_SN">
+      <wsdl:input message="tns:UPDATE_TR_SNSoapIn" />
+      <wsdl:output message="tns:UPDATE_TR_SNSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Tr_Sn">
+      <wsdl:input message="tns:Insert_Tr_SnSoapIn" />
+      <wsdl:output message="tns:Insert_Tr_SnSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_SAP_PO_Tr_Sn">
+      <wsdl:input message="tns:Delete_SAP_PO_Tr_SnSoapIn" />
+      <wsdl:output message="tns:Delete_SAP_PO_Tr_SnSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TrSn_Barcode_Import">
+      <wsdl:input message="tns:TrSn_Barcode_ImportSoapIn" />
+      <wsdl:output message="tns:TrSn_Barcode_ImportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_SAP_PO_Tr_Sn_All">
+      <wsdl:input message="tns:Delete_SAP_PO_Tr_Sn_AllSoapIn" />
+      <wsdl:output message="tns:Delete_SAP_PO_Tr_Sn_AllSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="R_Tr_SnSoap" type="tns:R_Tr_SnSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSeqTrSnAndInsert">
+      <soap:operation soapAction="http://tempuri.org/GetSeqTrSnAndInsert" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Tr_Sn">
+      <soap:operation soapAction="http://tempuri.org/Get_Tr_Sn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Tr_Sn_LocId">
+      <soap:operation soapAction="http://tempuri.org/Get_Tr_Sn_LocId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_tr_sn_current">
+      <soap:operation soapAction="http://tempuri.org/Get_tr_sn_current" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPDATE_TR_SN">
+      <soap:operation soapAction="http://tempuri.org/UPDATE_TR_SN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Tr_Sn">
+      <soap:operation soapAction="http://tempuri.org/Insert_Tr_Sn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_SAP_PO_Tr_Sn">
+      <soap:operation soapAction="http://tempuri.org/Delete_SAP_PO_Tr_Sn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TrSn_Barcode_Import">
+      <soap:operation soapAction="http://tempuri.org/TrSn_Barcode_Import" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_SAP_PO_Tr_Sn_All">
+      <soap:operation soapAction="http://tempuri.org/Delete_SAP_PO_Tr_Sn_All" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="R_Tr_SnSoap12" type="tns:R_Tr_SnSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSeqTrSnAndInsert">
+      <soap12:operation soapAction="http://tempuri.org/GetSeqTrSnAndInsert" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Tr_Sn">
+      <soap12:operation soapAction="http://tempuri.org/Get_Tr_Sn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Tr_Sn_LocId">
+      <soap12:operation soapAction="http://tempuri.org/Get_Tr_Sn_LocId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_tr_sn_current">
+      <soap12:operation soapAction="http://tempuri.org/Get_tr_sn_current" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPDATE_TR_SN">
+      <soap12:operation soapAction="http://tempuri.org/UPDATE_TR_SN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Tr_Sn">
+      <soap12:operation soapAction="http://tempuri.org/Insert_Tr_Sn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_SAP_PO_Tr_Sn">
+      <soap12:operation soapAction="http://tempuri.org/Delete_SAP_PO_Tr_Sn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TrSn_Barcode_Import">
+      <soap12:operation soapAction="http://tempuri.org/TrSn_Barcode_Import" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_SAP_PO_Tr_Sn_All">
+      <soap12:operation soapAction="http://tempuri.org/Delete_SAP_PO_Tr_Sn_All" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="R_Tr_Sn">
+    <wsdl:port name="R_Tr_SnSoap" binding="tns:R_Tr_SnSoap">
+      <soap:address location="http://wms-client.phicomm.com/WMS_WEBSER/R_Tr_Sn.asmx" />
+    </wsdl:port>
+    <wsdl:port name="R_Tr_SnSoap12" binding="tns:R_Tr_SnSoap12">
+      <soap12:address location="http://wms-client.phicomm.com/WMS_WEBSER/R_Tr_Sn.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

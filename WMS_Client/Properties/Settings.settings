@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WMS_Client.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="WMS_Client_CheckAccoutServiceIService_CheckAccountServiceIService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://172.17.192.53:8080/webservice/wsCheckAccountaddress</Value>
+    </Setting>
+    <Setting Name="WMS_Client_tR_Tr_Sn_tR_Tr_Sn" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://sfis.phicomm.com.cn/SFIS_WEBSER/tR_Tr_Sn.asmx</Value>
+    </Setting>
+    <Setting Name="WMS_Client_GoodsMvtCreate_OUT_GoodsMvtCreate_OUTService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://sappip.freecomm-networks.com:50000/XISOAPAdapter/MessageServlet?senderParty=&amp;senderService=WMS_PRD&amp;receiverParty=&amp;receiverService=&amp;interface=GoodsMvtCreate_OUT&amp;interfaceNamespace=http%3A%2F%2Fphicomm.com%2FWMS%2FPI018%2FGoodsMvtCreate</Value>
+    </Setting>
+    <Setting Name="WMS_Client_DeliveryList_OUT_DeliveryList_OUTService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://sappip.freecomm-networks.com:50000/XISOAPAdapter/MessageServlet?senderParty=&amp;senderService=WMS_PRD&amp;receiverParty=&amp;receiverService=&amp;interface=DeliveryList_OUT&amp;interfaceNamespace=http%3A%2F%2Fphicomm.com%2FWMS%2FPI021%2FDeliveryList</Value>
+    </Setting>
+    <Setting Name="WMS_Client_ReservationDetail_OUT_ReservationDetail_OUTService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://sappip.freecomm-networks.com:50000/XISOAPAdapter/MessageServlet?senderParty=&amp;senderService=WMS_PRD&amp;receiverParty=&amp;receiverService=&amp;interface=ReservationDetail_OUT&amp;interfaceNamespace=http%3A%2F%2Fphicomm.com%2FWMS%2FPI020%2FReservationDetail</Value>
+    </Setting>
+    <Setting Name="WMS_Client_ZPI_PIINTF_MES_SUBCON_PURCHASE_ZPI_PIINTF_MES_SUBCON_PURCHASEService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://sappip.freecomm-networks.com:50000/XISOAPAdapter/MessageServlet?senderParty=&amp;senderService=MES_PRD&amp;receiverParty=&amp;receiverService=&amp;interface=ZPI_PIINTF_MES_SUBCON_PURCHASE&amp;interfaceNamespace=urn%3Asap-com%3Adocument%3Asap%3Arfc%3Afunctions</Value>
+    </Setting>
+    <Setting Name="WMS_Client_WMS_WebServices_R_Tr_Sn" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://wms-client.phicomm.com/WMS_WEBSER/R_Tr_Sn.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:p1="http://phicomm.com/WMS/PI020/ReservationDetail" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" name="ReservationDetail_OUT" targetNamespace="http://phicomm.com/WMS/PI020/ReservationDetail" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation />
+  <wsp:UsingPolicy wsdl:required="true" />
+  <wsp:Policy wsu:Id="OP_ReservationDetail_OUT" />
+  <wsdl:types>
+    <xsd:schema xmlns="http://phicomm.com/WMS/PI020/ReservationDetail" targetNamespace="http://phicomm.com/WMS/PI020/ReservationDetail" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:element name="ReservationDetail_Req" type="p1:ReservationDetail_Req" />
+      <xsd:element name="ReservationDetail_Res" type="p1:ReservationDetail_Res" />
+      <xsd:complexType name="ReservationDetail_Req">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">08fb37ee502511e4cffe0000006ab3d2</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="I_RESERVATION" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReservationDetail_Res">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">74244e67502511e4c9d00000006ab3d2</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ES_RETURN">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">801c48aa502511e4a03800ac878711a0</xsd:appinfo>
+            </xsd:annotation>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" name="TYPE" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">801c1de9502511e49a9b00ac878711a0</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="ID" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">801c1dea502511e4b62a00ac878711a0</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="NUMBER" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">801c1deb502511e49d2d00ac878711a0</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="MESSAGE" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">801c1dec502511e49d6f00ac878711a0</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="LOG_NO" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">801c1ded502511e4bfdd00ac878711a0</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="LOG_MSG_NO" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">801c1dee502511e483c500ac878711a0</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="MESSAGE_V1" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">801c48a2502511e48d4c00ac878711a0</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="MESSAGE_V2" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">801c48a3502511e493f100ac878711a0</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="MESSAGE_V3" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">801c48a4502511e4a02a00ac878711a0</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="MESSAGE_V4" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">801c48a5502511e4cc3500ac878711a0</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="PARAMETER" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">801c48a6502511e4a34000ac878711a0</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="ROW" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">801c48a7502511e4ab1400ac878711a0</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="FIELD" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">801c48a8502511e4881300ac878711a0</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="SYSTEM" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">801c48a9502511e4a5c900ac878711a0</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ET_RESERVATION_ITEMS">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" maxOccurs="unbounded" name="item">
+                  <xsd:complexType>
+                    <xsd:sequence>
+                      <xsd:element minOccurs="0" name="RES_NO" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="RES_ITEM" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="DELETE_IND" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="MOVEMENT" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="WITHDRAWN" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="MATERIAL" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="PLANT" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="STORE_LOC" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="REQ_QUAN" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="BASE_UOM" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="FIXED_QUAN" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="WITHD_QUAN" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="MOVE_TYPE" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="MOVE_PLANT" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="MOVE_STLOC" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="DEB_CRED" type="xsd:string" />
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ReservationDetail_Req">
+    <wsdl:documentation />
+    <wsdl:part name="ReservationDetail_Req" element="p1:ReservationDetail_Req" />
+  </wsdl:message>
+  <wsdl:message name="ReservationDetail_Res">
+    <wsdl:documentation />
+    <wsdl:part name="ReservationDetail_Res" element="p1:ReservationDetail_Res" />
+  </wsdl:message>
+  <wsdl:portType name="ReservationDetail_OUT">
+    <wsdl:documentation />
+    <wsdl:operation name="ReservationDetail_OUT">
+      <wsdl:documentation />
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_ReservationDetail_OUT" />
+      </wsp:Policy>
+      <wsdl:input message="p1:ReservationDetail_Req" />
+      <wsdl:output message="p1:ReservationDetail_Res" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ReservationDetail_OUTBinding" type="p1:ReservationDetail_OUT">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <wsdl:operation name="ReservationDetail_OUT">
+      <operation soapAction="http://sap.com/xi/WebService/soap1.1" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <wsdl:input>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </wsdl:input>
+      <wsdl:output>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ReservationDetail_OUTService">
+    <wsdl:port name="HTTP_Port" binding="p1:ReservationDetail_OUTBinding">
+      <address location="http://sappip.freecomm-networks.com:50000/XISOAPAdapter/MessageServlet?senderParty=&amp;senderService=WMS_PRD&amp;receiverParty=&amp;receiverService=&amp;interface=ReservationDetail_OUT&amp;interfaceNamespace=http%3A%2F%2Fphicomm.com%2FWMS%2FPI020%2FReservationDetail" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </wsdl:port>
+    <wsdl:port name="HTTPS_Port" binding="p1:ReservationDetail_OUTBinding">
+      <address location="https://sappip.freecomm-networks.com:50001/XISOAPAdapter/MessageServlet?senderParty=&amp;senderService=WMS_PRD&amp;receiverParty=&amp;receiverService=&amp;interface=ReservationDetail_OUT&amp;interfaceNamespace=http%3A%2F%2Fphicomm.com%2FWMS%2FPI020%2FReservationDetail" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

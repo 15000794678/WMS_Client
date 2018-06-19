@@ -1,0 +1,812 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Sel_Tr_Sn_Info">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="T_sn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sel_Tr_Sn_InfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Sel_Tr_Sn_InfoResult" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WMS_Sel_Tr_Sn_Info">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="T_sn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Fields" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WMS_Sel_Tr_Sn_InfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WMS_Sel_Tr_Sn_InfoResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WMS_UPDATE_TR_SN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Json" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WMS_UPDATE_TR_SNResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WMS_UPDATE_TR_SNResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_TR_SN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="R_Trsn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="R_WOID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="R_USERID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="R_STATUS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="R_RMAK1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="R_RMAK2" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_TR_SNResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Update_TR_SNResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPDATE_TR_SN_Json">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Json" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPDATE_TR_SN_JsonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UPDATE_TR_SN_JsonResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Smt_SplitMaterial">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Json" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Smt_SplitMaterialResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Sel_woId_Trsn_List">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="woId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Flag" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sel_woId_Trsn_ListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Sel_woId_Trsn_ListResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sel_woId_Trsn_List_WinCe">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="woId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Flag" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sel_woId_Trsn_List_WinCeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Sel_woId_Trsn_List_WinCeResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSeqTrSnInfo">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSeqTrSnInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSeqTrSnInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insert_into_R_tr_sn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dicstring" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insert_into_R_tr_snResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insert_into_R_tr_snResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_R_TrSn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LsTsf" type="tns:ArrayOfTrSnFields" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTrSnFields">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TrSnFields" nillable="true" type="tns:TrSnFields" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TrSnFields">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PO_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TR_SN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="KP_NO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="KP_DESC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VENDER_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VENDER_NAME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DATE_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LOT_CODE" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="QTY" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="STOCK_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LOC_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TANSFER_NO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="URGENT_PN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="STOCK_NO" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="STOCK_DATE" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="WOID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USER_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="STATUS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REMARK1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REMARK2" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UPDATE_DATE" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="FIFO_DC" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Insert_R_TrSnResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_R_TrSnResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insert_into_R_tr_sn_detail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dicstring" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insert_into_R_tr_sn_detailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insert_into_R_tr_sn_detailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Del_TR_SN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="R_Trsn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Del_TR_SNResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Del_TR_SNResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Tr_Sn_Detail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Tr_Sn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Tr_Sn_DetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Tr_Sn_DetailResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WMS_get_R_Sap_Back_Shipping">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JsonStr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WMS_get_R_Sap_Back_ShippingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WMS_get_R_Sap_Back_ShippingResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WMS_RFC_ZMM_GOODSMVT_CREATE_list">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListJson" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WMS_RFC_ZMM_GOODSMVT_CREATE_listResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WMS_RFC_ZMM_GOODSMVT_CREATE_listResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WMS_Insert_R_SAP_BACK_SHIPPING">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListJson" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WMS_Insert_R_SAP_BACK_SHIPPINGResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WMS_Insert_R_SAP_BACK_SHIPPINGResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WMS_Update_R_Sap_Back_Shipping">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListJson" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Transaction" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WMS_Update_R_Sap_Back_ShippingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WMS_Update_R_Sap_Back_ShippingResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Sel_Tr_Sn_InfoSoapIn">
+    <wsdl:part name="parameters" element="tns:Sel_Tr_Sn_Info" />
+  </wsdl:message>
+  <wsdl:message name="Sel_Tr_Sn_InfoSoapOut">
+    <wsdl:part name="parameters" element="tns:Sel_Tr_Sn_InfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="WMS_Sel_Tr_Sn_InfoSoapIn">
+    <wsdl:part name="parameters" element="tns:WMS_Sel_Tr_Sn_Info" />
+  </wsdl:message>
+  <wsdl:message name="WMS_Sel_Tr_Sn_InfoSoapOut">
+    <wsdl:part name="parameters" element="tns:WMS_Sel_Tr_Sn_InfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="WMS_UPDATE_TR_SNSoapIn">
+    <wsdl:part name="parameters" element="tns:WMS_UPDATE_TR_SN" />
+  </wsdl:message>
+  <wsdl:message name="WMS_UPDATE_TR_SNSoapOut">
+    <wsdl:part name="parameters" element="tns:WMS_UPDATE_TR_SNResponse" />
+  </wsdl:message>
+  <wsdl:message name="Update_TR_SNSoapIn">
+    <wsdl:part name="parameters" element="tns:Update_TR_SN" />
+  </wsdl:message>
+  <wsdl:message name="Update_TR_SNSoapOut">
+    <wsdl:part name="parameters" element="tns:Update_TR_SNResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPDATE_TR_SN_JsonSoapIn">
+    <wsdl:part name="parameters" element="tns:UPDATE_TR_SN_Json" />
+  </wsdl:message>
+  <wsdl:message name="UPDATE_TR_SN_JsonSoapOut">
+    <wsdl:part name="parameters" element="tns:UPDATE_TR_SN_JsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="Smt_SplitMaterialSoapIn">
+    <wsdl:part name="parameters" element="tns:Smt_SplitMaterial" />
+  </wsdl:message>
+  <wsdl:message name="Smt_SplitMaterialSoapOut">
+    <wsdl:part name="parameters" element="tns:Smt_SplitMaterialResponse" />
+  </wsdl:message>
+  <wsdl:message name="Sel_woId_Trsn_ListSoapIn">
+    <wsdl:part name="parameters" element="tns:Sel_woId_Trsn_List" />
+  </wsdl:message>
+  <wsdl:message name="Sel_woId_Trsn_ListSoapOut">
+    <wsdl:part name="parameters" element="tns:Sel_woId_Trsn_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="Sel_woId_Trsn_List_WinCeSoapIn">
+    <wsdl:part name="parameters" element="tns:Sel_woId_Trsn_List_WinCe" />
+  </wsdl:message>
+  <wsdl:message name="Sel_woId_Trsn_List_WinCeSoapOut">
+    <wsdl:part name="parameters" element="tns:Sel_woId_Trsn_List_WinCeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSeqTrSnInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSeqTrSnInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetSeqTrSnInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSeqTrSnInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="insert_into_R_tr_snSoapIn">
+    <wsdl:part name="parameters" element="tns:insert_into_R_tr_sn" />
+  </wsdl:message>
+  <wsdl:message name="insert_into_R_tr_snSoapOut">
+    <wsdl:part name="parameters" element="tns:insert_into_R_tr_snResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_R_TrSnSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_R_TrSn" />
+  </wsdl:message>
+  <wsdl:message name="Insert_R_TrSnSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_R_TrSnResponse" />
+  </wsdl:message>
+  <wsdl:message name="insert_into_R_tr_sn_detailSoapIn">
+    <wsdl:part name="parameters" element="tns:insert_into_R_tr_sn_detail" />
+  </wsdl:message>
+  <wsdl:message name="insert_into_R_tr_sn_detailSoapOut">
+    <wsdl:part name="parameters" element="tns:insert_into_R_tr_sn_detailResponse" />
+  </wsdl:message>
+  <wsdl:message name="Del_TR_SNSoapIn">
+    <wsdl:part name="parameters" element="tns:Del_TR_SN" />
+  </wsdl:message>
+  <wsdl:message name="Del_TR_SNSoapOut">
+    <wsdl:part name="parameters" element="tns:Del_TR_SNResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Tr_Sn_DetailSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Tr_Sn_Detail" />
+  </wsdl:message>
+  <wsdl:message name="Get_Tr_Sn_DetailSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Tr_Sn_DetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="WMS_get_R_Sap_Back_ShippingSoapIn">
+    <wsdl:part name="parameters" element="tns:WMS_get_R_Sap_Back_Shipping" />
+  </wsdl:message>
+  <wsdl:message name="WMS_get_R_Sap_Back_ShippingSoapOut">
+    <wsdl:part name="parameters" element="tns:WMS_get_R_Sap_Back_ShippingResponse" />
+  </wsdl:message>
+  <wsdl:message name="WMS_RFC_ZMM_GOODSMVT_CREATE_listSoapIn">
+    <wsdl:part name="parameters" element="tns:WMS_RFC_ZMM_GOODSMVT_CREATE_list" />
+  </wsdl:message>
+  <wsdl:message name="WMS_RFC_ZMM_GOODSMVT_CREATE_listSoapOut">
+    <wsdl:part name="parameters" element="tns:WMS_RFC_ZMM_GOODSMVT_CREATE_listResponse" />
+  </wsdl:message>
+  <wsdl:message name="WMS_Insert_R_SAP_BACK_SHIPPINGSoapIn">
+    <wsdl:part name="parameters" element="tns:WMS_Insert_R_SAP_BACK_SHIPPING" />
+  </wsdl:message>
+  <wsdl:message name="WMS_Insert_R_SAP_BACK_SHIPPINGSoapOut">
+    <wsdl:part name="parameters" element="tns:WMS_Insert_R_SAP_BACK_SHIPPINGResponse" />
+  </wsdl:message>
+  <wsdl:message name="WMS_Update_R_Sap_Back_ShippingSoapIn">
+    <wsdl:part name="parameters" element="tns:WMS_Update_R_Sap_Back_Shipping" />
+  </wsdl:message>
+  <wsdl:message name="WMS_Update_R_Sap_Back_ShippingSoapOut">
+    <wsdl:part name="parameters" element="tns:WMS_Update_R_Sap_Back_ShippingResponse" />
+  </wsdl:message>
+  <wsdl:portType name="tR_Tr_SnSoap">
+    <wsdl:operation name="Sel_Tr_Sn_Info">
+      <wsdl:input message="tns:Sel_Tr_Sn_InfoSoapIn" />
+      <wsdl:output message="tns:Sel_Tr_Sn_InfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WMS_Sel_Tr_Sn_Info">
+      <wsdl:input message="tns:WMS_Sel_Tr_Sn_InfoSoapIn" />
+      <wsdl:output message="tns:WMS_Sel_Tr_Sn_InfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WMS_UPDATE_TR_SN">
+      <wsdl:input message="tns:WMS_UPDATE_TR_SNSoapIn" />
+      <wsdl:output message="tns:WMS_UPDATE_TR_SNSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_TR_SN">
+      <wsdl:input message="tns:Update_TR_SNSoapIn" />
+      <wsdl:output message="tns:Update_TR_SNSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPDATE_TR_SN">
+      <wsdl:input name="UPDATE_TR_SN_Json" message="tns:UPDATE_TR_SN_JsonSoapIn" />
+      <wsdl:output name="UPDATE_TR_SN_Json" message="tns:UPDATE_TR_SN_JsonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Smt_SplitMaterial">
+      <wsdl:input message="tns:Smt_SplitMaterialSoapIn" />
+      <wsdl:output message="tns:Smt_SplitMaterialSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sel_woId_Trsn_List">
+      <wsdl:input message="tns:Sel_woId_Trsn_ListSoapIn" />
+      <wsdl:output message="tns:Sel_woId_Trsn_ListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sel_woId_Trsn_List_WinCe">
+      <wsdl:input message="tns:Sel_woId_Trsn_List_WinCeSoapIn" />
+      <wsdl:output message="tns:Sel_woId_Trsn_List_WinCeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSeqTrSnInfo">
+      <wsdl:input message="tns:GetSeqTrSnInfoSoapIn" />
+      <wsdl:output message="tns:GetSeqTrSnInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insert_into_R_tr_sn">
+      <wsdl:input message="tns:insert_into_R_tr_snSoapIn" />
+      <wsdl:output message="tns:insert_into_R_tr_snSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_R_TrSn">
+      <wsdl:input message="tns:Insert_R_TrSnSoapIn" />
+      <wsdl:output message="tns:Insert_R_TrSnSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insert_into_R_tr_sn_detail">
+      <wsdl:input message="tns:insert_into_R_tr_sn_detailSoapIn" />
+      <wsdl:output message="tns:insert_into_R_tr_sn_detailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Del_TR_SN">
+      <wsdl:input message="tns:Del_TR_SNSoapIn" />
+      <wsdl:output message="tns:Del_TR_SNSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Tr_Sn_Detail">
+      <wsdl:input message="tns:Get_Tr_Sn_DetailSoapIn" />
+      <wsdl:output message="tns:Get_Tr_Sn_DetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WMS_get_R_Sap_Back_Shipping">
+      <wsdl:input message="tns:WMS_get_R_Sap_Back_ShippingSoapIn" />
+      <wsdl:output message="tns:WMS_get_R_Sap_Back_ShippingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WMS_RFC_ZMM_GOODSMVT_CREATE_list">
+      <wsdl:input message="tns:WMS_RFC_ZMM_GOODSMVT_CREATE_listSoapIn" />
+      <wsdl:output message="tns:WMS_RFC_ZMM_GOODSMVT_CREATE_listSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WMS_Insert_R_SAP_BACK_SHIPPING">
+      <wsdl:input message="tns:WMS_Insert_R_SAP_BACK_SHIPPINGSoapIn" />
+      <wsdl:output message="tns:WMS_Insert_R_SAP_BACK_SHIPPINGSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WMS_Update_R_Sap_Back_Shipping">
+      <wsdl:input message="tns:WMS_Update_R_Sap_Back_ShippingSoapIn" />
+      <wsdl:output message="tns:WMS_Update_R_Sap_Back_ShippingSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="tR_Tr_SnSoap" type="tns:tR_Tr_SnSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Sel_Tr_Sn_Info">
+      <soap:operation soapAction="http://tempuri.org/Sel_Tr_Sn_Info" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WMS_Sel_Tr_Sn_Info">
+      <soap:operation soapAction="http://tempuri.org/WMS_Sel_Tr_Sn_Info" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WMS_UPDATE_TR_SN">
+      <soap:operation soapAction="http://tempuri.org/WMS_UPDATE_TR_SN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_TR_SN">
+      <soap:operation soapAction="http://tempuri.org/Update_TR_SN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPDATE_TR_SN">
+      <soap:operation soapAction="http://tempuri.org/UPDATE_TR_SN_Json" style="document" />
+      <wsdl:input name="UPDATE_TR_SN_Json">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UPDATE_TR_SN_Json">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Smt_SplitMaterial">
+      <soap:operation soapAction="http://tempuri.org/Smt_SplitMaterial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sel_woId_Trsn_List">
+      <soap:operation soapAction="http://tempuri.org/Sel_woId_Trsn_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sel_woId_Trsn_List_WinCe">
+      <soap:operation soapAction="http://tempuri.org/Sel_woId_Trsn_List_WinCe" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSeqTrSnInfo">
+      <soap:operation soapAction="http://tempuri.org/GetSeqTrSnInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insert_into_R_tr_sn">
+      <soap:operation soapAction="http://tempuri.org/insert_into_R_tr_sn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_R_TrSn">
+      <soap:operation soapAction="http://tempuri.org/Insert_R_TrSn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insert_into_R_tr_sn_detail">
+      <soap:operation soapAction="http://tempuri.org/insert_into_R_tr_sn_detail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Del_TR_SN">
+      <soap:operation soapAction="http://tempuri.org/Del_TR_SN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Tr_Sn_Detail">
+      <soap:operation soapAction="http://tempuri.org/Get_Tr_Sn_Detail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WMS_get_R_Sap_Back_Shipping">
+      <soap:operation soapAction="http://tempuri.org/WMS_get_R_Sap_Back_Shipping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WMS_RFC_ZMM_GOODSMVT_CREATE_list">
+      <soap:operation soapAction="http://tempuri.org/WMS_RFC_ZMM_GOODSMVT_CREATE_list" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WMS_Insert_R_SAP_BACK_SHIPPING">
+      <soap:operation soapAction="http://tempuri.org/WMS_Insert_R_SAP_BACK_SHIPPING" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WMS_Update_R_Sap_Back_Shipping">
+      <soap:operation soapAction="http://tempuri.org/WMS_Update_R_Sap_Back_Shipping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="tR_Tr_SnSoap12" type="tns:tR_Tr_SnSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Sel_Tr_Sn_Info">
+      <soap12:operation soapAction="http://tempuri.org/Sel_Tr_Sn_Info" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WMS_Sel_Tr_Sn_Info">
+      <soap12:operation soapAction="http://tempuri.org/WMS_Sel_Tr_Sn_Info" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WMS_UPDATE_TR_SN">
+      <soap12:operation soapAction="http://tempuri.org/WMS_UPDATE_TR_SN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_TR_SN">
+      <soap12:operation soapAction="http://tempuri.org/Update_TR_SN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPDATE_TR_SN">
+      <soap12:operation soapAction="http://tempuri.org/UPDATE_TR_SN_Json" style="document" />
+      <wsdl:input name="UPDATE_TR_SN_Json">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UPDATE_TR_SN_Json">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Smt_SplitMaterial">
+      <soap12:operation soapAction="http://tempuri.org/Smt_SplitMaterial" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sel_woId_Trsn_List">
+      <soap12:operation soapAction="http://tempuri.org/Sel_woId_Trsn_List" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sel_woId_Trsn_List_WinCe">
+      <soap12:operation soapAction="http://tempuri.org/Sel_woId_Trsn_List_WinCe" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSeqTrSnInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetSeqTrSnInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insert_into_R_tr_sn">
+      <soap12:operation soapAction="http://tempuri.org/insert_into_R_tr_sn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_R_TrSn">
+      <soap12:operation soapAction="http://tempuri.org/Insert_R_TrSn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insert_into_R_tr_sn_detail">
+      <soap12:operation soapAction="http://tempuri.org/insert_into_R_tr_sn_detail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Del_TR_SN">
+      <soap12:operation soapAction="http://tempuri.org/Del_TR_SN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Tr_Sn_Detail">
+      <soap12:operation soapAction="http://tempuri.org/Get_Tr_Sn_Detail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WMS_get_R_Sap_Back_Shipping">
+      <soap12:operation soapAction="http://tempuri.org/WMS_get_R_Sap_Back_Shipping" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WMS_RFC_ZMM_GOODSMVT_CREATE_list">
+      <soap12:operation soapAction="http://tempuri.org/WMS_RFC_ZMM_GOODSMVT_CREATE_list" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WMS_Insert_R_SAP_BACK_SHIPPING">
+      <soap12:operation soapAction="http://tempuri.org/WMS_Insert_R_SAP_BACK_SHIPPING" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WMS_Update_R_Sap_Back_Shipping">
+      <soap12:operation soapAction="http://tempuri.org/WMS_Update_R_Sap_Back_Shipping" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="tR_Tr_Sn">
+    <wsdl:port name="tR_Tr_SnSoap" binding="tns:tR_Tr_SnSoap">
+      <soap:address location="http://sfis.phicomm.com.cn/SFIS_WEBSER/tR_Tr_Sn.asmx" />
+    </wsdl:port>
+    <wsdl:port name="tR_Tr_SnSoap12" binding="tns:tR_Tr_SnSoap12">
+      <soap12:address location="http://sfis.phicomm.com.cn/SFIS_WEBSER/tR_Tr_Sn.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
