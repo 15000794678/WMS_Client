@@ -187,17 +187,9 @@ namespace WMS_Client.UI
 
                 //取料成功
                 if (saveTrSnFlag)
-                {
-                    //更新货架信息
-                    StartFindShelf();
-
-                    //保存TrSn
-                    SaveTrSn(listTrSn, MyData.GetStockNo(), MyData.GetStockNoType());
-
-                    UpdateCnt(MyData.GetStockNo(), _lastScanLocId);
-
+                {                                  
                     //如果要分盘
-                    if (result == 3 && listTrSn.Count==0)  
+                    if (result == 3 && listTrSn.Count==1)  
                     {
                         if (splitnum > 0)
                         {
@@ -209,8 +201,20 @@ namespace WMS_Client.UI
                             }
 
                             SplitTrSn(listTrSn[0].ToUpper(), newTrSn, splitnum);
+
+                            //要推送的trSn是新生成的trSn
+                            listTrSn.Clear();
+                            listTrSn.Add(newTrSn);
                         }
                     }
+
+                    //更新货架信息
+                    StartFindShelf();
+
+                    //保存TrSn
+                    SaveTrSn(listTrSn, MyData.GetStockNo(), MyData.GetStockNoType());                    
+
+                    UpdateCnt(MyData.GetStockNo(), _lastScanLocId);
 
                     //全部出库完毕，则过账
                     if (result == 1) /*料出库成功，且所有站点物料全部出库，自动过账*/
@@ -223,13 +227,14 @@ namespace WMS_Client.UI
                         }
                         //SapPick(MyData.GetStockNo(), MyData.GetStockNoType();
                         ShowHint("出库过账功能暂时关闭！", Color.Lime);                       
-                    }
-                    
+                    }                    
                 }
             }
             catch (Exception ex)
             {
-                Log.Error("ExecuteInput:" + ex.Message);                
+                Log.Error("ExecuteInput:" + ex.Message);
+
+                UpdateCnt(MyData.GetStockNo(), _lastScanLocId);
 
                 //更新货架信息
                 StartFindShelf();
@@ -242,13 +247,13 @@ namespace WMS_Client.UI
             {
                 sm.SetLabel(trSn, trSn2, sendQty);
 
-                if (sm.ShowDialog() == DialogResult.OK)
+                if (sm.ShowDialog() != DialogResult.OK)
                 {
                     ShowHint("打印失败, OldTrSn=" + trSn + ", NewTrSn=" + trSn2 + ", SendQty=" + sendQty.ToString() + ", 请记录该信息，并至条码补印页面补印条码！", Color.Red);
-                    return true;
+                    return false;
                 }
 
-                return false;
+                return true;
             }
         }
 

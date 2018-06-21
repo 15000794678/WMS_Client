@@ -6,7 +6,7 @@ namespace Phicomm_WMS.DB
     public class InitPartialPickStation : BaseDbQuery
     {
         public InitPartialPickStation(string user, int stationId)
-            : base("Select " + "F_InitPartialPickStation(" + stationId + "," + user + ")", DbName)
+            : base("Select " + "F_InitPartialPickStation(" + stationId + ",'" + user + "')", DbName)
         {
 
         }

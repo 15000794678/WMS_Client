@@ -33,7 +33,7 @@ namespace WMS_Client.UI
         private int _allOutCnt = 0;  //整盘出库时计数
         private DataTable _dtShelf = new DataTable(); //货架信息
         private int _taskType = 0;
-        private enum PickTaskType { Normal=0, Split=1, Human=2};
+        private enum PickTaskType { Normal=1, Split=2, Human=3};
 
         public PickFrm()
         {
@@ -250,11 +250,11 @@ namespace WMS_Client.UI
                     return;
                 }                      
 
-                if (_taskType==0)
+                if (_taskType!=(int)PickTaskType.Human)
                 {
                     UpdateShelfCount(2, MyData.GetStationId());
                 }
-                else if (_taskType==1)
+                else if (_taskType==(int)PickTaskType.Human)
                 {
                     UpdateShelfCount(3, MyData.GetStationId()); //手动出库
                     //刷新手动出库界面
@@ -875,6 +875,11 @@ namespace WMS_Client.UI
             {
                 Trace.WriteLine("Debug: " + ex.Message);
                 ShowHint(ex.Message, Color.Red);
+            }
+            finally
+            {
+                textBox_sn2.Text = "";
+                textBox_sn2.Focus();
             }
         }
 
@@ -1890,6 +1895,11 @@ namespace WMS_Client.UI
                 ShowHint(ex.Message, Color.Red);
                 return;
             }
+            finally
+            {
+                textBox_locid.Text = "";
+                textBox_locid.Focus();
+            }
         }
 
         private void textBox_trsn_KeyDown(object sender, KeyEventArgs e)
@@ -1947,6 +1957,11 @@ namespace WMS_Client.UI
             {
                 ShowHint(ex.Message, Color.Red);
                 return;
+            }
+            finally
+            {
+                textBox_trsn.Text = "";
+                textBox_trsn.Focus();
             }
         }
 
@@ -2042,7 +2057,7 @@ namespace WMS_Client.UI
                 return;
             }
 
-            if (comboBox_TaskType.SelectedIndex < 0)
+            if (comboBox_TaskType.SelectedIndex < 1)
             {
                 MessageBox.Show("请先选择一个任务类型！");
                 return;

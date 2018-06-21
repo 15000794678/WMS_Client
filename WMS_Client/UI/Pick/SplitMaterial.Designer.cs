@@ -125,7 +125,7 @@
             this.groupBox3.Size = new System.Drawing.Size(393, 105);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "条码2";
+            this.groupBox3.Text = "条码2(数量改变)";
             // 
             // tableLayoutPanel5
             // 
@@ -195,7 +195,7 @@
             this.groupBox4.Size = new System.Drawing.Size(394, 105);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "条码3";
+            this.groupBox4.Text = "条码3(推送到线边仓)";
             // 
             // tableLayoutPanel6
             // 
@@ -457,7 +457,7 @@
             this.groupBox2.Size = new System.Drawing.Size(799, 106);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "条码1";
+            this.groupBox2.Text = "条码1(原条码)";
             // 
             // tableLayoutPanel4
             // 

@@ -114,3 +114,30 @@
 [2018-06-05 16:24:41,967] 15-ERROR-SelectionFrm             [LKHolder]-LinkHolderMaterial返回类型: 2, trsn=S182200002307 已删除！
 [2018-06-05 16:24:46,985] 15-ERROR-SelectionFrm             [LKHolder]-LinkHolderMaterial返回类型: 2, trsn=S182200002318 已删除！
 [2018-06-05 16:24:49,623] 15-ERROR-SelectionFrm             [LKHolder]-LinkHolderMaterial返回类型: 3, trsn=S182200002317 已删除！
+[2018-06-20 15:48:53,545] 7 -ERROR-PickFrm                  [CreatePickTask]-CreatePickTask：Could not find specified column in results
+[2018-06-20 16:38:36,813] 17-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：0
+[2018-06-20 16:39:39,393] 17-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：0
+[2018-06-20 16:39:47,242] 17-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：0
+[2018-06-20 16:40:27,790] 17-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：3
+[2018-06-20 17:11:11,628] 16-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：0
+[2018-06-20 17:12:06,172] 16-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：0
+[2018-06-20 17:14:12,090] 16-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：0
+[2018-06-20 17:14:27,743] 16-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：0
+[2018-06-20 17:14:35,898] 16-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：0
+[2018-06-20 17:14:57,275] 16-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：0
+[2018-06-20 17:15:07,178] 16-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：0
+[2018-06-20 17:15:15,033] 16-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：0
+[2018-06-20 17:16:33,863] 16-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：0
+[2018-06-20 17:16:57,101] 16-ERROR-PickFrm                  [PartialPickMaterialAllOut]-CompletePartialPickByLocId返回：0
+[2018-06-20 17:19:22,528] 16-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：0
+[2018-06-20 17:20:22,436] 16-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：0
+[2018-06-20 17:20:30,558] 16-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：0
+[2018-06-20 17:20:45,377] 16-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：0
+[2018-06-20 17:21:01,038] 16-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：-1
+[2018-06-20 17:21:10,178] 16-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：0
+[2018-06-20 17:21:14,232] 16-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：0
+[2018-06-20 17:21:16,536] 16-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：0
+[2018-06-20 17:21:18,343] 16-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：0
+[2018-06-20 17:21:20,110] 16-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：0
+[2018-06-20 17:21:23,154] 16-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：0
+[2018-06-20 17:23:32,109] 16-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：3

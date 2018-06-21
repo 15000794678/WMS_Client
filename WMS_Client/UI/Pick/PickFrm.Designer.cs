@@ -39,12 +39,12 @@
             this.tabPage_downad = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.comboBox_TaskType = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox_WoidType = new System.Windows.Forms.ComboBox();
             this.textBox_StockNo = new System.Windows.Forms.TextBox();
             this.button_CreatePickTask = new System.Windows.Forms.Button();
+            this.comboBox_TaskType = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -332,20 +332,6 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(1324, 38);
             this.tableLayoutPanel4.TabIndex = 7;
             // 
-            // comboBox_TaskType
-            // 
-            this.comboBox_TaskType.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.comboBox_TaskType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_TaskType.FormattingEnabled = true;
-            this.comboBox_TaskType.Items.AddRange(new object[] {
-            "不拆盘",
-            "在线拆盘",
-            "人工"});
-            this.comboBox_TaskType.Location = new System.Drawing.Point(1061, 9);
-            this.comboBox_TaskType.Name = "comboBox_TaskType";
-            this.comboBox_TaskType.Size = new System.Drawing.Size(100, 33);
-            this.comboBox_TaskType.TabIndex = 5;
-            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -409,6 +395,21 @@
             this.button_CreatePickTask.Text = "生成任务";
             this.button_CreatePickTask.UseVisualStyleBackColor = false;
             this.button_CreatePickTask.Click += new System.EventHandler(this.button_CreatePickTask_Click);
+            // 
+            // comboBox_TaskType
+            // 
+            this.comboBox_TaskType.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.comboBox_TaskType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_TaskType.FormattingEnabled = true;
+            this.comboBox_TaskType.Items.AddRange(new object[] {
+            "--请选择--",
+            "不拆盘",
+            "在线拆盘",
+            "人工"});
+            this.comboBox_TaskType.Location = new System.Drawing.Point(1061, 9);
+            this.comboBox_TaskType.Name = "comboBox_TaskType";
+            this.comboBox_TaskType.Size = new System.Drawing.Size(100, 33);
+            this.comboBox_TaskType.TabIndex = 5;
             // 
             // groupBox1
             // 

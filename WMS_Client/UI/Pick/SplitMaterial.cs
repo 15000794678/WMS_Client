@@ -148,7 +148,7 @@ namespace WMS_Client.UI
             }
         }
 
-        public bool Print()
+        public bool LoadData()
         {
             try
             {
@@ -171,9 +171,9 @@ namespace WMS_Client.UI
 
                 //数据显示
                 textBox_trsn1.Text = _trSn;
-                textBox_qty1.Text = _dt.Rows[0]["QTY"].ToString();
+                textBox_qty1.Text = (int.Parse(_dt.Rows[0]["QTY"].ToString()) + _sendQty).ToString();
                 textBox_trsn2.Text = _trSn;
-                textBox_qty2.Text = (int.Parse(_dt.Rows[0]["QTY"].ToString()) - _sendQty).ToString();
+                textBox_qty2.Text = _dt.Rows[0]["QTY"].ToString();
                 textBox_trsn3.Text = _trSn2;
                 textBox_qty3.Text = _sendQty.ToString();
                 textBox_kpno.Text = _dt.Rows[0]["KP_NO"].ToString();
@@ -231,7 +231,6 @@ namespace WMS_Client.UI
             _LsDicPrint.Add(dic2);
             PrintLabel(_filePath, _LsDicPrint);
 
-            //Thread.Sleep(3000);
             if (this.IsHandleCreated)
             {
                 this.Invoke(new EventHandler(delegate
@@ -251,7 +250,7 @@ namespace WMS_Client.UI
             this.TitleText = "分盘标签打印中...";
             label_hint.Text = "分盘标签打印中...";
             label_hint.BackColor = Color.Yellow;
-            Print();            
+            LoadData();            
         }
 
         private void button1_Click(object sender, EventArgs e)
