@@ -72,17 +72,27 @@ namespace WMS_Client.UI
         {
             this.TitleText = "欢迎使用, " + MyData.GetUser() + " !";
             label_stationid.Text = "拣选站点 " + MyData.GetStationId().ToString();
-            label_KpNo.Text = "";
-            label_StockNo.Text = "";
-            label_Qty.Text = "";
-            label_LocId.Text = "";
-            label_cnt.Text = "";
 
             comboBox_WoidType.SelectedIndex = 0;
             comboBox1.SelectedIndex = 0;
             comboBox_TaskType.SelectedIndex = 0;
 
-            //货架信息
+            //出库页面
+            InitStockOutTab();
+
+            //盘点页面
+            InitStockCountTab();
+        }
+
+        private void InitStockOutTab()
+        { 
+            label_KpNo.Text = "";
+            label_StockNo.Text = "";
+            label_Qty.Text = "";
+            label_LocId.Text = "";
+            label_cnt.Text = "";            
+
+            //初始化出库页面货架信息
             _dicShelfId.Clear();
             tableLayoutPanel_ShelfId.Controls.Clear();
             for (int i=0; i<20; i++)
@@ -114,7 +124,7 @@ namespace WMS_Client.UI
                     _dicShelfId.Add(index, dicColor);
                 }
                 //Trace.WriteLine("Debug: index=" + index.ToString());        
-            }
+            }            
         }
 
         private void textBox_StockNo_KeyDown(object sender, KeyEventArgs e)
@@ -587,7 +597,7 @@ namespace WMS_Client.UI
             }
         }
         
-        private void RefreshUI(int cnt, int col, DataTable dt)
+        private void RefreshPickUI(int cnt, int col, DataTable dt)
         {
             if (!runFlag) return;
 
@@ -782,6 +792,9 @@ namespace WMS_Client.UI
             eventExecuteInput.Set();
             eventStartFind.Set();
 
+            findStockCount = true;
+            stopStockCount = true;
+            eventFindShelf.Set();
 
             try
             {
@@ -829,13 +842,13 @@ namespace WMS_Client.UI
 
         private void textBox_sn2_KeyDown(object sender, KeyEventArgs e)
         {
-            try
+            if (e.KeyCode != Keys.Enter)
             {
-                if (e.KeyCode != Keys.Enter)
-                {
-                    return;
-                }
+                return;
+            }
 
+            try
+            {             
                 if (string.IsNullOrEmpty(textBox_sn2.Text.Trim()))
                 {
                     Print("推送信息到线边仓的物料唯一条码不能为空!");
@@ -854,20 +867,25 @@ namespace WMS_Client.UI
                     return;
                 }
 
-                if (!DBFunc.CheckTrSnHasStockOut(textBox_sn2.Text.Trim(), textBox_StockNo.Text.Trim()))
+                string trSn = textBox_sn2.Text.ToUpper().Trim();
+                if (trSn.Contains("&"))
+                {
+                    trSn = trSn.Split('&')[0];
+                }
+                if (!DBFunc.CheckTrSnHasStockOut(trSn, textBox_StockNo.Text.Trim()))
                 {
                     Print("该TrSn出库还未完成，或者出库单号错误，请检查!");
                     return;
                 }
 
-                if (InsertTrSn(textBox_StockNo.Text.Trim(), comboBox_WoidType.SelectedIndex,  textBox_sn2.Text.Trim().ToUpper()))
+                if (InsertTrSn(textBox_StockNo.Text.Trim(), comboBox_WoidType.SelectedIndex, trSn))
                 {
-                    Print("推送TrSn=" + textBox_sn2.Text.Trim() + " 的信息到线边仓成功！");                    
+                    Print("推送TrSn=" + trSn + " 的信息到线边仓成功！");                    
                 }
                 else
                 {
-                    Print("推送TrSn=" + textBox_sn2.Text.Trim() + " 的信息到线边仓失败！");
-                    ShowHint("推送: " + textBox_sn2.Text.Trim() + " 的信息到线边仓失败！", Color.Red);
+                    Print("推送TrSn=" + trSn + " 的信息到线边仓失败！");
+                    ShowHint("推送: " + trSn + " 的信息到线边仓失败！", Color.Red);
                 }
                 richTextBox1.ScrollToCaret();
             }
@@ -1187,14 +1205,14 @@ namespace WMS_Client.UI
                 textBox_HumanInput.Text = "";
                 textBox_HumanInput.Focus();
             }
-            else if (e.KeyCode==Keys.F9)
-            {
-                StartFindShelf();
-            }
-            else if (e.KeyCode==Keys.F10)
-            {
-                StopFindShelf();
-            }
+            //else if (e.KeyCode==Keys.F9)
+            //{
+            //    StartFindShelf();
+            //}
+            //else if (e.KeyCode==Keys.F10)
+            //{
+            //    StopFindShelf();
+            //}
         }
 
         private void StartFindShelf()
@@ -2092,5 +2110,6 @@ namespace WMS_Client.UI
             Thread t1 = new Thread(CreateTask);
             t1.Start();
         }
+              
     }
 }

@@ -162,6 +162,26 @@ namespace Phicomm_WMS.OUTIO
             }
         }
 
+        public static string CreateCheckTask(string checkNo, int type)
+        {
+            try
+            {
+                Trace.WriteLine("Debug:------CreateCheckTask Start-------");
+                CreateCheckTask cp = new CreateCheckTask(checkNo, type);
+                cp.ExecuteQuery();
+
+                return cp.GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Trace.WriteLine("Debug:------CreateCheckTask Stop-------");
+            }
+        }
+
         public static DataTable AtStationPod(int stationId)
         {
             try
@@ -352,6 +372,29 @@ namespace Phicomm_WMS.OUTIO
             finally
             {
                 Trace.WriteLine("Debug: --------CompletePickMaterialByLocId Stop---------");
+            }
+        }
+
+        public static string CompleteLocCheck(string locid, string kpno, int qty, int cnt, int realqty, int realcnt, string plant,
+                        string stockid, string user, string remark)
+        {
+            try
+            {
+                Trace.WriteLine("Debug: --------CompleteLocCheck Start---------");
+                
+                CompleteLocCheck complete = new CompleteLocCheck(locid, kpno, qty, cnt, realqty, realcnt, plant, stockid, user, remark);
+                                                       
+                complete.ExecuteQuery();
+
+                return complete.GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Trace.WriteLine("Debug: --------CompleteLocCheck Stop---------");
             }
         }
 

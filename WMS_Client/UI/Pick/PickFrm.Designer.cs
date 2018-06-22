@@ -100,6 +100,46 @@
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.label19 = new System.Windows.Forms.Label();
+            this.tabPage_stockcount = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
+            this.label22 = new System.Windows.Forms.Label();
+            this.textBox_stockcount = new System.Windows.Forms.TextBox();
+            this.comboBox_pd = new System.Windows.Forms.ComboBox();
+            this.button_stockcount = new System.Windows.Forms.Button();
+            this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel_stockcount = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel22 = new System.Windows.Forms.TableLayoutPanel();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label_pd_ShelfId = new System.Windows.Forms.Label();
+            this.label_pd_ShelfCnt = new System.Windows.Forms.Label();
+            this.tableLayoutPanel21 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel23 = new System.Windows.Forms.TableLayoutPanel();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label_pd_locid = new System.Windows.Forms.Label();
+            this.label_pd_kpno = new System.Windows.Forms.Label();
+            this.label_pd_count = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label_pd_qty = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label_pd_plant = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label_pd_stockid = new System.Windows.Forms.Label();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.dataGridView_stockcount = new System.Windows.Forms.DataGridView();
+            this.StockCountCheck = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column41 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column42 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column43 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column44 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.richTextBox_stockcount = new System.Windows.Forms.RichTextBox();
             this.tabPage_import = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.label15 = new System.Windows.Forms.Label();
@@ -190,6 +230,19 @@
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_HumanPick)).BeginInit();
             this.groupBox10.SuspendLayout();
+            this.tabPage_stockcount.SuspendLayout();
+            this.tableLayoutPanel17.SuspendLayout();
+            this.tableLayoutPanel18.SuspendLayout();
+            this.tableLayoutPanel19.SuspendLayout();
+            this.tableLayoutPanel20.SuspendLayout();
+            this.groupBox12.SuspendLayout();
+            this.tableLayoutPanel22.SuspendLayout();
+            this.tableLayoutPanel21.SuspendLayout();
+            this.groupBox13.SuspendLayout();
+            this.tableLayoutPanel23.SuspendLayout();
+            this.groupBox14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_stockcount)).BeginInit();
+            this.groupBox15.SuspendLayout();
             this.tabPage_import.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -272,6 +325,7 @@
             this.tabControl1.Controls.Add(this.tabPage_downad);
             this.tabControl1.Controls.Add(this.tabPage_autopick);
             this.tabControl1.Controls.Add(this.tabPage_humanpick);
+            this.tabControl1.Controls.Add(this.tabPage_stockcount);
             this.tabControl1.Controls.Add(this.tabPage_import);
             this.tabControl1.Controls.Add(this.tabPage_export);
             this.tabControl1.Controls.Add(this.tabPage_other);
@@ -406,7 +460,7 @@
             "不拆盘",
             "在线拆盘",
             "人工"});
-            this.comboBox_TaskType.Location = new System.Drawing.Point(1061, 9);
+            this.comboBox_TaskType.Location = new System.Drawing.Point(1061, 3);
             this.comboBox_TaskType.Name = "comboBox_TaskType";
             this.comboBox_TaskType.Size = new System.Drawing.Size(100, 33);
             this.comboBox_TaskType.TabIndex = 5;
@@ -1015,6 +1069,476 @@
             this.label19.Size = new System.Drawing.Size(126, 25);
             this.label19.TabIndex = 0;
             this.label19.Text = "请刷入条码：";
+            // 
+            // tabPage_stockcount
+            // 
+            this.tabPage_stockcount.Controls.Add(this.tableLayoutPanel17);
+            this.tabPage_stockcount.Location = new System.Drawing.Point(4, 34);
+            this.tabPage_stockcount.Name = "tabPage_stockcount";
+            this.tabPage_stockcount.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_stockcount.Size = new System.Drawing.Size(1336, 493);
+            this.tabPage_stockcount.TabIndex = 6;
+            this.tabPage_stockcount.Text = "盘点";
+            this.tabPage_stockcount.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel17
+            // 
+            this.tableLayoutPanel17.ColumnCount = 1;
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel17.Controls.Add(this.tableLayoutPanel18, 0, 0);
+            this.tableLayoutPanel17.Controls.Add(this.tableLayoutPanel19, 0, 1);
+            this.tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel17.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel17.Name = "tableLayoutPanel17";
+            this.tableLayoutPanel17.RowCount = 2;
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel17.Size = new System.Drawing.Size(1330, 487);
+            this.tableLayoutPanel17.TabIndex = 0;
+            // 
+            // tableLayoutPanel18
+            // 
+            this.tableLayoutPanel18.ColumnCount = 4;
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.55556F));
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel18.Controls.Add(this.label22, 0, 0);
+            this.tableLayoutPanel18.Controls.Add(this.textBox_stockcount, 1, 0);
+            this.tableLayoutPanel18.Controls.Add(this.comboBox_pd, 2, 0);
+            this.tableLayoutPanel18.Controls.Add(this.button_stockcount, 3, 0);
+            this.tableLayoutPanel18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel18.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel18.Name = "tableLayoutPanel18";
+            this.tableLayoutPanel18.RowCount = 1;
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel18.Size = new System.Drawing.Size(1324, 40);
+            this.tableLayoutPanel18.TabIndex = 0;
+            // 
+            // label22
+            // 
+            this.label22.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(165, 7);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(126, 25);
+            this.label22.TabIndex = 0;
+            this.label22.Text = "请输入条码：";
+            // 
+            // textBox_stockcount
+            // 
+            this.textBox_stockcount.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_stockcount.Location = new System.Drawing.Point(297, 3);
+            this.textBox_stockcount.Name = "textBox_stockcount";
+            this.textBox_stockcount.Size = new System.Drawing.Size(729, 33);
+            this.textBox_stockcount.TabIndex = 1;
+            this.textBox_stockcount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_stockcount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_stockcount_KeyDown);
+            // 
+            // comboBox_pd
+            // 
+            this.comboBox_pd.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.comboBox_pd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_pd.FormattingEnabled = true;
+            this.comboBox_pd.Items.AddRange(new object[] {
+            "--请选择--",
+            "仓库盘点",
+            "品质盘点"});
+            this.comboBox_pd.Location = new System.Drawing.Point(1071, 10);
+            this.comboBox_pd.Name = "comboBox_pd";
+            this.comboBox_pd.Size = new System.Drawing.Size(102, 33);
+            this.comboBox_pd.TabIndex = 2;
+            // 
+            // button_stockcount
+            // 
+            this.button_stockcount.Location = new System.Drawing.Point(1179, 3);
+            this.button_stockcount.Name = "button_stockcount";
+            this.button_stockcount.Size = new System.Drawing.Size(97, 34);
+            this.button_stockcount.TabIndex = 3;
+            this.button_stockcount.Text = "开始盘点";
+            this.button_stockcount.UseVisualStyleBackColor = true;
+            this.button_stockcount.Click += new System.EventHandler(this.button_stockcount_Click);
+            // 
+            // tableLayoutPanel19
+            // 
+            this.tableLayoutPanel19.ColumnCount = 2;
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel19.Controls.Add(this.tableLayoutPanel20, 0, 0);
+            this.tableLayoutPanel19.Controls.Add(this.tableLayoutPanel21, 1, 0);
+            this.tableLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel19.Location = new System.Drawing.Point(3, 49);
+            this.tableLayoutPanel19.Name = "tableLayoutPanel19";
+            this.tableLayoutPanel19.RowCount = 1;
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 435F));
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 435F));
+            this.tableLayoutPanel19.Size = new System.Drawing.Size(1324, 435);
+            this.tableLayoutPanel19.TabIndex = 1;
+            // 
+            // tableLayoutPanel20
+            // 
+            this.tableLayoutPanel20.ColumnCount = 1;
+            this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel20.Controls.Add(this.groupBox12, 0, 0);
+            this.tableLayoutPanel20.Controls.Add(this.tableLayoutPanel22, 0, 1);
+            this.tableLayoutPanel20.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel20.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel20.Name = "tableLayoutPanel20";
+            this.tableLayoutPanel20.RowCount = 2;
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel20.Size = new System.Drawing.Size(656, 429);
+            this.tableLayoutPanel20.TabIndex = 0;
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.tableLayoutPanel_stockcount);
+            this.groupBox12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox12.Location = new System.Drawing.Point(3, 3);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(650, 370);
+            this.groupBox12.TabIndex = 0;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "货架预览图";
+            // 
+            // tableLayoutPanel_stockcount
+            // 
+            this.tableLayoutPanel_stockcount.ColumnCount = 4;
+            this.tableLayoutPanel_stockcount.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel_stockcount.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel_stockcount.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel_stockcount.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel_stockcount.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel_stockcount.Location = new System.Drawing.Point(3, 29);
+            this.tableLayoutPanel_stockcount.Name = "tableLayoutPanel_stockcount";
+            this.tableLayoutPanel_stockcount.RowCount = 5;
+            this.tableLayoutPanel_stockcount.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel_stockcount.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel_stockcount.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel_stockcount.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel_stockcount.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel_stockcount.Size = new System.Drawing.Size(644, 338);
+            this.tableLayoutPanel_stockcount.TabIndex = 0;
+            // 
+            // tableLayoutPanel22
+            // 
+            this.tableLayoutPanel22.ColumnCount = 4;
+            this.tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel22.Controls.Add(this.label23, 0, 0);
+            this.tableLayoutPanel22.Controls.Add(this.label24, 2, 0);
+            this.tableLayoutPanel22.Controls.Add(this.label_pd_ShelfId, 1, 0);
+            this.tableLayoutPanel22.Controls.Add(this.label_pd_ShelfCnt, 3, 0);
+            this.tableLayoutPanel22.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel22.Location = new System.Drawing.Point(3, 379);
+            this.tableLayoutPanel22.Name = "tableLayoutPanel22";
+            this.tableLayoutPanel22.RowCount = 1;
+            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel22.Size = new System.Drawing.Size(650, 47);
+            this.tableLayoutPanel22.TabIndex = 1;
+            // 
+            // label23
+            // 
+            this.label23.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(4, 11);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(107, 25);
+            this.label23.TabIndex = 0;
+            this.label23.Text = "货架信息：";
+            // 
+            // label24
+            // 
+            this.label24.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(319, 11);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(126, 25);
+            this.label24.TabIndex = 1;
+            this.label24.Text = "剩余货架数：";
+            // 
+            // label_pd_ShelfId
+            // 
+            this.label_pd_ShelfId.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_pd_ShelfId.AutoSize = true;
+            this.label_pd_ShelfId.Location = new System.Drawing.Point(215, 11);
+            this.label_pd_ShelfId.Name = "label_pd_ShelfId";
+            this.label_pd_ShelfId.Size = new System.Drawing.Size(0, 25);
+            this.label_pd_ShelfId.TabIndex = 2;
+            // 
+            // label_pd_ShelfCnt
+            // 
+            this.label_pd_ShelfCnt.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_pd_ShelfCnt.AutoSize = true;
+            this.label_pd_ShelfCnt.Location = new System.Drawing.Point(550, 11);
+            this.label_pd_ShelfCnt.Name = "label_pd_ShelfCnt";
+            this.label_pd_ShelfCnt.Size = new System.Drawing.Size(0, 25);
+            this.label_pd_ShelfCnt.TabIndex = 3;
+            // 
+            // tableLayoutPanel21
+            // 
+            this.tableLayoutPanel21.ColumnCount = 1;
+            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel21.Controls.Add(this.groupBox13, 0, 0);
+            this.tableLayoutPanel21.Controls.Add(this.groupBox14, 0, 1);
+            this.tableLayoutPanel21.Controls.Add(this.groupBox15, 0, 2);
+            this.tableLayoutPanel21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel21.Location = new System.Drawing.Point(665, 3);
+            this.tableLayoutPanel21.Name = "tableLayoutPanel21";
+            this.tableLayoutPanel21.RowCount = 3;
+            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 92F));
+            this.tableLayoutPanel21.Size = new System.Drawing.Size(656, 429);
+            this.tableLayoutPanel21.TabIndex = 1;
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.tableLayoutPanel23);
+            this.groupBox13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox13.Location = new System.Drawing.Point(3, 3);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(650, 147);
+            this.groupBox13.TabIndex = 0;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "储位信息";
+            // 
+            // tableLayoutPanel23
+            // 
+            this.tableLayoutPanel23.ColumnCount = 4;
+            this.tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 122F));
+            this.tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
+            this.tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel23.Controls.Add(this.label25, 0, 0);
+            this.tableLayoutPanel23.Controls.Add(this.label26, 2, 0);
+            this.tableLayoutPanel23.Controls.Add(this.label27, 0, 1);
+            this.tableLayoutPanel23.Controls.Add(this.label_pd_locid, 1, 0);
+            this.tableLayoutPanel23.Controls.Add(this.label_pd_kpno, 3, 0);
+            this.tableLayoutPanel23.Controls.Add(this.label_pd_count, 3, 1);
+            this.tableLayoutPanel23.Controls.Add(this.label31, 2, 1);
+            this.tableLayoutPanel23.Controls.Add(this.label_pd_qty, 1, 1);
+            this.tableLayoutPanel23.Controls.Add(this.label33, 0, 2);
+            this.tableLayoutPanel23.Controls.Add(this.label_pd_plant, 1, 2);
+            this.tableLayoutPanel23.Controls.Add(this.label35, 2, 2);
+            this.tableLayoutPanel23.Controls.Add(this.label_pd_stockid, 3, 2);
+            this.tableLayoutPanel23.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel23.Location = new System.Drawing.Point(3, 29);
+            this.tableLayoutPanel23.Name = "tableLayoutPanel23";
+            this.tableLayoutPanel23.RowCount = 3;
+            this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel23.Size = new System.Drawing.Size(644, 115);
+            this.tableLayoutPanel23.TabIndex = 0;
+            // 
+            // label25
+            // 
+            this.label25.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(26, 6);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(69, 25);
+            this.label25.TabIndex = 0;
+            this.label25.Text = "储位：";
+            // 
+            // label26
+            // 
+            this.label26.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(348, 6);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(69, 25);
+            this.label26.TabIndex = 1;
+            this.label26.Text = "料号：";
+            // 
+            // label27
+            // 
+            this.label27.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(26, 44);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(69, 25);
+            this.label27.TabIndex = 2;
+            this.label27.Text = "数量：";
+            // 
+            // label_pd_locid
+            // 
+            this.label_pd_locid.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_pd_locid.AutoSize = true;
+            this.label_pd_locid.Location = new System.Drawing.Point(175, 6);
+            this.label_pd_locid.Name = "label_pd_locid";
+            this.label_pd_locid.Size = new System.Drawing.Size(106, 25);
+            this.label_pd_locid.TabIndex = 3;
+            this.label_pd_locid.Text = "1000001011";
+            // 
+            // label_pd_kpno
+            // 
+            this.label_pd_kpno.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_pd_kpno.AutoSize = true;
+            this.label_pd_kpno.Location = new System.Drawing.Point(483, 6);
+            this.label_pd_kpno.Name = "label_pd_kpno";
+            this.label_pd_kpno.Size = new System.Drawing.Size(107, 25);
+            this.label_pd_kpno.TabIndex = 4;
+            this.label_pd_kpno.Text = "808001555";
+            // 
+            // label_pd_count
+            // 
+            this.label_pd_count.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_pd_count.AutoSize = true;
+            this.label_pd_count.Location = new System.Drawing.Point(522, 44);
+            this.label_pd_count.Name = "label_pd_count";
+            this.label_pd_count.Size = new System.Drawing.Size(30, 25);
+            this.label_pd_count.TabIndex = 5;
+            this.label_pd_count.Text = "15";
+            // 
+            // label31
+            // 
+            this.label31.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(348, 44);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(69, 25);
+            this.label31.TabIndex = 6;
+            this.label31.Text = "盘数：";
+            // 
+            // label_pd_qty
+            // 
+            this.label_pd_qty.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_pd_qty.AutoSize = true;
+            this.label_pd_qty.Location = new System.Drawing.Point(195, 44);
+            this.label_pd_qty.Name = "label_pd_qty";
+            this.label_pd_qty.Size = new System.Drawing.Size(67, 25);
+            this.label_pd_qty.TabIndex = 7;
+            this.label_pd_qty.Text = "45000";
+            // 
+            // label33
+            // 
+            this.label33.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(26, 83);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(69, 25);
+            this.label33.TabIndex = 8;
+            this.label33.Text = "工厂：";
+            // 
+            // label_pd_plant
+            // 
+            this.label_pd_plant.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_pd_plant.AutoSize = true;
+            this.label_pd_plant.Location = new System.Drawing.Point(202, 83);
+            this.label_pd_plant.Name = "label_pd_plant";
+            this.label_pd_plant.Size = new System.Drawing.Size(52, 25);
+            this.label_pd_plant.TabIndex = 9;
+            this.label_pd_plant.Text = "2100";
+            // 
+            // label35
+            // 
+            this.label35.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(348, 83);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(69, 25);
+            this.label35.TabIndex = 10;
+            this.label35.Text = "库位：";
+            // 
+            // label_pd_stockid
+            // 
+            this.label_pd_stockid.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_pd_stockid.AutoSize = true;
+            this.label_pd_stockid.Location = new System.Drawing.Point(511, 83);
+            this.label_pd_stockid.Name = "label_pd_stockid";
+            this.label_pd_stockid.Size = new System.Drawing.Size(52, 25);
+            this.label_pd_stockid.TabIndex = 11;
+            this.label_pd_stockid.Text = "2001";
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.Controls.Add(this.dataGridView_stockcount);
+            this.groupBox14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox14.Location = new System.Drawing.Point(3, 156);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(650, 178);
+            this.groupBox14.TabIndex = 1;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "详细信息";
+            // 
+            // dataGridView_stockcount
+            // 
+            this.dataGridView_stockcount.AllowUserToAddRows = false;
+            this.dataGridView_stockcount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_stockcount.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.StockCountCheck,
+            this.Column41,
+            this.Column42,
+            this.Column43,
+            this.Column44});
+            this.dataGridView_stockcount.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView_stockcount.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridView_stockcount.Location = new System.Drawing.Point(3, 29);
+            this.dataGridView_stockcount.Name = "dataGridView_stockcount";
+            this.dataGridView_stockcount.RowHeadersVisible = false;
+            this.dataGridView_stockcount.RowTemplate.Height = 23;
+            this.dataGridView_stockcount.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView_stockcount.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView_stockcount.Size = new System.Drawing.Size(644, 146);
+            this.dataGridView_stockcount.TabIndex = 0;
+            // 
+            // StockCountCheck
+            // 
+            this.StockCountCheck.HeaderText = "选中";
+            this.StockCountCheck.Name = "StockCountCheck";
+            // 
+            // Column41
+            // 
+            this.Column41.HeaderText = "序号";
+            this.Column41.Name = "Column41";
+            // 
+            // Column42
+            // 
+            this.Column42.HeaderText = "物料条码";
+            this.Column42.Name = "Column42";
+            this.Column42.Width = 200;
+            // 
+            // Column43
+            // 
+            this.Column43.HeaderText = "周期";
+            this.Column43.Name = "Column43";
+            this.Column43.Width = 150;
+            // 
+            // Column44
+            // 
+            this.Column44.HeaderText = "数量";
+            this.Column44.Name = "Column44";
+            this.Column44.Width = 150;
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.Controls.Add(this.richTextBox_stockcount);
+            this.groupBox15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox15.Location = new System.Drawing.Point(3, 340);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(650, 86);
+            this.groupBox15.TabIndex = 2;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "输出信息：";
+            // 
+            // richTextBox_stockcount
+            // 
+            this.richTextBox_stockcount.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox_stockcount.Location = new System.Drawing.Point(3, 29);
+            this.richTextBox_stockcount.Name = "richTextBox_stockcount";
+            this.richTextBox_stockcount.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.richTextBox_stockcount.Size = new System.Drawing.Size(644, 54);
+            this.richTextBox_stockcount.TabIndex = 0;
+            this.richTextBox_stockcount.Text = "";
             // 
             // tabPage_import
             // 
@@ -1676,9 +2200,9 @@
             this.label18.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label18.Location = new System.Drawing.Point(3, 663);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(703, 21);
+            this.label18.Size = new System.Drawing.Size(1126, 21);
             this.label18.TabIndex = 7;
-            this.label18.Text = "快捷键：[F3]关闭弹框，[F5]小车离开，[F6]手动出库刷新，[F9]开始查找货架，[F10]停止查找货架";
+            this.label18.Text = "快捷键：【F3】关闭弹框，【F5]】车离开，【F6】手动出库刷新，【F7】储位盘点成功，【F8】储位盘点失败，【F9】开始查找货架，【F10】停止查找货架";
             // 
             // PickFrm
             // 
@@ -1725,6 +2249,22 @@
             this.groupBox9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_HumanPick)).EndInit();
             this.groupBox10.ResumeLayout(false);
+            this.tabPage_stockcount.ResumeLayout(false);
+            this.tableLayoutPanel17.ResumeLayout(false);
+            this.tableLayoutPanel18.ResumeLayout(false);
+            this.tableLayoutPanel18.PerformLayout();
+            this.tableLayoutPanel19.ResumeLayout(false);
+            this.tableLayoutPanel20.ResumeLayout(false);
+            this.groupBox12.ResumeLayout(false);
+            this.tableLayoutPanel22.ResumeLayout(false);
+            this.tableLayoutPanel22.PerformLayout();
+            this.tableLayoutPanel21.ResumeLayout(false);
+            this.groupBox13.ResumeLayout(false);
+            this.tableLayoutPanel23.ResumeLayout(false);
+            this.tableLayoutPanel23.PerformLayout();
+            this.groupBox14.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_stockcount)).EndInit();
+            this.groupBox15.ResumeLayout(false);
             this.tabPage_import.ResumeLayout(false);
             this.tableLayoutPanel13.ResumeLayout(false);
             this.tableLayoutPanel13.PerformLayout();
@@ -1889,5 +2429,45 @@
         private System.Windows.Forms.ToolStripMenuItem 暂停任务ToolStripMenuItem;
         private System.Windows.Forms.ComboBox comboBox_TaskType;
         private System.Windows.Forms.Button button_CreatePickTask;
+        private System.Windows.Forms.TabPage tabPage_stockcount;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel17;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel18;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox textBox_stockcount;
+        private System.Windows.Forms.ComboBox comboBox_pd;
+        private System.Windows.Forms.Button button_stockcount;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel19;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel20;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel22;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel21;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label_pd_ShelfId;
+        private System.Windows.Forms.Label label_pd_ShelfCnt;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel_stockcount;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel23;
+        private System.Windows.Forms.GroupBox groupBox14;
+        private System.Windows.Forms.GroupBox groupBox15;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label_pd_locid;
+        private System.Windows.Forms.Label label_pd_kpno;
+        private System.Windows.Forms.Label label_pd_count;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label_pd_qty;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label_pd_plant;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label_pd_stockid;
+        private System.Windows.Forms.DataGridView dataGridView_stockcount;
+        private System.Windows.Forms.RichTextBox richTextBox_stockcount;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn StockCountCheck;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column41;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column42;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column43;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column44;
     }
 }

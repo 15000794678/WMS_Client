@@ -1177,6 +1177,7 @@
             // textBox_sn1
             // 
             this.textBox_sn1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_sn1.Enabled = false;
             this.textBox_sn1.Location = new System.Drawing.Point(176, 28);
             this.textBox_sn1.Name = "textBox_sn1";
             this.textBox_sn1.Size = new System.Drawing.Size(396, 29);

@@ -36,8 +36,6 @@ namespace WMS_Client.UI
 
                     Thread.Sleep(100);
                 }
-
-                if (!runFlag) break;
             }
         }
 
@@ -81,13 +79,13 @@ namespace WMS_Client.UI
                 if (cnt % 2 == 1)
                 {
                     Trace.WriteLine("Debug: ------RefreshUI Ready Start------");
-                    RefreshUI(5, 4, _dt);
+                    RefreshPickUI(5, 4, _dt);
                     Trace.WriteLine("Debug: ------RefreshUI Ready Stop------");
                 }
                 else
                 {
                     Trace.WriteLine("Debug: ------RefreshUI Ready Start------");
-                    RefreshUI(5, 2, _dt);
+                    RefreshPickUI(5, 2, _dt);
                     Trace.WriteLine("Debug: ------RefreshUI Ready Stop------");
                 }
                 Trace.WriteLine("Debug: ------QueryShelfInformationTest Stop------");
@@ -139,25 +137,20 @@ namespace WMS_Client.UI
 
                     if (runFlag)
                     {
-                        //Trace.WriteLine("Debug: ------RefreshUI Ready Start------");
-                        RefreshUI(cnt, int.Parse(dt1.Rows[0]["Column"].ToString()), _dtShelf);
-                        //Trace.WriteLine("Debug: ------RefreshUI Ready Stop------");
+                        RefreshPickUI(cnt, int.Parse(dt1.Rows[0]["Column"].ToString()), _dtShelf);
                     }
                 }
                 else
                 {
                     if (runFlag)
                     {
-                        //Trace.WriteLine("Debug: ------RefreshUI Ready Start------");
-                        RefreshUI(0, 0, null);
-                        //Trace.WriteLine("Debug: ------RefreshUI Ready Stop------");
+                        RefreshPickUI(0, 0, null);
                     }
                 }
             }
             catch (Exception ex)
             {
                 Log.Error("RefreshUI:" + ex.Message);
-                //ShowHint("RefreshUI:" + ex.Message, Color.Red);
                 Trace.WriteLine("Debug: QueryShelfInformation : " + ex.Message);
             }
         }

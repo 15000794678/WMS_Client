@@ -140,8 +140,7 @@ namespace Phicomm_WMS.OUTIO
             catch(Exception ex)
             {
                 throw ex;
-            }
-            
+            }            
         }
 
         //查询该工单已出库的数量

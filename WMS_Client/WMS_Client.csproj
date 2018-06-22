@@ -88,6 +88,7 @@
     <Compile Include="DB\P_AtStationPodInfo.cs" />
     <Compile Include="DB\P_CheckAllMaterialIntoHolders.cs" />
     <Compile Include="DB\P_CheckAllMaterialIntoHolders2.cs" />
+    <Compile Include="DB\P_CompleteLocCheck.cs" />
     <Compile Include="DB\P_CompleteParitalPickByLocId.cs" />
     <Compile Include="DB\P_CompletePartialPickByTrSn.cs" />
     <Compile Include="DB\P_CompletePickMaterialByBatchCode.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="DB\P_CompleteReelSplit.cs" />
     <Compile Include="DB\P_CompleteReplenishMaterial.cs" />
     <Compile Include="DB\P_CompleteReplenishMaterial2.cs" />
+    <Compile Include="DB\P_CreateCheckTask.cs" />
     <Compile Include="DB\P_CreatePartialPickTask.cs" />
     <Compile Include="DB\P_CreatePickTask.cs" />
     <Compile Include="DB\P_CreatePickTask2.cs" />
@@ -218,11 +220,20 @@
     <Compile Include="UI\Pick\SetPickStation.Designer.cs">
       <DependentUpon>SetPickStation.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Pick\SetStockCount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Pick\SetStockCount.Designer.cs">
+      <DependentUpon>SetStockCount.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Pick\SplitMaterial.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Pick\SplitMaterial.Designer.cs">
       <DependentUpon>SplitMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pick\StockCount.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Replenish\ReplenishExecuteThread.cs">
       <SubType>Form</SubType>
@@ -312,6 +323,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Pick\SetPickStation.resx">
       <DependentUpon>SetPickStation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Pick\SetStockCount.resx">
+      <DependentUpon>SetStockCount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Pick\SplitMaterial.resx">
       <DependentUpon>SplitMaterial.cs</DependentUpon>

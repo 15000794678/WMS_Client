@@ -30,3 +30,4 @@ D:\0.GitCode\code\WMS_Client\WMS_Client\obj\Debug\WMS_Client.exe
 D:\0.GitCode\code\WMS_Client\WMS_Client\obj\Debug\WMS_Client.pdb
 D:\0.GitCode\code\WMS_Client\WMS_Client\obj\Debug\WMS_Client.UI.SetPickStation.resources
 D:\0.GitCode\code\WMS_Client\WMS_Client\obj\Debug\WMS_Client.UI.SplitMaterial.resources
+D:\0.GitCode\code\WMS_Client\WMS_Client\obj\Debug\WMS_Client.UI.SetStockCount.resources

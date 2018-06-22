@@ -13,7 +13,7 @@ namespace Phicomm_WMS.DB
         private DataTable _dt = null;
 
         public SearchRInventoryDetail(Dictionary<string, object> dic) :
-            base("select tr_sn, material_no, vender_no, date_code, lot_code, qty, status, stock_id, loc_id, fifo_datecode, inventory_date, stock_no, stock_out_no from r_inventory_detail ", DbName)
+            base("select tr_sn, material_no, vender_no, date_code, lot_code, qty, status, stock_id, loc_id, fifo_datecode, inventory_date, stock_no, stock_out_no, plant from r_inventory_detail ", DbName)
         {
             _dt = new DataTable();
             _dt.Columns.Add("TR_SN", typeof(string));
@@ -31,6 +31,7 @@ namespace Phicomm_WMS.DB
             _dt.Columns.Add("INVENTORY_DATE", typeof(string));
             _dt.Columns.Add("STOCK_NO", typeof(string));
             _dt.Columns.Add("STOCK_OUT_NO", typeof(string));
+            _dt.Columns.Add("PLANT", typeof(string));
 
             if (dic != null && dic.Count > 0)
             {
@@ -71,7 +72,8 @@ namespace Phicomm_WMS.DB
                                 reader.IsDBNull(9) ? "" : reader.GetString(9),
                                 reader.IsDBNull(10) ? "" : reader.GetString(10),
                                 reader.IsDBNull(11) ? "" :reader.GetString(11),
-                                reader.IsDBNull(12) ? "" : reader.GetString(12)
+                                reader.IsDBNull(12) ? "" : reader.GetString(12),
+                                reader.IsDBNull(13) ? "" : reader.GetString(13)
                                 );
                 }
             }
