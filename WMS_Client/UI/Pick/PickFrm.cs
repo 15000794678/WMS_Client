@@ -200,6 +200,17 @@ namespace WMS_Client.UI
                                     dr["SubType"].ToString(),
                                     dr["KPDESC"].ToString()
                                     );
+                            try
+                            {
+                                if (int.Parse(dr["QTY"].ToString()) <= int.Parse(dr["Send_QTY"].ToString()))
+                                {
+                                    dataGridView1.Rows[dataGridView1.Rows.Count - 1].DefaultCellStyle.BackColor = Color.Yellow;
+                                }
+                            }
+                            catch(Exception ex)
+                            {
+
+                            }
                         }
                     }));
                 }
@@ -793,7 +804,6 @@ namespace WMS_Client.UI
             eventStartFind.Set();
 
             findStockCount = true;
-            stopStockCount = true;
             eventFindShelf.Set();
 
             try
@@ -1192,19 +1202,19 @@ namespace WMS_Client.UI
 
         private void PickFrm_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode==Keys.F5)
-            {
-                textBox_BarCode.Text = "F5";
-                eventExecuteInput.Set();                              
-            }
-            else if (e.KeyCode==Keys.F6)
-            {
-                dataGridView_HumanPick.Rows.Clear();
-                GetHumanPickData(MyData.GetStockNo(), MyData.GetStationId());
-                dataGridView_HumanPick.ClearSelection();
-                textBox_HumanInput.Text = "";
-                textBox_HumanInput.Focus();
-            }
+            //if (e.KeyCode==Keys.F5)
+            //{
+            //    textBox_BarCode.Text = "F5";
+            //    eventExecuteInput.Set();                              
+            //}
+            //else if (e.KeyCode==Keys.F6)
+            //{
+            //    dataGridView_HumanPick.Rows.Clear();
+            //    GetHumanPickData(MyData.GetStockNo(), MyData.GetStationId());
+            //    dataGridView_HumanPick.ClearSelection();
+            //    textBox_HumanInput.Text = "";
+            //    textBox_HumanInput.Focus();
+            //}
             //else if (e.KeyCode==Keys.F9)
             //{
             //    StartFindShelf();
@@ -2012,7 +2022,7 @@ namespace WMS_Client.UI
                 {
                     ShowHint("此工单无任务需要暂停!", Color.Red);
                     return;
-                }
+                }                
             }
             catch(Exception ex)
             {
@@ -2028,35 +2038,15 @@ namespace WMS_Client.UI
 
             try
             {
-                StopPickTask sp = new StopPickTask(MyData.GetStationId());
+                StopPickTask sp = new StopPickTask(MyData.GetStockNo());
                 sp.ExecuteQuery();
+
+                ShowHint("暂停任务成功!", Color.Lime);
+                return;
             }
             catch(Exception ex)
             {
-                ShowHint("StopPickTask:" + ex.Message, Color.Red);
-                return;
-            }
-
-            try
-            {
-                Dictionary<string, object> dic = new Dictionary<string, object>();
-                dic.Add("StockOutNo", MyData.GetStockNo());
-
-                SearchMaterialPickAssign sm = new SearchMaterialPickAssign(dic);
-                sm.ExecuteQuery();
-                DataTable dt = sm.GetResult();
-                if (dt == null || dt.Rows.Count == 0)
-                {
-                    ShowHint("暂停任务成功!", Color.Lime);
-                }
-                else
-                {
-                    ShowHint("暂停任务失败!", Color.Lime);
-                }
-            }
-            catch (Exception ex)
-            {
-                ShowHint("SearchMaterialPickAssign:" + ex.Message, Color.Red);
+                ShowHint("暂停任务异常:" + ex.Message, Color.Red);
                 return;
             }
         }
@@ -2088,7 +2078,7 @@ namespace WMS_Client.UI
             }
             dataGridView_HumanPick.Rows.Clear();
 
-            if (MessageBox.Show("出库类型：" + comboBox_TaskType.Items[comboBox_TaskType.SelectedIndex].ToString(), "提醒", 
+            if (MessageBox.Show("出库类型：" + comboBox_TaskType.Items[comboBox_TaskType.SelectedIndex].ToString() + "?", "提醒", 
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) != DialogResult.Yes)
             {
                 return;
@@ -2110,6 +2100,7 @@ namespace WMS_Client.UI
             Thread t1 = new Thread(CreateTask);
             t1.Start();
         }
-              
+
+
     }
 }

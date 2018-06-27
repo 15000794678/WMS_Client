@@ -522,7 +522,7 @@
             "待入周转箱-3",
             "待上架-4",
             "已入库-5"});
-            this.comboBox_staus.Location = new System.Drawing.Point(96, 15);
+            this.comboBox_staus.Location = new System.Drawing.Point(96, 10);
             this.comboBox_staus.Name = "comboBox_staus";
             this.comboBox_staus.Size = new System.Drawing.Size(192, 29);
             this.comboBox_staus.TabIndex = 1;

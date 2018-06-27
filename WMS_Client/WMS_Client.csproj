@@ -81,6 +81,7 @@
     <Compile Include="DB\F_KeepAlive.cs" />
     <Compile Include="DB\F_StopPickTask.cs" />
     <Compile Include="DB\InsertErpWoBomInfo.cs" />
+    <Compile Include="DB\InsertInventoryCheckByMaterialNo.cs" />
     <Compile Include="DB\InsertOutSourceRequisitionDetail.cs" />
     <Compile Include="DB\InsertRDeliveryRequisitionDetail.cs" />
     <Compile Include="DB\InsertReserveRequisitionDetail.cs" />
@@ -110,6 +111,8 @@
     <Compile Include="DB\P_ReplenishStaionBoxLocation.cs" />
     <Compile Include="DB\P_ReplenishToPickDirectly.cs" />
     <Compile Include="DB\SearchBMaterial.cs" />
+    <Compile Include="DB\SearchInventoryCheckByMaterialNo.cs" />
+    <Compile Include="DB\SearchInventoryCheckResult.cs" />
     <Compile Include="DB\SearchMaterialManualPick.cs" />
     <Compile Include="DB\SearchMaterialPickAssign.cs" />
     <Compile Include="DB\SearchOutSourceRequisitionDetail.cs" />
@@ -166,6 +169,18 @@
     </Compile>
     <Compile Include="UI\Pick\DownThread.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Pick\ExportStockCountData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Pick\ExportStockCountData.Designer.cs">
+      <DependentUpon>ExportStockCountData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pick\ImportStockCountKpNoData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Pick\ImportStockCountKpNoData.Designer.cs">
+      <DependentUpon>ImportStockCountKpNoData.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Pick\PickExecuteThread.cs">
       <SubType>Form</SubType>
@@ -225,6 +240,12 @@
     </Compile>
     <Compile Include="UI\Pick\SetStockCount.Designer.cs">
       <DependentUpon>SetStockCount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pick\SetStockDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Pick\SetStockDate.Designer.cs">
+      <DependentUpon>SetStockDate.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Pick\SplitMaterial.cs">
       <SubType>Form</SubType>
@@ -318,6 +339,12 @@
     <EmbeddedResource Include="UI\other\MsgFrm.resx">
       <DependentUpon>MsgFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Pick\ExportStockCountData.resx">
+      <DependentUpon>ExportStockCountData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Pick\ImportStockCountKpNoData.resx">
+      <DependentUpon>ImportStockCountKpNoData.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Pick\PickFrm.resx">
       <DependentUpon>PickFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -326,6 +353,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Pick\SetStockCount.resx">
       <DependentUpon>SetStockCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Pick\SetStockDate.resx">
+      <DependentUpon>SetStockDate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Pick\SplitMaterial.resx">
       <DependentUpon>SplitMaterial.cs</DependentUpon>
@@ -336,7 +366,9 @@
     <EmbeddedResource Include="UI\Replenish\SelectionFrm.resx">
       <DependentUpon>SelectionFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

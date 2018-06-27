@@ -19,11 +19,12 @@ namespace WMS_Client.UI
     public partial class PickFrm : Office2007Form
     {
         private Dictionary<int, Dictionary<Label, Color>> _dicStockCount = new Dictionary<int, Dictionary<Label, Color>>();
-        private bool stopStockCount = true;
+        //private bool stopStockCount = true;
         private AutoResetEvent eventFindShelf = new AutoResetEvent(false);
         private bool findStockCount = false; //找到盘点货架
         private int _lastStockCountSelect = 0;
         private string _lastStockCountLoc = string.Empty;
+        private bool _lastScanLoc = false;
 
         private void InitStockCountTab()
         {
@@ -49,7 +50,7 @@ namespace WMS_Client.UI
                 lb.Name = "Label_pd_ShelId" + i.ToString();
                 FontFamily myFontFamily = new FontFamily("幼圆"); //采用哪种字体
                 lb.Font = new Font(myFontFamily, 30, FontStyle.Regular);
-                lb.Text = index.ToString();
+                //lb.Text = index.ToString();
                 lb.AutoSize = false;
                 lb.Dock = DockStyle.Fill;
                 lb.TextAlign = ContentAlignment.MiddleCenter;
@@ -85,17 +86,18 @@ namespace WMS_Client.UI
                 if (CreateStockCountTask())
                 {
                     button_stockcount.Text = "停止盘点";
+                    AddLog("开始盘点");
 
-                    stopStockCount = false;
                     findStockCount = false;
                     eventFindShelf.Set();                    
                 }               
             }
             else
             {//停止盘点
-                stopStockCount = true;
                 findStockCount = true;
                 eventFindShelf.Set();
+                button_stockcount.Text = "开始盘点";
+                AddLog("停止盘点");
             }
         }
 
@@ -103,6 +105,7 @@ namespace WMS_Client.UI
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
             DataTable dt = new DataTable();
+            string date = string.Format("{0:D4}{1:D2}{2:D2}", DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day); ;
             try
             {
                 SearchMaterialPickAssign sm = new SearchMaterialPickAssign(dic);
@@ -135,38 +138,97 @@ namespace WMS_Client.UI
                 //料号盘点，导入数据
                 if (comboBox_pd.SelectedIndex == 2)
                 {
+                    using (ImportStockCountKpNoData ic = new ImportStockCountKpNoData())
+                    {
+                        if (ic.ShowDialog()!=DialogResult.OK)
+                        {
+                            return false;
+                        }
+                    }
+                    
+                    try
+                    {
+                        dic.Clear();
+                        SearchInventoryCheckByMaterialNo sc = new SearchInventoryCheckByMaterialNo(dic);
+                        sc.ExecuteQuery();
+                        dt = sc.GetResult();
+                        if (dt==null || dt.Rows.Count==0)
+                        {
+                            ShowHint("无导入数据，不需要生成盘点任务!", Color.Red);
+                            return false;
+                        }
+                        date = dt.Rows[0]["CheckDate"].ToString();
+                    }
+                    catch(Exception ex)
+                    {
+                        ShowHint("SearchInventoryCheckByMaterialNo:" + ex.Message, Color.Red);
+                        return false;
+                    }
+                }
+                else if (comboBox_pd.SelectedIndex==1)
+                {
+                    using (SetStockDate ss = new SetStockDate())
+                    {
+                        if (ss.ShowDialog()!=DialogResult.OK)
+                        {
+                            return false;
+                        }
 
-
+                        date = ss.GetDate();
+                    }                    
                 }
 
-                //生成盘点任务
-                string date = string.Format("{0:D4}{1:D2}{2:D2}", DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-
+                //生成盘点任务               
                 string result = DBPCaller.CreateCheckTask(date, comboBox_pd.SelectedIndex - 1);
-                if (result.ToUpper().Trim().Equals("OK"))
+                if (!result.ToUpper().Trim().Equals("OK"))                
                 {
-                    ShowHint("生成盘点任务成功!", Color.Lime);
-                    return true;
-                }
-                else
-                {
-                    ShowHint("生成盘点任务失败!", Color.Red);
+                    AddLog("生成任务失败:" + result);
+                    ShowHint("生成盘点任务失败:" + result, Color.Red);
                     return false;
-                }                
+                }
+                AddLog("盘点日期：" + date);                           
             }
             catch (Exception ex)
             {
                 ShowHint(ex.Message, Color.Red);
                 return false;
             }
+
+            try
+            {
+                SearchTaskCount st = new SearchTaskCount(2, MyData.GetStationId());
+                st.ExecuteQuery();
+
+                int result = st.GetResult();
+
+                label_pd_ShelfCnt.Text = result.ToString();
+
+                if (result > 0)
+                {
+                    AddLog("生成盘点任务成功!");
+                    ShowHint("生成盘点任务成功!", Color.Lime);
+                    return true;
+                }
+                else
+                {
+                    AddLog("生成任务失败，不需要搬运货架！");
+                    ShowHint("生成任务失败，不需要搬运货架！", Color.Red);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowHint("获取货架数目异常: " + ex.Message, Color.Red);
+                return false;
+            }
         }
 
         private void StockCountThread()
         {
-            while (runFlag & !stopStockCount)
+            while (runFlag)
             {
                 eventFindShelf.WaitOne();
-                if (!runFlag || stopStockCount) break;
+                if (!runFlag) break;
 
                 while (!findStockCount)
                 {
@@ -178,18 +240,7 @@ namespace WMS_Client.UI
 
                     Thread.Sleep(100);
                 }
-            }
-
-            if (runFlag)
-            {
-                if (IsHandleCreated)
-                {
-                    Invoke(new EventHandler(delegate
-                    {
-                        button_stockcount.Text = "开始盘点";
-                    }));
-                }
-            }
+            }            
         }
 
         private void GetShelfInfo()
@@ -294,9 +345,11 @@ namespace WMS_Client.UI
                             label_pd_plant.Text = "";
                             label_pd_stockid.Text = "";
                             //label_pd_locid.BackColor = Color.Lime;
-                            tableLayoutPanel23.BackColor = Color.Lime;
+                            tableLayoutPanel23.BackColor = Color.Transparent;
 
                             dataGridView_stockcount.Rows.Clear();
+
+                            textBox_stockcount.Focus();
                             
                             Trace.WriteLine("Debug: ------RefreshUI Stop------");
 
@@ -318,9 +371,10 @@ namespace WMS_Client.UI
                                             (dt.Rows[0]["PodSide"].ToString().Trim().Equals("0") ? "正面" : "反面");
 
                         //高亮显示
-                        label_pd_locid.BackColor = Color.Lime;
+                        tableLayoutPanel23.BackColor = Color.Transparent;
                         label_pd_count.BackColor = Color.Transparent;
-                        textBox_stockcount.Focus();                        
+                        textBox_stockcount.Focus();
+                        _lastScanLoc = false;
 
                         #region 刷新货架信息
                         if (col == 2)
@@ -405,6 +459,7 @@ namespace WMS_Client.UI
 
                 int qty = 0;
                 int count = 0;
+                dataGridView_stockcount.Rows.Clear();
                 try
                 {
                     foreach (DataRow dr in dt.Rows)
@@ -435,6 +490,13 @@ namespace WMS_Client.UI
             }
         }
 
+        private void AddLog(string str)
+        {
+            richTextBox_stockcount.ScrollToCaret();
+            richTextBox_stockcount.AppendText(str + "\r\n");            
+            textBox_stockcount.Focus();
+        }
+
         private void textBox_stockcount_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode != Keys.Enter)
@@ -444,12 +506,6 @@ namespace WMS_Client.UI
 
             try
             {
-                if (string.IsNullOrEmpty(label_pd_locid.Text) || string.IsNullOrEmpty(label_pd_kpno.Text))
-                {
-                    ShowHint("请先等待小车到达，再扫入条码!", Color.Red);
-                    return;
-                }
-
                 if (string.IsNullOrEmpty(textBox_stockcount.Text.ToUpper().Trim()))
                 {
                     ShowHint("请输入条码!", Color.Red);
@@ -462,12 +518,27 @@ namespace WMS_Client.UI
                     AgvLeave(MyData.GetStationId());
                     //获取货架信息
                     UpdateStockCountShelfCnt(2, MyData.GetStationId());
+                    AddLog("小车离开成功！");
+                    return;
                 }
-                else if (str.Equals("F7")) //成功跳到下一个储位
-                {                    
+
+                if (string.IsNullOrEmpty(label_pd_locid.Text) || string.IsNullOrEmpty(label_pd_kpno.Text))
+                {
+                    ShowHint("请先等待小车到达，再扫入条码!", Color.Red);
+                    return;
+                }
+
+                if (str.Equals("F7")) //成功跳到下一个储位
+                {
+                    if (_lastScanLoc == false)
+                    {
+                        ShowHint("请先扫描储位编号!", Color.Red);
+                        return;
+                    }
+
                     if (!ScanTrSnDone())
                     {
-                        ShowHint("请将该储位的所有条码扫描完毕！", Color.Red);
+                        ShowHint("当前还有物料未扫完!", Color.Red);             
                         return;
                     }
 
@@ -476,9 +547,15 @@ namespace WMS_Client.UI
                     {
                         StartFindStockCountShelf();
                     }
+                    return;
                 }
                 else if (str.Equals("F8")) //失败跳到下一个储位
-                {                    
+                {
+                    if (_lastScanLoc == false)
+                    {
+                        ShowHint("请先扫描储位编号!", Color.Red);
+                        return;
+                    }
                     using (SetStockCount ss = new SetStockCount())
                     {
                         ss.SetLocId(label_pd_locid.Text.Trim());
@@ -499,15 +576,18 @@ namespace WMS_Client.UI
                                 StartFindStockCountShelf();
                             }
                         }
-                    }                    
+                    }
+                    return;                   
                 }
                 else if (str.Equals("F9"))
                 {
                     StartFindStockCountShelf();
+                    return;
                 }
                 else if (str.Equals("F10"))
                 {
                     StopFindStockCountShelf();
+                    return;
                 }
                 else if (str.Contains("&"))
                 {
@@ -537,10 +617,19 @@ namespace WMS_Client.UI
                         return;
                     }
 
+                    _lastScanLoc = true;
                     tableLayoutPanel23.BackColor = Color.Yellow;
+                    AddLog("当前储位：" + _lastStockCountLoc);
                 }
                 else if (result == 3 /*TR_SN*/)
                 {
+                    if (_lastScanLoc == false)
+                    {
+                        ShowHint("请先扫描储位编号!", Color.Red);
+                        return;
+                    }
+
+                    AddLog("当前TrSn：" + str);
                     if (SelectTrSn(str))  //已扫描过的在本地进行标记
                     {
                         if (ScanTrSnDone())  //全部扫描完毕
@@ -575,11 +664,19 @@ namespace WMS_Client.UI
 
                 int result = st.GetResult();
 
-                label_pd_ShelfCnt.Text = result.ToString();
+                //if (this.IsHandleCreated)
+                //{
+                //    this.Invoke(new EventHandler(delegate
+                //    {
+                        label_pd_ShelfCnt.Text = result.ToString();
+                //    }));
+                //}
 
-                if (result==0)
-                {                    
-                    findStockCount = true; //停止查找货架                
+                if (result == 0)
+                {
+                    findStockCount = true; //停止查找货架    
+                    button_stockcount.Text = "开始盘点";
+                    ShowHint("该站点所有的盘点任务已经完成!", Color.Lime);
                 }
 
                 return true;
@@ -608,13 +705,14 @@ namespace WMS_Client.UI
             for(int i=0; i<dataGridView_stockcount.Rows.Count; i++)
             {
                 if (dataGridView_stockcount[2, i].Value.ToString().Equals(trSn))
-                {
+                {                    
                     ((DataGridViewCheckBoxCell)dataGridView_stockcount.Rows[i].Cells["StockCountCheck"]).Value = true;
                     return true;
                 }
             }
 
             ShowHint("该trSn不在该储位!", Color.Red);
+            AddLog("该trSn不在该储位!");
             return false;
         }
 
@@ -635,6 +733,8 @@ namespace WMS_Client.UI
                 return true;
             }
 
+            AddLog("当前还有： " + (dataGridView_stockcount.Rows.Count-count).ToString() + " 盘物料未扫描!");
+            //ShowHint("当前还有： " + (dataGridView_stockcount.Rows.Count - count).ToString() + " 盘物料未扫描!", Color.Red);
             return false;
         }
 
@@ -652,17 +752,73 @@ namespace WMS_Client.UI
                 string res = DBPCaller.CompleteLocCheck(locid, kpno, qty, count, realqty, realcount, plant, stockid, MyData.GetUser(), MyData.GetStockNo());
                 if (res.ToUpper().Trim().Equals("OK"))
                 {
+                    AddLog("绑定成功!");
                     return true;
                 }
 
-                ShowHint("CompleteLocCheck返回：" + res, Color.Red);
+                AddLog("绑定失败：" + res);
+                ShowHint("绑定失败：CompleteLocCheck返回：" + res, Color.Red);
                 return false;
             }
             catch(Exception ex)
             {
+                AddLog("绑定异常： " + ex.Message);
                 ShowHint(ex.Message, Color.Red);
                 return false;
             }
+        }
+
+        private void 导出数据ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (ExportStockCountData es = new ExportStockCountData())
+            {
+                es.ShowDialog();
+            }
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            DataTable dt = new DataTable();
+            string woid = string.Empty;
+
+            try
+            {                
+                SearchMaterialPickAssign sm = new SearchMaterialPickAssign(dic);
+                sm.ExecuteQuery();
+                dt = sm.GetResult();
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    ShowHint("无盘点任务需要暂停!", Color.Red);
+                    return;
+                }
+
+                woid = dt.Rows[0]["StockOutNo"].ToString();
+            }
+            catch (Exception ex)
+            {
+                ShowHint("SearchMaterialPickAssign:" + ex.Message, Color.Red);
+                return;
+            }
+
+            //暂停任务
+            if (MessageBox.Show("确认暂停日期：" + woid + " 的所有盘点任务？", "警告", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) != DialogResult.Yes)
+            {
+                return;
+            }
+
+            try
+            {
+                StopPickTask sp = new StopPickTask(woid);
+                sp.ExecuteQuery();
+
+                ShowHint("暂停盘点任务成功!", Color.Lime);
+            }
+            catch (Exception ex)
+            {
+                ShowHint("暂停盘点任务失败:" + ex.Message, Color.Red);
+                return;
+            }            
         }
     }
 }

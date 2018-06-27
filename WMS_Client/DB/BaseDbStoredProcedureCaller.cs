@@ -21,6 +21,9 @@ namespace Phicomm_WMS.DB
             _strConn = string.Format(BaseConStr, dbName);
         }
 
+
+        protected abstract void ProcessParms();
+
         protected abstract void ProcessResult(MySqlDataReader reader);
 
         public bool ExecuteQuery()
@@ -37,10 +40,11 @@ namespace Phicomm_WMS.DB
                     mySqlCmd.CommandType = CommandType.StoredProcedure;
                     mySqlCmd.CommandTimeout = 84100;
                     mySqlCmd.Parameters.AddRange(DicParameters.Values.ToArray());
-                    mySqlCmd.ExecuteNonQuery();
+                    //mySqlCmd.ExecuteNonQuery(); //和ExecuteReader重复调用
                     using (MySqlDataReader reader = mySqlCmd.ExecuteReader())
                     {
                         ProcessResult(reader);
+                        ProcessParms();
                     }
                     return true;
                 }

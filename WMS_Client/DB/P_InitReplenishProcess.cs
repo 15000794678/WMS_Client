@@ -14,7 +14,30 @@ namespace Phicomm_WMS.DB
 
         protected override void ProcessResult(MySqlDataReader reader)
         {
+            try
+            {
+                
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                reader?.Close();
+            }
+        }
 
+        protected override void ProcessParms()
+        {
+            try
+            {
+                
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

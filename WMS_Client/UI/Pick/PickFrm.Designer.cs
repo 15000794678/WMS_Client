@@ -32,8 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PickFrm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.暂停任务ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label_stationid = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_downad = new System.Windows.Forms.TabPage();
@@ -69,6 +67,8 @@
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel_ShelfId = new System.Windows.Forms.TableLayoutPanel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.暂停任务ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.label10 = new System.Windows.Forms.Label();
             this.label_ShelfId = new System.Windows.Forms.Label();
@@ -111,6 +111,9 @@
             this.tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel_stockcount = new System.Windows.Forms.TableLayoutPanel();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.导出数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel22 = new System.Windows.Forms.TableLayoutPanel();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -209,7 +212,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage_downad.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -222,6 +224,7 @@
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
@@ -236,6 +239,7 @@
             this.tableLayoutPanel19.SuspendLayout();
             this.tableLayoutPanel20.SuspendLayout();
             this.groupBox12.SuspendLayout();
+            this.contextMenuStrip2.SuspendLayout();
             this.tableLayoutPanel22.SuspendLayout();
             this.tableLayoutPanel21.SuspendLayout();
             this.groupBox13.SuspendLayout();
@@ -284,7 +288,6 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.ContextMenuStrip = this.contextMenuStrip1;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
@@ -293,20 +296,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.暂停任务ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 26);
-            // 
-            // 暂停任务ToolStripMenuItem
-            // 
-            this.暂停任务ToolStripMenuItem.Name = "暂停任务ToolStripMenuItem";
-            this.暂停任务ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.暂停任务ToolStripMenuItem.Text = "暂停任务";
-            this.暂停任务ToolStripMenuItem.Click += new System.EventHandler(this.暂停任务ToolStripMenuItem_Click);
             // 
             // label_stationid
             // 
@@ -460,7 +449,7 @@
             "不拆盘",
             "在线拆盘",
             "人工"});
-            this.comboBox_TaskType.Location = new System.Drawing.Point(1061, 3);
+            this.comboBox_TaskType.Location = new System.Drawing.Point(1061, 9);
             this.comboBox_TaskType.Name = "comboBox_TaskType";
             this.comboBox_TaskType.Size = new System.Drawing.Size(100, 33);
             this.comboBox_TaskType.TabIndex = 5;
@@ -712,6 +701,7 @@
             this.tableLayoutPanel_ShelfId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel_ShelfId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel_ShelfId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel_ShelfId.ContextMenuStrip = this.contextMenuStrip1;
             this.tableLayoutPanel_ShelfId.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel_ShelfId.Location = new System.Drawing.Point(3, 29);
             this.tableLayoutPanel_ShelfId.Name = "tableLayoutPanel_ShelfId";
@@ -723,6 +713,20 @@
             this.tableLayoutPanel_ShelfId.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel_ShelfId.Size = new System.Drawing.Size(644, 341);
             this.tableLayoutPanel_ShelfId.TabIndex = 0;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.暂停任务ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 26);
+            // 
+            // 暂停任务ToolStripMenuItem
+            // 
+            this.暂停任务ToolStripMenuItem.Name = "暂停任务ToolStripMenuItem";
+            this.暂停任务ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.暂停任务ToolStripMenuItem.Text = "暂停任务";
+            this.暂停任务ToolStripMenuItem.Click += new System.EventHandler(this.暂停任务ToolStripMenuItem_Click);
             // 
             // tableLayoutPanel9
             // 
@@ -1145,7 +1149,7 @@
             "--请选择--",
             "仓库盘点",
             "品质盘点"});
-            this.comboBox_pd.Location = new System.Drawing.Point(1071, 10);
+            this.comboBox_pd.Location = new System.Drawing.Point(1071, 3);
             this.comboBox_pd.Name = "comboBox_pd";
             this.comboBox_pd.Size = new System.Drawing.Size(102, 33);
             this.comboBox_pd.TabIndex = 2;
@@ -1213,6 +1217,7 @@
             this.tableLayoutPanel_stockcount.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel_stockcount.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel_stockcount.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel_stockcount.ContextMenuStrip = this.contextMenuStrip2;
             this.tableLayoutPanel_stockcount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel_stockcount.Location = new System.Drawing.Point(3, 29);
             this.tableLayoutPanel_stockcount.Name = "tableLayoutPanel_stockcount";
@@ -1224,6 +1229,28 @@
             this.tableLayoutPanel_stockcount.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel_stockcount.Size = new System.Drawing.Size(644, 338);
             this.tableLayoutPanel_stockcount.TabIndex = 0;
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.导出数据ToolStripMenuItem});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(125, 48);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
+            this.toolStripMenuItem1.Text = "暂停任务";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // 导出数据ToolStripMenuItem
+            // 
+            this.导出数据ToolStripMenuItem.Name = "导出数据ToolStripMenuItem";
+            this.导出数据ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.导出数据ToolStripMenuItem.Text = "导出数据";
+            this.导出数据ToolStripMenuItem.Click += new System.EventHandler(this.导出数据ToolStripMenuItem_Click);
             // 
             // tableLayoutPanel22
             // 
@@ -1277,10 +1304,12 @@
             // 
             this.label_pd_ShelfCnt.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label_pd_ShelfCnt.AutoSize = true;
-            this.label_pd_ShelfCnt.Location = new System.Drawing.Point(550, 11);
+            this.label_pd_ShelfCnt.Location = new System.Drawing.Point(538, 11);
             this.label_pd_ShelfCnt.Name = "label_pd_ShelfCnt";
-            this.label_pd_ShelfCnt.Size = new System.Drawing.Size(0, 25);
+            this.label_pd_ShelfCnt.Size = new System.Drawing.Size(23, 25);
             this.label_pd_ShelfCnt.TabIndex = 3;
+            this.label_pd_ShelfCnt.Text = "0";
+            this.label_pd_ShelfCnt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel21
             // 
@@ -1293,7 +1322,7 @@
             this.tableLayoutPanel21.Location = new System.Drawing.Point(665, 3);
             this.tableLayoutPanel21.Name = "tableLayoutPanel21";
             this.tableLayoutPanel21.RowCount = 3;
-            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 189F));
             this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this.tableLayoutPanel21.Size = new System.Drawing.Size(656, 429);
@@ -1305,7 +1334,7 @@
             this.groupBox13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox13.Location = new System.Drawing.Point(3, 3);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(650, 147);
+            this.groupBox13.Size = new System.Drawing.Size(650, 183);
             this.groupBox13.TabIndex = 0;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "储位信息";
@@ -1333,17 +1362,17 @@
             this.tableLayoutPanel23.Location = new System.Drawing.Point(3, 29);
             this.tableLayoutPanel23.Name = "tableLayoutPanel23";
             this.tableLayoutPanel23.RowCount = 3;
-            this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel23.Size = new System.Drawing.Size(644, 115);
+            this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.57143F));
+            this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.85715F));
+            this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.57143F));
+            this.tableLayoutPanel23.Size = new System.Drawing.Size(644, 151);
             this.tableLayoutPanel23.TabIndex = 0;
             // 
             // label25
             // 
             this.label25.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(26, 6);
+            this.label25.Location = new System.Drawing.Point(26, 9);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(69, 25);
             this.label25.TabIndex = 0;
@@ -1353,7 +1382,7 @@
             // 
             this.label26.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(348, 6);
+            this.label26.Location = new System.Drawing.Point(348, 9);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(69, 25);
             this.label26.TabIndex = 1;
@@ -1363,7 +1392,7 @@
             // 
             this.label27.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(26, 44);
+            this.label27.Location = new System.Drawing.Point(26, 62);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(69, 25);
             this.label27.TabIndex = 2;
@@ -1373,9 +1402,10 @@
             // 
             this.label_pd_locid.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label_pd_locid.AutoSize = true;
-            this.label_pd_locid.Location = new System.Drawing.Point(175, 6);
+            this.label_pd_locid.Font = new System.Drawing.Font("微软雅黑 Light", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_pd_locid.Location = new System.Drawing.Point(151, 4);
             this.label_pd_locid.Name = "label_pd_locid";
-            this.label_pd_locid.Size = new System.Drawing.Size(106, 25);
+            this.label_pd_locid.Size = new System.Drawing.Size(155, 35);
             this.label_pd_locid.TabIndex = 3;
             this.label_pd_locid.Text = "1000001011";
             // 
@@ -1383,7 +1413,7 @@
             // 
             this.label_pd_kpno.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label_pd_kpno.AutoSize = true;
-            this.label_pd_kpno.Location = new System.Drawing.Point(483, 6);
+            this.label_pd_kpno.Location = new System.Drawing.Point(483, 9);
             this.label_pd_kpno.Name = "label_pd_kpno";
             this.label_pd_kpno.Size = new System.Drawing.Size(107, 25);
             this.label_pd_kpno.TabIndex = 4;
@@ -1393,9 +1423,10 @@
             // 
             this.label_pd_count.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label_pd_count.AutoSize = true;
-            this.label_pd_count.Location = new System.Drawing.Point(522, 44);
+            this.label_pd_count.Font = new System.Drawing.Font("微软雅黑 Light", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_pd_count.Location = new System.Drawing.Point(495, 43);
             this.label_pd_count.Name = "label_pd_count";
-            this.label_pd_count.Size = new System.Drawing.Size(30, 25);
+            this.label_pd_count.Size = new System.Drawing.Size(83, 64);
             this.label_pd_count.TabIndex = 5;
             this.label_pd_count.Text = "15";
             // 
@@ -1403,7 +1434,7 @@
             // 
             this.label31.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(348, 44);
+            this.label31.Location = new System.Drawing.Point(348, 62);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(69, 25);
             this.label31.TabIndex = 6;
@@ -1413,9 +1444,10 @@
             // 
             this.label_pd_qty.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label_pd_qty.AutoSize = true;
-            this.label_pd_qty.Location = new System.Drawing.Point(195, 44);
+            this.label_pd_qty.Font = new System.Drawing.Font("微软雅黑 Light", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_pd_qty.Location = new System.Drawing.Point(181, 57);
             this.label_pd_qty.Name = "label_pd_qty";
-            this.label_pd_qty.Size = new System.Drawing.Size(67, 25);
+            this.label_pd_qty.Size = new System.Drawing.Size(95, 35);
             this.label_pd_qty.TabIndex = 7;
             this.label_pd_qty.Text = "45000";
             // 
@@ -1423,7 +1455,7 @@
             // 
             this.label33.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(26, 83);
+            this.label33.Location = new System.Drawing.Point(26, 116);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(69, 25);
             this.label33.TabIndex = 8;
@@ -1433,7 +1465,7 @@
             // 
             this.label_pd_plant.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label_pd_plant.AutoSize = true;
-            this.label_pd_plant.Location = new System.Drawing.Point(202, 83);
+            this.label_pd_plant.Location = new System.Drawing.Point(202, 116);
             this.label_pd_plant.Name = "label_pd_plant";
             this.label_pd_plant.Size = new System.Drawing.Size(52, 25);
             this.label_pd_plant.TabIndex = 9;
@@ -1443,7 +1475,7 @@
             // 
             this.label35.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(348, 83);
+            this.label35.Location = new System.Drawing.Point(348, 116);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(69, 25);
             this.label35.TabIndex = 10;
@@ -1453,7 +1485,7 @@
             // 
             this.label_pd_stockid.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label_pd_stockid.AutoSize = true;
-            this.label_pd_stockid.Location = new System.Drawing.Point(511, 83);
+            this.label_pd_stockid.Location = new System.Drawing.Point(511, 116);
             this.label_pd_stockid.Name = "label_pd_stockid";
             this.label_pd_stockid.Size = new System.Drawing.Size(52, 25);
             this.label_pd_stockid.TabIndex = 11;
@@ -1463,9 +1495,9 @@
             // 
             this.groupBox14.Controls.Add(this.dataGridView_stockcount);
             this.groupBox14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox14.Location = new System.Drawing.Point(3, 156);
+            this.groupBox14.Location = new System.Drawing.Point(3, 192);
             this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(650, 178);
+            this.groupBox14.Size = new System.Drawing.Size(650, 142);
             this.groupBox14.TabIndex = 1;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "详细信息";
@@ -1488,7 +1520,7 @@
             this.dataGridView_stockcount.RowTemplate.Height = 23;
             this.dataGridView_stockcount.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView_stockcount.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView_stockcount.Size = new System.Drawing.Size(644, 146);
+            this.dataGridView_stockcount.Size = new System.Drawing.Size(644, 110);
             this.dataGridView_stockcount.TabIndex = 0;
             // 
             // StockCountCheck
@@ -1533,6 +1565,8 @@
             // richTextBox_stockcount
             // 
             this.richTextBox_stockcount.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox_stockcount.Font = new System.Drawing.Font("微软雅黑 Light", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.richTextBox_stockcount.ForeColor = System.Drawing.Color.Red;
             this.richTextBox_stockcount.Location = new System.Drawing.Point(3, 29);
             this.richTextBox_stockcount.Name = "richTextBox_stockcount";
             this.richTextBox_stockcount.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
@@ -2224,7 +2258,6 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage_downad.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -2239,6 +2272,7 @@
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -2256,6 +2290,7 @@
             this.tableLayoutPanel19.ResumeLayout(false);
             this.tableLayoutPanel20.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
+            this.contextMenuStrip2.ResumeLayout(false);
             this.tableLayoutPanel22.ResumeLayout(false);
             this.tableLayoutPanel22.PerformLayout();
             this.tableLayoutPanel21.ResumeLayout(false);
@@ -2469,5 +2504,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column42;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column43;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column44;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem 导出数据ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }

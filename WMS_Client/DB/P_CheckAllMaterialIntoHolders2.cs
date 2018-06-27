@@ -1,5 +1,6 @@
 ﻿using log4net;
 using MySql.Data.MySqlClient;
+using System;
 using System.Data;
 
 namespace Phicomm_WMS.DB
@@ -21,7 +22,7 @@ namespace Phicomm_WMS.DB
         {
             try
             {
-                _promoteText = DicParameters["@pResult"].Value.ToString();
+                
             }
             catch (System.Exception ex)
             {
@@ -30,6 +31,18 @@ namespace Phicomm_WMS.DB
             finally
             {
                 reader?.Close();
+            }
+        }
+
+        protected override void ProcessParms()
+        {
+            try
+            {
+                _promoteText = (string)DicParameters["@pResult"].Value;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System;
 
 namespace Phicomm_WMS.DB
 {
@@ -46,6 +47,18 @@ namespace Phicomm_WMS.DB
             finally
             {
                 reader?.Close();
+            }
+        }
+
+        protected override void ProcessParms()
+        {
+            try
+            {
+                
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 

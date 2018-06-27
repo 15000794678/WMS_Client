@@ -44,6 +44,18 @@ namespace Phicomm_WMS.DB
             }
         }
 
+        protected override void ProcessParms()
+        {
+            try
+            {
+                
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public string GetResult()
         {
             return _result;

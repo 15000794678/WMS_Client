@@ -24,7 +24,7 @@ namespace Phicomm_WMS.DB
         {
             try
             {
-                _result = (int)DicParameters["@pResult"].Value;
+                
             }
             catch (System.Exception ex)
             {
@@ -33,6 +33,19 @@ namespace Phicomm_WMS.DB
             finally
             {
                 reader?.Close();
+            }
+        }
+
+
+        protected override void ProcessParms()
+        {
+            try
+            {
+                _result = (int)DicParameters["@pResult"].Value;
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
             }
         }
 

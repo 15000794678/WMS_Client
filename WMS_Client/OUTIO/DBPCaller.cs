@@ -15,7 +15,7 @@ namespace Phicomm_WMS.OUTIO
             try
             {
                 InitReplenishProcess ir = new InitReplenishProcess(user, stationId);
-                ir.ExecuteQuery();
+                ir.ExecuteQuery();                
             }
             catch(Exception ex)
             {

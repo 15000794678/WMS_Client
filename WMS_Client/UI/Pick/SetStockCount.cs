@@ -72,13 +72,13 @@ namespace WMS_Client.UI
 
             string realqty = textBox_pd_qty.Text.Trim();
             string realcount = textBox_pd_count.Text.Trim();
-            if (realqty.All(c => ((c <= '9' && c >= '0'))))
+            if (!realqty.All(c => ((c <= '9' && c >= '0'))))
             {
                 MessageBox.Show("请填写正确的实际数量!");
                 return;
             }
 
-            if (realcount.All(c=>((c<='9' && c>='0'))))
+            if (!realcount.All(c=>((c<='9' && c>='0'))))
             {
                 MessageBox.Show("请填写正确的实际盘数!");
                 return;

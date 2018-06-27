@@ -6,8 +6,8 @@ namespace Phicomm_WMS.DB
 {
     public class StopPickTask : BaseDbQuery
     {
-        public StopPickTask(int stationId)
-            : base("Select " + "F_StopPickTask(" + stationId + ")", DbName)
+        public StopPickTask(string woid)
+            : base("Select " + "F_StopPickTask('" + woid + "')", DbName)
         {
 
         }
