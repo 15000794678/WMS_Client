@@ -13,8 +13,9 @@ using log4net;
 using System.Diagnostics;
 using System.Threading;
 using Phicomm_WMS.DataProcess;
+using WHC.OrderWater.Commons;
 
-namespace WMS_Client.UI
+namespace Phicomm_WMS.UI
 {
     public partial class SelectionFrm : Office2007Form
     {
@@ -1773,6 +1774,11 @@ namespace WMS_Client.UI
                 _woid = woid.Substring(0, woid.Length - 2);
                 ShowHint("该工单类型属于超领，去掉工单最后两位流水号，去前为：" + woid + ", 去后为：" + _woid, Color.Red);
             }
+            else if (stockNoType == (int)MyData.PickWoType.Discard)
+            {
+                _woid = woid.Substring(0, woid.Length - 3);
+                ShowHint("该工单类型属于制程报废，去掉工单最后三位流水号，去前为：" + woid + ", 去后为：" + _woid, Color.Red);
+            }
 
             try
             {
@@ -2162,6 +2168,124 @@ namespace WMS_Client.UI
 
             DataTable dt2 = GetData(MyData.GetStockNo(), (comboBox_staus.SelectedIndex + 3).ToString());
             ShowData2(dataGridView2, dt2);
+        }
+
+
+        //选择导入数据路径
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "xls文件(*.xls)|*.xls|xlsx文件(*.xlsx)|*.xls|所有文件(*.*)|*.*";
+                if (ofd.ShowDialog()!=DialogResult.OK)
+                {
+                    return;
+                }
+
+                textBox_import.Text = ofd.FileName;
+            }
+
+            DataTable dt = new DataTable();
+            try
+            {
+                DataSet ds = ExcelHelper.ExcelToDataSet(textBox_import.Text, "Sheet1$", true, ExcelHelper.ExcelType.Excel2003);
+                if (ds == null || ds.Tables.Count == 0)
+                {
+                    MessageBox.Show("文件中无数据!");
+                    return;
+                }
+                dt = ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ExcelToDataSet:" + ex.Message);
+                return;
+            }
+
+            if (dt == null || dt.Rows.Count == 0)
+            {
+                MessageBox.Show("文件中无数据!");
+                return;
+            }
+
+            dataGridView_import.Rows.Clear();
+            foreach (DataRow dr in dt.Rows)
+            {
+                if (!string.IsNullOrEmpty(dr[0].ToString().Trim()))
+                {
+                    dataGridView_import.Rows.Add(dr[0].ToString(),
+                                           dr[1].ToString(),
+                                           dr[2].ToString(),
+                                           dr[3].ToString(),
+                                           dr[4].ToString(),
+                                           dr[5].ToString(),
+                                           dr[6].ToString(),
+                                           dr[7].ToString(),
+                                           dr[8].ToString(),
+                                           dr[9].ToString()
+                                       );
+                }
+            }
+
+            dataGridView_import.ClearSelection();
+        }
+
+        //导入到远程数据库的r_inventory_id表中
+        private void button2_Click(object sender, EventArgs e)
+        {            
+            if (dataGridView_import.Rows.Count==0)
+            {
+                ShowHint("请先将数据加载到表格中！", Color.Red);
+                return;
+            }
+
+            try
+            {
+                Dictionary<string, object> dic = new Dictionary<string, object>();
+                DataTable dt = new DataTable();
+                for (int i = 0; i < dataGridView_import.Rows.Count; i++)
+                {
+                    string woid = dataGridView_import[1, i].Value.ToString();
+                    string kpno = dataGridView_import[2, i].Value.ToString();
+                    string qty = dataGridView_import[3, i].Value.ToString();
+
+                    dic.Clear();
+                    dic.Add("stock_no", woid);
+                    dic.Add("material_no", kpno);
+                    SearchRInventoryId sr = new SearchRInventoryId(dic);
+                    sr.ExecuteQuery();
+                    dt = sr.GetResult();
+                    if (dt == null || dt.Rows.Count == 0)
+                    {
+                        InsertRInventoryId ir = new InsertRInventoryId(woid, kpno, qty,
+                                                                       dataGridView_import[4, i].Value.ToString(),
+                                                                       dataGridView_import[5, i].Value.ToString(),
+                                                                       dataGridView_import[6, i].Value.ToString(),
+                                                                       dataGridView_import[7, i].Value.ToString(),
+                                                                       dataGridView_import[8, i].Value.ToString(),
+                                                                       dataGridView_import[9, i].Value.ToString()
+                                                                       );
+                        ir.ExecuteUpdate();
+                    }
+                    else
+                    {
+                        if (!qty.Equals(dt.Rows[0]["qty"].ToString()))
+                        {
+                            UpdateRInventoryIdQty ur = new UpdateRInventoryIdQty(dt.Rows[0]["id"].ToString(),
+                                                                                dataGridView_import[3, i].Value.ToString(),
+                                                                                dataGridView_import[4, i].Value.ToString(),
+                                                                                dataGridView_import[5, i].Value.ToString());
+                            ur.ExecuteUpdate();
+                        }
+                    }
+                }
+
+                ShowHint("导入完成!", Color.Lime);             
+            }
+            catch(Exception ex)
+            {
+                ShowHint(ex.Message, Color.Red);
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace WMS_Client.UI
+﻿namespace Phicomm_WMS.UI
 {
     partial class PickFrm
     {
@@ -410,7 +410,8 @@
             "预留",
             "委外",
             "移库",
-            "超领"});
+            "超领",
+            "制程报废"});
             this.comboBox_WoidType.Location = new System.Drawing.Point(135, 5);
             this.comboBox_WoidType.Name = "comboBox_WoidType";
             this.comboBox_WoidType.Size = new System.Drawing.Size(134, 27);
@@ -449,7 +450,7 @@
             "不拆盘",
             "在线拆盘",
             "人工"});
-            this.comboBox_TaskType.Location = new System.Drawing.Point(1061, 9);
+            this.comboBox_TaskType.Location = new System.Drawing.Point(1061, 3);
             this.comboBox_TaskType.Name = "comboBox_TaskType";
             this.comboBox_TaskType.Size = new System.Drawing.Size(100, 33);
             this.comboBox_TaskType.TabIndex = 5;
@@ -1144,11 +1145,13 @@
             // 
             this.comboBox_pd.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.comboBox_pd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_pd.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.comboBox_pd.FormattingEnabled = true;
             this.comboBox_pd.Items.AddRange(new object[] {
             "--请选择--",
-            "仓库盘点",
-            "品质盘点"});
+            "全部盘点",
+            "料号盘点",
+            "储位盘点"});
             this.comboBox_pd.Location = new System.Drawing.Point(1071, 3);
             this.comboBox_pd.Name = "comboBox_pd";
             this.comboBox_pd.Size = new System.Drawing.Size(102, 33);

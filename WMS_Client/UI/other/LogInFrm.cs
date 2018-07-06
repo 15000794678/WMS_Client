@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using Phicomm_WMS.OUTIO;
 
-namespace WMS_Client.UI
+namespace Phicomm_WMS.UI
 {
     public partial class LogInFrm : Office2007Form
     {
@@ -35,7 +35,7 @@ namespace WMS_Client.UI
                     return;
                 }
 
-                //CheckAccount.CheckUser(textBox_user.Text, textBox_password.Text);
+                CheckAccount.CheckUser(textBox_user.Text, textBox_password.Text);
 
                 MyData.SetUser(textBox_user.Text);
                 MyData.SetPassword(textBox_password.Text);

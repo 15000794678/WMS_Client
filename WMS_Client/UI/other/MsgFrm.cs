@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 
-namespace WMS_Client.UI
+namespace Phicomm_WMS.UI
 {
     public partial class MsgFrm : Office2007Form
     {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
-using WMS_Client.UI;
+using Phicomm_WMS.UI;
 
-namespace WMS_Client
+namespace Phicomm_WMS
 {
     static class Program
     {

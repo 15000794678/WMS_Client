@@ -1,4 +1,4 @@
-﻿namespace WMS_Client.UI
+﻿namespace Phicomm_WMS.UI
 {
     partial class SelectionFrm
     {
@@ -111,6 +111,8 @@
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tabPage_import = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
             this.tabPage_other = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -123,6 +125,24 @@
             this.textBox_sn2 = new System.Windows.Forms.TextBox();
             this.label_stationid = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox_import = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.dataGridView_import = new System.Windows.Forms.DataGridView();
+            this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column38 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column39 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -154,11 +174,17 @@
             this.tableLayoutPanel16.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.tableLayoutPanel15.SuspendLayout();
+            this.tabPage_import.SuspendLayout();
+            this.tableLayoutPanel17.SuspendLayout();
             this.tabPage_other.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
+            this.groupBox11.SuspendLayout();
+            this.groupBox12.SuspendLayout();
+            this.tableLayoutPanel18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_import)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -200,6 +226,7 @@
             this.tabControl1.Controls.Add(this.tabPage_select);
             this.tabControl1.Controls.Add(this.tabPage_holder);
             this.tabControl1.Controls.Add(this.tabPage_nuoliao);
+            this.tabControl1.Controls.Add(this.tabPage_import);
             this.tabControl1.Controls.Add(this.tabPage_other);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -1082,6 +1109,32 @@
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
+            // tabPage_import
+            // 
+            this.tabPage_import.Controls.Add(this.tableLayoutPanel17);
+            this.tabPage_import.Location = new System.Drawing.Point(4, 30);
+            this.tabPage_import.Name = "tabPage_import";
+            this.tabPage_import.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_import.Size = new System.Drawing.Size(1334, 485);
+            this.tabPage_import.TabIndex = 4;
+            this.tabPage_import.Text = "导入";
+            this.tabPage_import.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel17
+            // 
+            this.tableLayoutPanel17.ColumnCount = 1;
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel17.Controls.Add(this.groupBox11, 0, 0);
+            this.tableLayoutPanel17.Controls.Add(this.groupBox12, 0, 1);
+            this.tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel17.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel17.Name = "tableLayoutPanel17";
+            this.tableLayoutPanel17.RowCount = 2;
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 92F));
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel17.Size = new System.Drawing.Size(1328, 479);
+            this.tableLayoutPanel17.TabIndex = 0;
+            // 
             // tabPage_other
             // 
             this.tabPage_other.Controls.Add(this.tableLayoutPanel10);
@@ -1230,6 +1283,167 @@
             this.label7.TabIndex = 5;
             this.label7.Text = "快捷键：[F1]全选，[F2]要求分拣，[F3]关闭弹框，[F9]刷新周转箱信息";
             // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.tableLayoutPanel18);
+            this.groupBox11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox11.Location = new System.Drawing.Point(3, 3);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(1322, 86);
+            this.groupBox11.TabIndex = 0;
+            this.groupBox11.TabStop = false;
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.dataGridView_import);
+            this.groupBox12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox12.Location = new System.Drawing.Point(3, 95);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(1322, 381);
+            this.groupBox12.TabIndex = 1;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "详细数据";
+            // 
+            // tableLayoutPanel18
+            // 
+            this.tableLayoutPanel18.ColumnCount = 4;
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel18.Controls.Add(this.label11, 0, 0);
+            this.tableLayoutPanel18.Controls.Add(this.textBox_import, 1, 0);
+            this.tableLayoutPanel18.Controls.Add(this.button1, 2, 0);
+            this.tableLayoutPanel18.Controls.Add(this.button2, 3, 0);
+            this.tableLayoutPanel18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel18.Location = new System.Drawing.Point(3, 25);
+            this.tableLayoutPanel18.Name = "tableLayoutPanel18";
+            this.tableLayoutPanel18.RowCount = 1;
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel18.Size = new System.Drawing.Size(1316, 58);
+            this.tableLayoutPanel18.TabIndex = 0;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(125, 18);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(122, 21);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "导入数据路径：";
+            // 
+            // textBox_import
+            // 
+            this.textBox_import.BackColor = System.Drawing.Color.White;
+            this.textBox_import.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_import.Location = new System.Drawing.Point(253, 3);
+            this.textBox_import.Multiline = true;
+            this.textBox_import.Name = "textBox_import";
+            this.textBox_import.Size = new System.Drawing.Size(760, 52);
+            this.textBox_import.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.Location = new System.Drawing.Point(1048, 8);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(86, 41);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "选择";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button2.Location = new System.Drawing.Point(1198, 8);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(86, 41);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "导入";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // dataGridView_import
+            // 
+            this.dataGridView_import.AllowUserToAddRows = false;
+            this.dataGridView_import.AllowUserToDeleteRows = false;
+            this.dataGridView_import.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_import.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column29,
+            this.Column30,
+            this.Column31,
+            this.Column32,
+            this.Column34,
+            this.Column35,
+            this.Column36,
+            this.Column37,
+            this.Column38,
+            this.Column39});
+            this.dataGridView_import.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView_import.Location = new System.Drawing.Point(3, 25);
+            this.dataGridView_import.Name = "dataGridView_import";
+            this.dataGridView_import.RowHeadersVisible = false;
+            this.dataGridView_import.RowTemplate.Height = 23;
+            this.dataGridView_import.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView_import.Size = new System.Drawing.Size(1316, 353);
+            this.dataGridView_import.TabIndex = 0;
+            // 
+            // Column29
+            // 
+            this.Column29.HeaderText = "序号";
+            this.Column29.Name = "Column29";
+            // 
+            // Column30
+            // 
+            this.Column30.HeaderText = "单号";
+            this.Column30.Name = "Column30";
+            this.Column30.Width = 150;
+            // 
+            // Column31
+            // 
+            this.Column31.HeaderText = "料号";
+            this.Column31.Name = "Column31";
+            this.Column31.Width = 150;
+            // 
+            // Column32
+            // 
+            this.Column32.HeaderText = "应入数量";
+            this.Column32.Name = "Column32";
+            // 
+            // Column34
+            // 
+            this.Column34.HeaderText = "良品数量";
+            this.Column34.Name = "Column34";
+            // 
+            // Column35
+            // 
+            this.Column35.HeaderText = "不良数量";
+            this.Column35.Name = "Column35";
+            // 
+            // Column36
+            // 
+            this.Column36.HeaderText = "状态";
+            this.Column36.Name = "Column36";
+            // 
+            // Column37
+            // 
+            this.Column37.HeaderText = "物料描述";
+            this.Column37.Name = "Column37";
+            this.Column37.Width = 200;
+            // 
+            // Column38
+            // 
+            this.Column38.HeaderText = "stockno_typ";
+            this.Column38.Name = "Column38";
+            this.Column38.Width = 120;
+            // 
+            // Column39
+            // 
+            this.Column39.HeaderText = "sub_type";
+            this.Column39.Name = "Column39";
+            // 
             // SelectionFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1287,12 +1501,19 @@
             this.groupBox10.ResumeLayout(false);
             this.tableLayoutPanel15.ResumeLayout(false);
             this.tableLayoutPanel15.PerformLayout();
+            this.tabPage_import.ResumeLayout(false);
+            this.tableLayoutPanel17.ResumeLayout(false);
             this.tabPage_other.ResumeLayout(false);
             this.tableLayoutPanel10.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.tableLayoutPanel11.ResumeLayout(false);
             this.tableLayoutPanel11.PerformLayout();
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox12.ResumeLayout(false);
+            this.tableLayoutPanel18.ResumeLayout(false);
+            this.tableLayoutPanel18.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_import)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1393,5 +1614,25 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column28;
         private System.Windows.Forms.Button button_HumanReplenish;
         private System.Windows.Forms.Button button_AutoReplenish;
+        private System.Windows.Forms.TabPage tabPage_import;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel17;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel18;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBox_import;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.DataGridView dataGridView_import;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column29;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column30;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column31;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column32;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column34;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column35;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column36;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column37;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column38;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column39;
     }
 }

@@ -12,7 +12,7 @@ using System.Net.Sockets;
 using Phicomm_WMS.DB;
 using Phicomm_WMS.OUTIO;
 
-namespace WMS_Client.UI
+namespace Phicomm_WMS.UI
 {
     public partial class SetPickStation : Office2007Form
     {

@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace WMS_Client.ZPI_PIINTF_MES_SUBCON_PURCHASE {
+namespace Phicomm_WMS.ZPI_PIINTF_MES_SUBCON_PURCHASE {
     using System;
     using System.Web.Services;
     using System.Diagnostics;
@@ -35,7 +35,7 @@ namespace WMS_Client.ZPI_PIINTF_MES_SUBCON_PURCHASE {
         
         /// <remarks/>
         public ZPI_PIINTF_MES_SUBCON_PURCHASEService() {
-            this.Url = global::WMS_Client.Properties.Settings.Default.WMS_Client_ZPI_PIINTF_MES_SUBCON_PURCHASE_ZPI_PIINTF_MES_SUBCON_PURCHASEService;
+            this.Url = global::Phicomm_WMS.Properties.Settings.Default.WMS_Client_ZPI_PIINTF_MES_SUBCON_PURCHASE_ZPI_PIINTF_MES_SUBCON_PURCHASEService;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

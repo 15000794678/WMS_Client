@@ -13,7 +13,7 @@ using Phicomm_WMS.OUTIO;
 using System.Diagnostics;
 using Phicomm_WMS.DB;
 
-namespace WMS_Client.UI
+namespace Phicomm_WMS.UI
 {
     public partial class ReplenishFrm : Office2007Form
     {

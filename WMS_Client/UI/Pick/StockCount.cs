@@ -14,7 +14,7 @@ using log4net;
 using System.Diagnostics;
 using WHC.OrderWater.Commons;
 
-namespace WMS_Client.UI
+namespace Phicomm_WMS.UI
 {
     public partial class PickFrm : Office2007Form
     {
@@ -106,6 +106,10 @@ namespace WMS_Client.UI
             Dictionary<string, object> dic = new Dictionary<string, object>();
             DataTable dt = new DataTable();
             string date = string.Format("{0:D4}{1:D2}{2:D2}", DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day); ;
+            string plant = "";
+            string stock_id = "";
+            //string woid = "";
+            int qty = 0;
             try
             {
                 SearchMaterialPickAssign sm = new SearchMaterialPickAssign(dic);
@@ -114,18 +118,46 @@ namespace WMS_Client.UI
                 dt = sm.GetResult();
                 if (dt != null && dt.Rows.Count > 0)
                 {
-                    string woid = dt.Rows[0]["StockOutNo"].ToString().Trim();
-                    int qty = int.Parse(dt.Rows[0]["Qty"].ToString().Trim());
-                    if (qty == -1)
-                    {
-                        ShowHint("请先完成日期：" + woid + " 的盘点！", Color.Lime);
-                        return true;
-                    }
-                    else
+                    date = dt.Rows[0]["StockOutNo"].ToString().Trim();
+                    qty = int.Parse(dt.Rows[0]["Qty"].ToString().Trim());
+                    if (qty != -1)                    
                     {
                         ShowHint("请先完成单号：" + woid + " 的出库任务", Color.Red);
                         return false;
                     }
+                }
+
+                if (qty==-1)   //存在盘点任务
+                {
+                    dic.Clear();
+                    dic.Add("check_date", date);
+                    dic.Add("status", "0");
+                    SearchInventoryCheckByMaterialNo sc = new SearchInventoryCheckByMaterialNo(dic);
+                    sc.ExecuteQuery();
+                    dt = sc.GetResult();
+                    if (dt!=null && dt.Rows.Count>0)
+                    {
+                        plant = dt.Rows[0]["Plant"].ToString();
+                        stock_id = dt.Rows[0]["Stock_Id"].ToString();
+                        string kpno = dt.Rows[0]["KpNo"].ToString();
+                        if (kpno.Trim().Equals("*"))
+                        {
+                            ShowHint("请先完成：" + date + " 的全部盘点任务！", Color.Red);
+                            comboBox_pd.SelectedIndex = 1;
+                        }
+                        else
+                        {
+                            ShowHint("请先完成：" + date + " 的料号盘点任务！", Color.Red);
+                            comboBox_pd.SelectedIndex = 2;
+                        }
+                    }
+                    else
+                    {
+                        ShowHint("请先完成：" + date + " 的储位盘点任务！", Color.Red);
+                        comboBox_pd.SelectedIndex = 3;
+                    }
+
+                    return true;
                 }
 
                 if (comboBox_pd.SelectedIndex == 0)
@@ -134,50 +166,95 @@ namespace WMS_Client.UI
                     comboBox_pd.Focus();
                     return false;
                 }
-
-                //料号盘点，导入数据
-                if (comboBox_pd.SelectedIndex == 2)
-                {
-                    using (ImportStockCountKpNoData ic = new ImportStockCountKpNoData())
-                    {
-                        if (ic.ShowDialog()!=DialogResult.OK)
-                        {
-                            return false;
-                        }
-                    }
-                    
-                    try
-                    {
-                        dic.Clear();
-                        SearchInventoryCheckByMaterialNo sc = new SearchInventoryCheckByMaterialNo(dic);
-                        sc.ExecuteQuery();
-                        dt = sc.GetResult();
-                        if (dt==null || dt.Rows.Count==0)
-                        {
-                            ShowHint("无导入数据，不需要生成盘点任务!", Color.Red);
-                            return false;
-                        }
-                        date = dt.Rows[0]["CheckDate"].ToString();
-                    }
-                    catch(Exception ex)
-                    {
-                        ShowHint("SearchInventoryCheckByMaterialNo:" + ex.Message, Color.Red);
-                        return false;
-                    }
-                }
-                else if (comboBox_pd.SelectedIndex==1)
+                else if (comboBox_pd.SelectedIndex == 1) //全部盘点
                 {
                     using (SetStockDate ss = new SetStockDate())
                     {
-                        if (ss.ShowDialog()!=DialogResult.OK)
+                        if (ss.ShowDialog() != DialogResult.OK)
                         {
                             return false;
                         }
 
                         date = ss.GetDate();
-                    }                    
-                }
+                        plant = ss.GetPlant();
+                        stock_id = ss.GetStockId();
+                    }
+                }                
+                else if (comboBox_pd.SelectedIndex == 2)//料号盘点，导入数据
+                {                   
+                    using (ImportKpNoData ic = new ImportKpNoData())
+                    {
+                        if (ic.ShowDialog()!=DialogResult.OK)
+                        {
+                            return false;
+                        }
 
+                        date = ic.GetWoId();
+                        plant = ic.GetPlant();
+                        stock_id = ic.GetStockId();
+                    }
+
+                    //查询导入数据是否需要盘点，status=0
+                    try
+                    {
+                        dic.Clear();
+                        dic.Add("check_date", date);
+                        dic.Add("plant", plant);
+                        dic.Add("stock_id", stock_id);
+                        dic.Add("status", "0");
+                        SearchInventoryCheckByMaterialNo sc = new SearchInventoryCheckByMaterialNo(dic);
+                        sc.ExecuteQuery();
+                        dt = sc.GetResult();
+                        if (dt == null || dt.Rows.Count == 0)
+                        {
+                            ShowHint("无料号需要盘点", Color.Red);                    
+                            return false;
+                        }                        
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowHint("SearchInventoryCheckByMaterialNo:" + ex.Message, Color.Red);
+                        return false;
+                    }
+                }
+                else if (comboBox_pd.SelectedIndex==3)
+                {
+                    using (ImportLocIdData ic = new ImportLocIdData())
+                    {
+                        if (ic.ShowDialog() != DialogResult.OK)
+                        {
+                            return false;
+                        }
+
+                        date = ic.GetWoId();
+                        plant = ic.GetPlant();
+                        stock_id = ic.GetStockId();
+                    }
+
+                    //查询导入数据是否需要盘点，status=0
+                    try
+                    {
+                        dic.Clear();
+                        dic.Add("check_date", date);
+                        dic.Add("plant", plant);
+                        dic.Add("stock_id", stock_id);
+                        dic.Add("status", "0");
+                        SearchInventoryCheckByLocId sc = new SearchInventoryCheckByLocId(dic);
+                        sc.ExecuteQuery();
+                        dt = sc.GetResult();
+                        if (dt == null || dt.Rows.Count == 0)
+                        {
+                            ShowHint("无料号需要盘点", Color.Red);
+                            return false;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowHint("SearchInventoryCheckByLocId:" + ex.Message, Color.Red);
+                        return false;
+                    }
+                }
+                
                 //生成盘点任务               
                 string result = DBPCaller.CreateCheckTask(date, comboBox_pd.SelectedIndex - 1);
                 if (!result.ToUpper().Trim().Equals("OK"))                
@@ -770,7 +847,7 @@ namespace WMS_Client.UI
 
         private void 导出数据ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (ExportStockCountData es = new ExportStockCountData())
+            using (ExportCountData es = new ExportCountData())
             {
                 es.ShowDialog();
             }

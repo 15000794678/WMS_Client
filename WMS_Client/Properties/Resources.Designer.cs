@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WMS_Client.Properties
+namespace Phicomm_WMS.Properties
 {
 
 

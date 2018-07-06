@@ -13,10 +13,13 @@ namespace Phicomm_WMS.DB
 
         public SearchInventoryCheckByMaterialNo(Dictionary<string, object> dic)
             : base(
-                "Select check_date, material_no from inventorycheckbymaterialno ", DbName)
+                "Select check_date, material_no, plant, stock_id, status from inventorycheckbymaterialno ", DbName)
         {
             _dt.Columns.Add("CheckDate", typeof(string));
             _dt.Columns.Add("KpNo", typeof(string));
+            _dt.Columns.Add("Plant", typeof(string));
+            _dt.Columns.Add("Stock_Id", typeof(string));
+            _dt.Columns.Add("Status", typeof(int));
 
             if (dic != null && dic.Count > 0)
             {
@@ -44,7 +47,10 @@ namespace Phicomm_WMS.DB
                 {
                     DataRow dr = _dt.NewRow();
                     dr["CheckDate"] = reader.IsDBNull(0) ? "" : reader.GetString(0);
-                    dr["KpNo"] = reader.IsDBNull(1) ? "" : reader.GetString(1);                    
+                    dr["KpNo"] = reader.IsDBNull(1) ? "" : reader.GetString(1);
+                    dr["Plant"] = reader.IsDBNull(2) ? "" : reader.GetString(2);
+                    dr["Stock_Id"] = reader.IsDBNull(3) ? "" : reader.GetString(3);
+                    dr["Status"] = reader.IsDBNull(4) ? 0 : reader.GetInt32(4);
                     _dt.Rows.Add(dr);
                 }
             }

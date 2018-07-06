@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using WMS_Client.DeliveryList_OUT;
-using WMS_Client.GoodsMvtCreate_OUT;
-using WMS_Client.ReservationDetail_OUT;
-using WMS_Client.ZPI_PIINTF_MES_SUBCON_PURCHASE;
+using Phicomm_WMS.DeliveryList_OUT;
+using Phicomm_WMS.GoodsMvtCreate_OUT;
+using Phicomm_WMS.ReservationDetail_OUT;
+using Phicomm_WMS.ZPI_PIINTF_MES_SUBCON_PURCHASE;
 
 namespace Phicomm_WMS.OUTIO
 {
@@ -176,7 +176,7 @@ namespace Phicomm_WMS.OUTIO
         }
 
         //过账
-        public static bool GetPI018(List<Dictionary<string, object>> dicList, string mt, ref string remark, ref string tranno)
+        public static bool GetPI018(List<Dictionary<string, object>> dicList, string mt, int stockNoType, ref string remark, ref string tranno)
         {
             try
             {
@@ -264,7 +264,14 @@ namespace Phicomm_WMS.OUTIO
                     {
                         item.RESERV_NO = dic["RESERV_NO"].ToString();
                         item.RES_ITEM = dic["RES_ITEM"].ToString();
-                        item.MOVE_REAS = "0001";//移动原因
+                        if (stockNoType == (int)MyData.PickWoType.Normal)
+                        {
+                            item.MOVE_REAS = "0001";//移动原因, 正常发料
+                        }
+                        else if (stockNoType== (int)MyData.PickWoType.Discard)
+                        {
+                            item.MOVE_REAS = "0003";//移动原因，制程报废
+                        }
                     }
                     //item.NO_MORE_GR = "";//交货已完成标识	
                     //item.DELIV_NUMB = "";//交货

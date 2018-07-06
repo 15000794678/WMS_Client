@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace WMS_Client.CheckAccoutServiceIService {
+namespace Phicomm_WMS.CheckAccoutServiceIService {
     using System;
     using System.Web.Services;
     using System.Diagnostics;
@@ -35,7 +35,7 @@ namespace WMS_Client.CheckAccoutServiceIService {
         
         /// <remarks/>
         public CheckAccountServiceIService() {
-            this.Url = global::WMS_Client.Properties.Settings.Default.WMS_Client_CheckAccoutServiceIService_CheckAccountServiceIService;
+            this.Url = global::Phicomm_WMS.Properties.Settings.Default.WMS_Client_CheckAccoutServiceIService_CheckAccountServiceIService;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

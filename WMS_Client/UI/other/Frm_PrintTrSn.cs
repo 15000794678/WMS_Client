@@ -16,7 +16,7 @@ using Phicomm_WMS.DB;
 using DevComponents.DotNetBar;
 using Phicomm_WMS.OUTIO;
 
-namespace WMS_Client.UI
+namespace Phicomm_WMS.UI
 {
     public partial class Frm_PrintTrSn : Office2007Form /*MainForm*/
     {
@@ -200,7 +200,7 @@ namespace WMS_Client.UI
 
         public void ShowHint(string msg, Color cl)
         {
-            using (WMS_Client.UI.MsgFrm mf = new WMS_Client.UI.MsgFrm(msg, cl))
+            using (Phicomm_WMS.UI.MsgFrm mf = new Phicomm_WMS.UI.MsgFrm(msg, cl))
             {
                 mf.BringToFront();
                 mf.ShowDialog();
@@ -458,28 +458,31 @@ namespace WMS_Client.UI
                     doc.Variables.FormVariables.Item(doc.Variables.FormVariables.Item(i + 1).Name).Value = "";
                 }
                 SendMsg(mLogMsgType.Normal, string.Format("传送打印信息...."));
-                foreach (KeyValuePair<string, object> kvp in LsDic[0])
+                foreach (Dictionary<string, object> lsD in LsDic)
                 {
-                    try
+                    foreach (KeyValuePair<string, object> kvp in lsD)
                     {
-                        doc.Variables.FormVariables.Item(kvp.Key).Value = kvp.Value.ToString(); //给参数传值
-                        if (kvp.Key == "TR_SN")
+                        try
                         {
-                            String Tr_Sn_Prefix = kvp.Value.ToString().Substring(0, 6);
-                            if (kvp.Value.ToString().Contains("X"))
-                                Tr_Sn_Prefix = kvp.Value.ToString().Substring(0, 7);
-                            doc.Variables.FormVariables.Item("TR_SN_PREFIX").Value = Tr_Sn_Prefix; //TR_SN前缀
-                            doc.Variables.Counters.Item("COUNT1").BaseType = LabelManager2.enumCounterBase.lppxBaseDecimal; //修改公式为10进制
-                            doc.Variables.Counters.Item("COUNT1").Value = kvp.Value.ToString().Substring(Tr_Sn_Prefix.Length, kvp.Value.ToString().Length - Tr_Sn_Prefix.Length);//填充开始流水号
-                            doc.Variables.Counters.Item("COUNT1").MaxValue = "9999999";
+                            doc.Variables.FormVariables.Item(kvp.Key).Value = kvp.Value.ToString(); //给参数传值
+                            if (kvp.Key == "TR_SN")
+                            {
+                                String Tr_Sn_Prefix = kvp.Value.ToString().Substring(0, 6);
+                                if (kvp.Value.ToString().Contains("X"))
+                                    Tr_Sn_Prefix = kvp.Value.ToString().Substring(0, 7);
+                                doc.Variables.FormVariables.Item("TR_SN_PREFIX").Value = Tr_Sn_Prefix; //TR_SN前缀
+                                doc.Variables.Counters.Item("COUNT1").BaseType = LabelManager2.enumCounterBase.lppxBaseDecimal; //修改公式为10进制
+                                doc.Variables.Counters.Item("COUNT1").Value = kvp.Value.ToString().Substring(Tr_Sn_Prefix.Length, kvp.Value.ToString().Length - Tr_Sn_Prefix.Length);//填充开始流水号
+                                doc.Variables.Counters.Item("COUNT1").MaxValue = "9999999";
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            SendMsg(mLogMsgType.Warning, string.Format("填充打印变量失败:{0}->{1},错误信息：", kvp.Key, kvp.Value.ToString()) + ex.Message);
                         }
                     }
-                    catch (Exception ex)
-                    {
-                        SendMsg(mLogMsgType.Warning, string.Format("填充打印变量失败:{0}->{1},错误信息：", kvp.Key, kvp.Value.ToString()) + ex.Message);
-                    }
+                    doc.PrintDocument(1);
                 }
-                doc.PrintDocument(LsDic.Count);
                 SendMsg(mLogMsgType.Incoming, string.Format("打印信息已输出,唯一条码[{0}]～～[{1}]", LsDic[0]["TR_SN"], LsDic[LsDic.Count - 1]["TR_SN"]));
             }
             catch (Exception ex)

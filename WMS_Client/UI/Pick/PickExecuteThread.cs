@@ -14,7 +14,7 @@ using log4net;
 using System.Diagnostics;
 using RefWebService_BLL;
 
-namespace WMS_Client.UI
+namespace Phicomm_WMS.UI
 {
     public partial class PickFrm : Office2007Form
     {
@@ -220,11 +220,9 @@ namespace WMS_Client.UI
                     if (result == 1) /*料出库成功，且所有站点物料全部出库，自动过账*/
                     {
                         findFlag = true; //不再刷新
-                        if (MyData.GetStockNoType() == (int)MyData.PickWoType.Normal ||
-                            MyData.GetStockNoType() == (int)MyData.PickWoType.Super)
-                        {
-                            PushTrSnByStockNo(MyData.GetStockNo());
-                        }
+                        
+                        PushTrSnByStockNo(MyData.GetStockNo(), MyData.GetStockNoType());
+                        
                         //SapPick(MyData.GetStockNo(), MyData.GetStockNoType();
                         ShowHint("出库过账功能暂时关闭！", Color.Lime);                       
                     }                    

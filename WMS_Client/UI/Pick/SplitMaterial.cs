@@ -13,7 +13,7 @@ using System.IO;
 using Phicomm_WMS.OUTIO;
 using System.Threading;
 
-namespace WMS_Client.UI
+namespace Phicomm_WMS.UI
 {
     public partial class SplitMaterial : Office2007Form
     {       

@@ -11,7 +11,7 @@ using Phicomm_WMS.DB;
 using System.Diagnostics;
 using Phicomm_WMS.OUTIO;
 
-namespace WMS_Client.UI
+namespace Phicomm_WMS.UI
 {
     public partial class Frm_Material_RePrint : Office2007Form
     {
@@ -22,7 +22,7 @@ namespace WMS_Client.UI
 
         public void ShowHint(string msg, Color cl)
         {
-            using (WMS_Client.UI.MsgFrm mf = new WMS_Client.UI.MsgFrm(msg, cl))
+            using (Phicomm_WMS.UI.MsgFrm mf = new Phicomm_WMS.UI.MsgFrm(msg, cl))
             {
                 mf.BringToFront();
                 mf.ShowDialog();

@@ -38,6 +38,7 @@ namespace Phicomm_WMS.OUTIO
             OutSource =4,//委外
             Transfer =5,//移库
             Super =6, //超领
+            Discard = 7,//报废
             Max
         };
 

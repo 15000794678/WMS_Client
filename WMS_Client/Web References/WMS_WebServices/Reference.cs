@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace WMS_Client.WMS_WebServices {
+namespace Phicomm_WMS.WMS_WebServices {
     using System;
     using System.Web.Services;
     using System.Diagnostics;
@@ -51,7 +51,7 @@ namespace WMS_Client.WMS_WebServices {
         
         /// <remarks/>
         public R_Tr_Sn() {
-            this.Url = global::WMS_Client.Properties.Settings.Default.WMS_Client_WMS_WebServices_R_Tr_Sn;
+            this.Url = global::Phicomm_WMS.Properties.Settings.Default.WMS_Client_WMS_WebServices_R_Tr_Sn;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

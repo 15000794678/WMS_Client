@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WMS_Client.CheckAccoutServiceIService;
+using Phicomm_WMS.CheckAccoutServiceIService;
 
 
 namespace Phicomm_WMS.OUTIO

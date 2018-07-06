@@ -13,7 +13,7 @@ using System.Threading;
 using log4net;
 using System.Diagnostics;
 
-namespace WMS_Client.UI
+namespace Phicomm_WMS.UI
 {
     public partial class PickFrm : Office2007Form
     {

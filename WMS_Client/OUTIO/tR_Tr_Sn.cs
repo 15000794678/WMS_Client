@@ -12,13 +12,13 @@ namespace Phicomm_WMS.OUTIO
         {
             try
             {
-                WMS_Client.tR_Tr_Sn.tR_Tr_Sn tt = new WMS_Client.tR_Tr_Sn.tR_Tr_Sn();                
+                Phicomm_WMS.tR_Tr_Sn.tR_Tr_Sn tt = new Phicomm_WMS.tR_Tr_Sn.tR_Tr_Sn();                
 
-                List<WMS_Client.tR_Tr_Sn.TrSnFields> listField = new List<WMS_Client.tR_Tr_Sn.TrSnFields>();
+                List<Phicomm_WMS.tR_Tr_Sn.TrSnFields> listField = new List<Phicomm_WMS.tR_Tr_Sn.TrSnFields>();
 
                 foreach (DataRow dr in dt.Rows)
                 {
-                    WMS_Client.tR_Tr_Sn.TrSnFields item = new WMS_Client.tR_Tr_Sn.TrSnFields();
+                    Phicomm_WMS.tR_Tr_Sn.TrSnFields item = new Phicomm_WMS.tR_Tr_Sn.TrSnFields();
                     item.PO_ID = "NA";
                     item.TR_SN = dr["TR_SN"].ToString();
                     item.KP_NO = dr["KP_NO"].ToString();
@@ -44,7 +44,7 @@ namespace Phicomm_WMS.OUTIO
                     listField.Add(item);
                 }
 
-                WMS_Client.tR_Tr_Sn.TrSnFields[] itemField = listField.ToArray();
+                Phicomm_WMS.tR_Tr_Sn.TrSnFields[] itemField = listField.ToArray();
 
                 result = tt.Insert_R_TrSn(itemField);
                 if (result.ToUpper().Trim().Equals("OK"))
@@ -67,7 +67,7 @@ namespace Phicomm_WMS.OUTIO
         {
             try
             {
-                WMS_Client.tR_Tr_Sn.tR_Tr_Sn tt = new WMS_Client.tR_Tr_Sn.tR_Tr_Sn();                
+                Phicomm_WMS.tR_Tr_Sn.tR_Tr_Sn tt = new Phicomm_WMS.tR_Tr_Sn.tR_Tr_Sn();                
                 string res = tt.Del_TR_SN(trsn);
                 if (res.ToUpper().Trim().ToUpper().Equals("OK"))
                 {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WMS_Client.WMS_WebServices;
+using Phicomm_WMS.WMS_WebServices;
 
 namespace RefWebService_BLL
 {

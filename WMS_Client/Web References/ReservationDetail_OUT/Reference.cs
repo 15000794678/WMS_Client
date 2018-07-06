@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace WMS_Client.ReservationDetail_OUT {
+namespace Phicomm_WMS.ReservationDetail_OUT {
     using System;
     using System.Web.Services;
     using System.Diagnostics;
@@ -35,7 +35,7 @@ namespace WMS_Client.ReservationDetail_OUT {
         
         /// <remarks/>
         public ReservationDetail_OUTService() {
-            this.Url = global::WMS_Client.Properties.Settings.Default.WMS_Client_ReservationDetail_OUT_ReservationDetail_OUTService;
+            this.Url = global::Phicomm_WMS.Properties.Settings.Default.WMS_Client_ReservationDetail_OUT_ReservationDetail_OUTService;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

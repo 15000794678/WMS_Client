@@ -12,7 +12,7 @@ using log4net;
 using Phicomm_WMS.OUTIO;
 using System.Diagnostics;
 
-namespace WMS_Client.UI
+namespace Phicomm_WMS.UI
 {
     public partial class ReplenishFrm : Office2007Form
     {

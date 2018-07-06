@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace WMS_Client.GoodsMvtCreate_OUT {
+namespace Phicomm_WMS.GoodsMvtCreate_OUT {
     using System;
     using System.Web.Services;
     using System.Diagnostics;
@@ -35,7 +35,7 @@ namespace WMS_Client.GoodsMvtCreate_OUT {
         
         /// <remarks/>
         public GoodsMvtCreate_OUTService() {
-            this.Url = global::WMS_Client.Properties.Settings.Default.WMS_Client_GoodsMvtCreate_OUT_GoodsMvtCreate_OUTService;
+            this.Url = global::Phicomm_WMS.Properties.Settings.Default.WMS_Client_GoodsMvtCreate_OUT_GoodsMvtCreate_OUTService;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

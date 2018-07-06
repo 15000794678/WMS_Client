@@ -22,7 +22,7 @@ namespace Phicomm_WMS.DB
             {
                 if (reader.Read())
                 {
-                    _result = reader.GetString("Result");
+                    _result = reader.IsDBNull(0)?"":reader.GetString(0);
                 }
             }
             catch (System.Exception ex)

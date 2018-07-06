@@ -10,7 +10,7 @@ using DevComponents.DotNetBar;
 using Phicomm_WMS.DB;
 using Phicomm_WMS.OUTIO;
 
-namespace WMS_Client.UI
+namespace Phicomm_WMS.UI
 {
     public partial class HolderFrm : Office2007Form
     {
@@ -47,7 +47,7 @@ namespace WMS_Client.UI
 
         public void ShowHint(string msg, Color cl)
         {
-            using (WMS_Client.UI.MsgFrm mf = new WMS_Client.UI.MsgFrm(msg, cl))
+            using (Phicomm_WMS.UI.MsgFrm mf = new Phicomm_WMS.UI.MsgFrm(msg, cl))
             {
                 mf.BringToFront();
                 mf.ShowDialog();

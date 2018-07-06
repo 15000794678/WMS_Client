@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 
-namespace WMS_Client.UI
+namespace Phicomm_WMS.UI
 {
     public partial class SetStockCount : Office2007Form
     {
@@ -46,7 +46,7 @@ namespace WMS_Client.UI
 
         public void SetPlant(string str)
         {
-            label_pd_plant.Text = "";
+            label_pd_plant.Text = str;
             textBox_pd_qty.Focus();
         }
 

@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace WMS_Client.DeliveryList_OUT {
+namespace Phicomm_WMS.DeliveryList_OUT {
     using System;
     using System.Web.Services;
     using System.Diagnostics;
@@ -35,7 +35,7 @@ namespace WMS_Client.DeliveryList_OUT {
         
         /// <remarks/>
         public DeliveryList_OUTService() {
-            this.Url = global::WMS_Client.Properties.Settings.Default.WMS_Client_DeliveryList_OUT_DeliveryList_OUTService;
+            this.Url = global::Phicomm_WMS.Properties.Settings.Default.WMS_Client_DeliveryList_OUT_DeliveryList_OUTService;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

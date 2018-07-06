@@ -13,7 +13,7 @@ using System.Threading;
 using log4net;
 using System.Diagnostics;
 
-namespace WMS_Client.UI
+namespace Phicomm_WMS.UI
 {
     public partial class PickFrm : Office2007Form
     {
@@ -55,6 +55,7 @@ namespace WMS_Client.UI
                 OutSource = 4,//委外
                 Transfer = 5,//移库
                 Super = 6, //超领
+                Discard = 7, //制程报废
                 */
                 if (stockNoType == (int)MyData.PickWoType.Normal)
                 {
@@ -111,6 +112,16 @@ namespace WMS_Client.UI
                 {
                     dt = GetSuperData(textBox_StockNo.Text.Trim());
                     if (dt == null || dt.Rows.Count == 0)
+                    {
+                        ShowHint("查询不到该工单数据，请确认单号，出库类型!", Color.Red);
+                        return null;
+                    }
+                }
+                else if (stockNoType==(int)MyData.PickWoType.Discard)
+                {
+                    //获取制程报废数据
+                    dt = GetScrapData(textBox_StockNo.Text.Trim());
+                    if (dt==null || dt.Rows.Count==0)
                     {
                         ShowHint("查询不到该工单数据，请确认单号，出库类型!", Color.Red);
                         return null;
@@ -296,6 +307,81 @@ namespace WMS_Client.UI
             {
                 Log.Error("GetSuperData exception：" + ex.Message);
                 MessageBox.Show("GetSuperData:" + ex.Message);
+                return null;
+            }
+        }
+
+        private DataTable GetScrapData(string woid)
+        {
+            try
+            {
+                SearchRScrapRequisitionHead ss = new SearchRScrapRequisitionHead(woid);
+                ss.ExecuteQuery();
+                DataTable dt = ss.GetResult();
+                if (dt==null || dt.Rows.Count==0)
+                {
+                    ShowHint("在r_scrap_requisition_head表中查询不到工单：" + woid + " 的数据，请检查！", Color.Red);
+                    return null;
+                }
+                if (!dt.Rows[0]["cnd"].ToString().Trim().Equals("2"))
+                {
+                    ShowHint("该单号为签核或已驳回，请检查！", Color.Red);
+                    return null;
+                }
+
+                SearchRScrapRequisitionDetail sr = new SearchRScrapRequisitionDetail(woid);
+                sr.ExecuteQuery();
+
+                dt = sr.GetResult();
+                if (dt==null || dt.Rows.Count==0)
+                {
+                    ShowHint("在r_scrap_requisition_detail表中查询不到工单：" + woid + " 的数据，请检查！", Color.Red);
+                    return null;
+                }
+
+                DataTable _dt = new DataTable();
+                _dt.Columns.Add("WOID", typeof(string));
+                _dt.Columns.Add("KP_NO", typeof(string));
+                _dt.Columns.Add("QTY", typeof(int));
+                _dt.Columns.Add("Send_QTY", typeof(int));
+                _dt.Columns.Add("FromFactory", typeof(string));
+                _dt.Columns.Add("FromLoc", typeof(string));
+                _dt.Columns.Add("MoveType", typeof(string));
+                _dt.Columns.Add("ToFactory", typeof(string));//NA
+                _dt.Columns.Add("ToLoc", typeof(string));//NA            
+                _dt.Columns.Add("KPDESC", typeof(string));
+                _dt.Columns.Add("SubType", typeof(string));
+                _dt.Columns.Add("StockNoType", typeof(int)); //默认为1
+                _dt.Columns.Add("Rel_Requireid", typeof(string));
+                _dt.Columns.Add("Rel_ProjectId", typeof(string));
+                _dt.Columns.Add("CreateTime", typeof(string));
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    _dt.Rows.Add(dr["woid"],
+                                 dr["material_no"],
+                                 dr["qty"],
+                                 dr["send_qty"],
+                                 "NA",
+                                 "NA",
+                                 "NA",
+                                 "NA",
+                                 "NA",
+                                 dr["kpesc"],
+                                 dr["sub_type"],
+                                 6,
+                                 "NA",
+                                 "NA",
+                                 "NA"
+                                 );
+                }
+
+                return _dt;
+            }
+            catch (Exception ex)
+            {
+                Log.Error("GetScrapData exception：" + ex.Message);
+                MessageBox.Show("GetScrapData:" + ex.Message);
                 return null;
             }
         }
@@ -511,7 +597,7 @@ namespace WMS_Client.UI
                             num = num * 1000;
                         }
                         _dt.Rows.Add(dr["RES_NO"],
-                                     dr["MATERAIL"],
+                                     dr["MATERIAL"],
                                      num,  
                                      0,
                                      dr["PLANT"],
@@ -1168,5 +1254,39 @@ namespace WMS_Client.UI
             }
         }
 
+        //
+        private bool UpdateDiscardRequisitionDetail(string stockno)
+        {
+            try
+            {
+                SearchRScrapRequisitionDetail sdr = new SearchRScrapRequisitionDetail(stockno);
+                sdr.ExecuteQuery();
+                DataTable dt = sdr.GetResult();
+
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    return true;
+                }
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (dr["status"].ToString().Equals("0") &&
+                        (dr["qty"].ToString().Trim().Equals("0") ||
+                        int.Parse(dr["qty"].ToString()) <= int.Parse(dr["send_qty"].ToString())))
+                    {
+                        //
+                        UpateScrapRequisitionDetail ur = new UpateScrapRequisitionDetail(int.Parse(dr["ID"].ToString()));
+                        ur.ExecuteUpdate();
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                ShowHint("UpdateDiscardRequisitionDetail:" + ex.Message, Color.Red);
+                return false;
+            }
+        }
     }
 }

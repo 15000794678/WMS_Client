@@ -1,4 +1,4 @@
-﻿namespace WMS_Client.UI
+﻿namespace Phicomm_WMS.UI
 {
     partial class MsgFrm
     {

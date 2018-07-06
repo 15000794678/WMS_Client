@@ -81,10 +81,12 @@
     <Compile Include="DB\F_KeepAlive.cs" />
     <Compile Include="DB\F_StopPickTask.cs" />
     <Compile Include="DB\InsertErpWoBomInfo.cs" />
+    <Compile Include="DB\InsertInventoryCheckByLocId.cs" />
     <Compile Include="DB\InsertInventoryCheckByMaterialNo.cs" />
     <Compile Include="DB\InsertOutSourceRequisitionDetail.cs" />
     <Compile Include="DB\InsertRDeliveryRequisitionDetail.cs" />
     <Compile Include="DB\InsertReserveRequisitionDetail.cs" />
+    <Compile Include="DB\InsertRInventoryId.cs" />
     <Compile Include="DB\InsertTrSn.cs" />
     <Compile Include="DB\P_AtStationPodInfo.cs" />
     <Compile Include="DB\P_CheckAllMaterialIntoHolders.cs" />
@@ -111,6 +113,7 @@
     <Compile Include="DB\P_ReplenishStaionBoxLocation.cs" />
     <Compile Include="DB\P_ReplenishToPickDirectly.cs" />
     <Compile Include="DB\SearchBMaterial.cs" />
+    <Compile Include="DB\SearchInventoryCheckByLocId.cs" />
     <Compile Include="DB\SearchInventoryCheckByMaterialNo.cs" />
     <Compile Include="DB\SearchInventoryCheckResult.cs" />
     <Compile Include="DB\SearchMaterialManualPick.cs" />
@@ -123,6 +126,8 @@
     <Compile Include="DB\SearchRInVentoryDetail.cs" />
     <Compile Include="DB\SearchRReserveRequisitionDetail.cs" />
     <Compile Include="DB\SearchRSapMeterialShipping.cs" />
+    <Compile Include="DB\SearchRScrapRequisitionDetail.cs" />
+    <Compile Include="DB\SearchRScrapRequisitionHead.cs" />
     <Compile Include="DB\SearchTaskCount.cs" />
     <Compile Include="DB\SearchTbInsertTrSn.cs" />
     <Compile Include="DB\SearchTransferRequisitionDetail.cs" />
@@ -130,11 +135,13 @@
     <Compile Include="DB\UpdateOutSourceRequisitionDetail.cs" />
     <Compile Include="DB\UpdateOutSourceRequisitionQty.cs" />
     <Compile Include="DB\UpdateReserveRequisitionDetail.cs" />
-    <Compile Include="DB\UpdateRInventoryId.cs" />
+    <Compile Include="DB\UpdateRInventoryIdQty.cs" />
+    <Compile Include="DB\UpdateRInventoryIdStatus.cs" />
     <Compile Include="DB\UpdateRInventoryIdSubType.cs" />
     <Compile Include="DB\UpdateSapMaterialShipping.cs" />
     <Compile Include="DB\UpdateSapMaterialShippingLocation.cs" />
     <Compile Include="DB\UpdateRequisitionDetail.cs" />
+    <Compile Include="DB\UpdateScrapRequsitionDetail.cs" />
     <Compile Include="DB\UpdateTbInsertTrSn.cs" />
     <Compile Include="OUTIO\ChangeFIFODateCode.cs" />
     <Compile Include="OUTIO\ConvertHelper.cs" />
@@ -170,17 +177,23 @@
     <Compile Include="UI\Pick\DownThread.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Pick\ExportStockCountData.cs">
+    <Compile Include="UI\Pick\ExportCountData.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Pick\ExportStockCountData.Designer.cs">
-      <DependentUpon>ExportStockCountData.cs</DependentUpon>
+    <Compile Include="UI\Pick\ExportCountData.Designer.cs">
+      <DependentUpon>ExportCountData.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Pick\ImportStockCountKpNoData.cs">
+    <Compile Include="UI\Pick\ImportKpNoData.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Pick\ImportStockCountKpNoData.Designer.cs">
-      <DependentUpon>ImportStockCountKpNoData.cs</DependentUpon>
+    <Compile Include="UI\Pick\ImportKpNoData.Designer.cs">
+      <DependentUpon>ImportKpNoData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pick\ImportLocIdData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Pick\ImportLocIdData.Designer.cs">
+      <DependentUpon>ImportLocIdData.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Pick\PickExecuteThread.cs">
       <SubType>Form</SubType>
@@ -339,11 +352,14 @@
     <EmbeddedResource Include="UI\other\MsgFrm.resx">
       <DependentUpon>MsgFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Pick\ExportStockCountData.resx">
-      <DependentUpon>ExportStockCountData.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Pick\ExportCountData.resx">
+      <DependentUpon>ExportCountData.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Pick\ImportStockCountKpNoData.resx">
-      <DependentUpon>ImportStockCountKpNoData.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Pick\ImportKpNoData.resx">
+      <DependentUpon>ImportKpNoData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Pick\ImportLocIdData.resx">
+      <DependentUpon>ImportLocIdData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Pick\PickFrm.resx">
       <DependentUpon>PickFrm.cs</DependentUpon>

@@ -141,3 +141,4 @@
 [2018-06-20 17:21:20,110] 16-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：0
 [2018-06-20 17:21:23,154] 16-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：0
 [2018-06-20 17:23:32,109] 16-ERROR-PickFrm                  [PartialPickMaterial]-CompletePartialPickByTrSn返回：3
+[2018-07-03 15:06:13,767] 14-ERROR-PickFrm                  [CreatePickTask]-CreatePickTask：数据为空。不能对 Null 值调用此方法或属性。

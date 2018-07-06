@@ -19,3 +19,4 @@
 [2018-06-05 09:09:14,438] 7 -ERROR-SelectionFrm             [LKHolder]-LinkHolderMaterial返回类型: 1, trsn=S182200002248 已删除！
 [2018-06-05 09:09:14,737] 7 -ERROR-SelectionFrm             [LKHolder]-LinkHolderMaterial返回类型: 1, trsn=1804210006299 已删除！
 [2018-06-05 09:09:26,456] 7 -ERROR-SelectionFrm             [LKHolder]-LinkHolderMaterial返回类型: 2, trsn=S182200002386 已删除！
+[2018-07-03 14:44:03,179] 10-ERROR-PickFrm                  [CreatePickTask]-CreatePickTask：数据为空。不能对 Null 值调用此方法或属性。

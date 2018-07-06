@@ -14,7 +14,7 @@ using log4net;
 using System.Diagnostics;
 using WHC.OrderWater.Commons;
 
-namespace WMS_Client.UI
+namespace Phicomm_WMS.UI
 {
     public partial class PickFrm : Office2007Form
     {
@@ -57,15 +57,6 @@ namespace WMS_Client.UI
 
             Thread t6 = new Thread(PushTrSnThread);
             t6.Start();
-
-            try
-            {
-                DBPCaller.InitPickProcess(MyData.GetUser(), MyData.GetStationId());
-            }
-            catch (Exception ex)
-            {
-                ShowHint("DeinitProcess:" + ex.Message, Color.Red);
-            }
         }
 
         private void InitUI()
@@ -212,6 +203,8 @@ namespace WMS_Client.UI
 
                             }
                         }
+
+                        dataGridView1.ClearSelection();
                     }));
                 }
             }
@@ -469,7 +462,12 @@ namespace WMS_Client.UI
                 {
                     ShowHint("生成任务成功!", Color.Lime);
                     return true;
-                }                
+                } 
+                else if (string.IsNullOrEmpty(result))
+                {
+                    ShowHint("生成任务失败，返回为空!", Color.Red);
+                    return false;
+                }               
 
                 //以下是缺料信息
                 if (RefreshData(result))
@@ -805,49 +803,40 @@ namespace WMS_Client.UI
 
             findStockCount = true;
             eventFindShelf.Set();
-
-            try
-            {
-                DBPCaller.DeinitProcess(MyData.GetStationId());
-            }
-            catch (Exception ex)
-            {
-                ShowHint("DeinitProcess:" + ex.Message, Color.Red);
-            }
         }
 
         private void textBox_sn1_KeyDown(object sender, KeyEventArgs e)
         {
-            try
-            {
-                if (e.KeyCode != Keys.Enter)
-                {
-                    return;
-                }
+            //if (e.KeyCode != Keys.Enter)
+            //{
+            //    return;
+            //}
 
-                if (string.IsNullOrEmpty(textBox_sn1.Text.Trim()))
-                {
-                    Print("推送信息到线边仓的工单不能为空!");
-                    textBox_sn1.Text = "";
-                    textBox_sn1.Focus();
-                    return;
-                }
+            //try
+            //{
+            //    if (string.IsNullOrEmpty(textBox_sn1.Text.Trim()))
+            //    {
+            //        Print("推送信息到线边仓的工单不能为空!");
+            //        textBox_sn1.Text = "";
+            //        textBox_sn1.Focus();
+            //        return;
+            //    }
 
-                textBox_sn1.Enabled = false;
-                textBox_sn2.Enabled = false;
-                PushTrSnByStockNo(textBox_sn1.Text.Trim());
-                richTextBox1.ScrollToCaret();
-            }
-            catch(Exception ex)
-            {
-                Trace.WriteLine("Debug: " + ex.Message);
-                ShowHint(ex.Message, Color.Red);
-            }
-            finally
-            {
-                textBox_sn1.Enabled = true;
-                textBox_sn2.Enabled = true;
-            }
+            //    textBox_sn1.Enabled = false;
+            //    textBox_sn2.Enabled = false;
+            //    PushTrSnByStockNo(textBox_sn1.Text.Trim());
+            //    richTextBox1.ScrollToCaret();
+            //}
+            //catch(Exception ex)
+            //{
+            //    Trace.WriteLine("Debug: " + ex.Message);
+            //    ShowHint(ex.Message, Color.Red);
+            //}
+            //finally
+            //{
+            //    textBox_sn1.Enabled = true;
+            //    textBox_sn2.Enabled = true;
+            //}
         }
 
         private void textBox_sn2_KeyDown(object sender, KeyEventArgs e)
@@ -934,11 +923,8 @@ namespace WMS_Client.UI
 
             //过账
             //推送信息
-            if (MyData.GetStockNoType() == (int)MyData.PickWoType.Normal ||
-                MyData.GetStockNoType() == (int)MyData.PickWoType.Super)
-            {
-                PushTrSnByStockNo(MyData.GetStockNo());
-            }
+            
+            PushTrSnByStockNo(textBox_sapno.Text.Trim(), comboBox1.SelectedIndex);            
             SapPick(textBox_sapno.Text.Trim(), comboBox1.SelectedIndex);
             richTextBox1.ScrollToCaret();
         }
@@ -952,12 +938,6 @@ namespace WMS_Client.UI
                     ShowHint("出库类型不匹配，请检查", Color.Red);
                     return false;
                 }
-
-                //if (stockNoType==(int)MyData.PickWoType.Normal)
-                //{
-                //    ShowHint("工单发料过账功能暂时关闭", Color.Red);
-                //    return false;
-                //}
 
                 //先判断要过账的工单是否存在
                 try
@@ -999,46 +979,53 @@ namespace WMS_Client.UI
                 string remark = string.Empty; //用于显示过账凭证
                 if (stockNoType == (int)MyData.PickWoType.Normal)
                 {
-                    if (SapPickNormal(woid, "541,511,311,261", ref remark))
+                    if (SapPickNormal(woid, "541,511,311,261", stockNoType, ref remark))
                     {
                         res = true;
                     }
                 }
                 else if (stockNoType == (int)MyData.PickWoType.Delivery)
                 {
-                    if (SapPickNormal(woid, "645", ref remark))
+                    if (SapPickNormal(woid, "645", stockNoType, ref remark))
                     {
                         res = UpdateDeliveryRequsitionDetailStatus(woid);
                     }
                 }
                 else if (stockNoType == (int)MyData.PickWoType.Reserve)
                 {
-                    if (SapPickNormal(woid, "201", ref remark))
+                    if (SapPickNormal(woid, "201", stockNoType, ref remark))
                     {
                         res = UpdateReserveRequisitionDetailStatus(woid);
                     }
                 }
                 else if (stockNoType == (int)MyData.PickWoType.OutSource)
                 {
-                    if (SapPickNormal(woid, "541,511", ref remark))
+                    if (SapPickNormal(woid, "541,511", stockNoType, ref remark))
                     {
                         res = UpdateOutSourceRequisitionDetailStatus(woid);
                     }
                 }
                 else if (stockNoType == (int)MyData.PickWoType.Transfer)
                 {                    
-                    if (SapPickNormal(woid, "311", ref remark))
+                    if (SapPickNormal(woid, "311", stockNoType, ref remark))
                     {
                         res = UpateTransferRequsitionDetailStatus(woid);
                     }
                 }
                 else if (stockNoType == (int)MyData.PickWoType.Super)
                 {
-                    if (SapPickNormal(woid, "541,511,311", ref remark))
+                    if (SapPickNormal(woid, "541,511,311", stockNoType, ref remark))
                     {
                         res = UpdateSuperRequisitionDetail(woid);
                     }
                 }
+                else if (stockNoType == (int)MyData.PickWoType.Discard)
+                {
+                    if (SapPickNormal(woid, "541,511,311,261", stockNoType, ref remark))
+                    {
+                        res = UpdateDiscardRequisitionDetail(woid);
+                    }
+                }                
 
                 Print(remark);
                 return res;
@@ -1053,7 +1040,7 @@ namespace WMS_Client.UI
             }
         }
 
-        private bool SapPickNormal(string woid, string movetype, ref string result)
+        private bool SapPickNormal(string woid, string movetype, int stockNoType, ref string result)
         {
             try
             {
@@ -1075,17 +1062,8 @@ namespace WMS_Client.UI
                         dt = DBFunc.SearchRSapMaterialShippingByMoveType(woid, mt, "OUT");
                         if (dt == null || dt.Rows.Count == 0)
                         {
-                            //ShowHint("该工单的移动类型:" + mt + " 查询不到数据，请检查", Color.Red);
-                            //return false;
                             continue;
                         }
-
-                        //已过账，保存凭证
-                        //if (dt.Rows[0]["UPLOAD_FLAG"].ToString().Equals("Y"))
-                        //{
-                        //    result += "移动类型" + mt + "(Old): " + dt.Rows[0]["REMARK"].ToString().Trim() + "\r\n";
-                        //    continue;
-                        //}
                     }
                     catch(Exception ex)
                     {
@@ -1093,7 +1071,6 @@ namespace WMS_Client.UI
                         ShowHint("在r_sap_material_shipping表中查询时异常，woid=" + woid + ", movetype=" + mt + ", " + ex.Message, Color.Red);
                         return false;
                     }
-
 
                     listSapUploadItem.Clear();
                     //如果已经有一部分移动类型已经过过账
@@ -1143,7 +1120,7 @@ namespace WMS_Client.UI
                     {
                         string remark = "";
                         string tranno = "";
-                        if (!SapHelper.GetPI018(listSapUploadItem, mt, ref remark, ref tranno))
+                        if (!SapHelper.GetPI018(listSapUploadItem, mt, stockNoType, ref remark, ref tranno))
                         {
                             result += "移动类型" + mt + "(New): " + remark + "r\n";
                             //数据库回写r_sap_material_shipping 
@@ -1331,6 +1308,16 @@ namespace WMS_Client.UI
         private void KeepAliveThread()
         {
             int i = 0;
+
+            try
+            {
+                DBPCaller.InitPickProcess(MyData.GetUser(), MyData.GetStationId());
+            }
+            catch (Exception ex)
+            {
+                ShowHint("DeinitProcess:" + ex.Message, Color.Red);
+            }
+
             while (runFlag)
             {
                 try
@@ -1357,6 +1344,15 @@ namespace WMS_Client.UI
                     Thread.Sleep(100);
                 }
             }
+
+            try
+            {
+                DBPCaller.DeinitProcess(MyData.GetStationId());
+            }
+            catch (Exception ex)
+            {
+                ShowHint("DeinitProcess:" + ex.Message, Color.Red);
+            }
         }
 
         private void PushTrSnThread()
@@ -1375,7 +1371,7 @@ namespace WMS_Client.UI
                     continue;
                 }
 
-                PushTrSnByStockNo(MyData.GetStockNo());
+                PushTrSnByStockNo(MyData.GetStockNo(), MyData.GetStockNoType());
 
                 //延时3S
                 Thread.Sleep(500);
@@ -1853,11 +1849,9 @@ namespace WMS_Client.UI
                 //过账
                 if (result==1)
                 {
-                    if (MyData.GetStockNoType() == (int)MyData.PickWoType.Normal ||
-                        MyData.GetStockNoType() == (int)MyData.PickWoType.Super)
-                    {
-                        PushTrSnByStockNo(MyData.GetStockNo());
-                    }
+                    
+                     PushTrSnByStockNo(MyData.GetStockNo(), MyData.GetStockNoType());
+                    
                     //SapPick(MyData.GetStockNo(), MyData.GetStockNoType());
                     ShowHint("工单出库过账功能已经关闭，请手动过账", Color.Lime);                    
                     return;

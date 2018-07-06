@@ -13,7 +13,7 @@ using System.Threading;
 using log4net;
 using System.Diagnostics;
 
-namespace WMS_Client.UI
+namespace Phicomm_WMS.UI
 {
     public partial class PickFrm : Office2007Form
     {
@@ -39,7 +39,12 @@ namespace WMS_Client.UI
                 _woid = woid.Substring(0, woid.Length - 2);
                 Print("该工单类型属于超领，去掉工单最后两位流水号，去前为：" + woid + ", 去后为：" + _woid);
             }
-
+            else if (stockNoType == (int)MyData.PickWoType.Discard)
+            {
+                _woid = woid.Substring(0, woid.Length - 3);
+                Print("该工单类型属于制程报废，去掉工单最后三流水号，去前为：" + woid + ", 去后为：" + _woid);
+            }
+            
             try
             {
                 Trace.WriteLine("Debug:----InsertTrSn Start----");
@@ -58,7 +63,6 @@ namespace WMS_Client.UI
                 dt.Columns.Add("STATUS", typeof(string));
                 dt.Columns.Add("FIFO_DATECODE", typeof(string));
                 dt.Columns.Add("INVENTORY_DATE", typeof(string));
-
                 
                 //通过TrSn查表R_Inventory_Detail
                 DataTable dt1 = new DataTable();
@@ -156,7 +160,8 @@ namespace WMS_Client.UI
             //不需要推送的：售出，委外，移库
             //不确定的：预留
             if (stockNoType != (int)MyData.PickWoType.Normal &&
-                stockNoType != (int)MyData.PickWoType.Super)
+                stockNoType != (int)MyData.PickWoType.Super &&
+                stockNoType != (int)MyData.PickWoType.Discard)
             {
                 return true;
             }
@@ -178,8 +183,15 @@ namespace WMS_Client.UI
         }
 
         //1.读取本地缓存的TrSn, 2.推送到线边仓
-        private void PushTrSnByStockNo(string woid)
+        private void PushTrSnByStockNo(string woid, int stockNoType)
         {
+            if (stockNoType != (int)MyData.PickWoType.Normal &&
+                stockNoType != (int)MyData.PickWoType.Super &&
+                stockNoType != (int)MyData.PickWoType.Discard)
+            {
+                return;
+            }
+
             try
             {
                 DataTable dt = DBFunc.SearchTbInsertTrSnByStockNo(woid);

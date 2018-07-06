@@ -14,7 +14,7 @@ using System.Diagnostics;
 using Phicomm_WMS.DB;
 using WHC.OrderWater.Commons;
 
-namespace WMS_Client.UI
+namespace Phicomm_WMS.UI
 {
     public partial class ReplenishFrm : Office2007Form
     {
@@ -53,14 +53,6 @@ namespace WMS_Client.UI
 
             //StartFindShelf();
 
-            try
-            {
-                DBPCaller.InitReplenishProcess(MyData.GetUser(), MyData.GetStationId());
-            }
-            catch(Exception ex)
-            {
-                ShowHint("InitReplenishProcess:" + ex.Message, Color.Red);
-            }
         }
 
         private void InitUI()
@@ -113,15 +105,6 @@ namespace WMS_Client.UI
 
             eventExecuteInput.Set();
             eventStartFind.Set();
-
-            try
-            {
-                DBPCaller.DeinitProcess(MyData.GetStationId());
-            }
-            catch (Exception ex)
-            {
-                ShowHint("DeinitProcess:" + ex.Message, Color.Red);
-            }
         }
 
         private void RefreshUI(int row, int col, DataTable dt)
@@ -320,7 +303,7 @@ namespace WMS_Client.UI
 
         public void ShowHint(string msg, Color cl)
         {
-            using (WMS_Client.UI.MsgFrm mf = new WMS_Client.UI.MsgFrm(msg, cl))
+            using (Phicomm_WMS.UI.MsgFrm mf = new Phicomm_WMS.UI.MsgFrm(msg, cl))
             {
                 mf.BringToFront();
                 mf.ShowDialog();
@@ -331,6 +314,16 @@ namespace WMS_Client.UI
         private void KeepAliveThread()
         {
             int i = 0;
+
+            try
+            {
+                DBPCaller.InitReplenishProcess(MyData.GetUser(), MyData.GetStationId());
+            }
+            catch (Exception ex)
+            {
+                ShowHint("InitReplenishProcess:" + ex.Message, Color.Red);
+            }
+
             while (runFlag)
             {
                 try
@@ -355,6 +348,15 @@ namespace WMS_Client.UI
                     }
                     Thread.Sleep(100);
                 }
+            }
+
+            try
+            {
+                DBPCaller.DeinitProcess(MyData.GetStationId());
+            }
+            catch (Exception ex)
+            {
+                ShowHint("DeinitProcess:" + ex.Message, Color.Red);
             }
         }
 
@@ -460,12 +462,6 @@ namespace WMS_Client.UI
                         continue;
                     }
 
-                    //if (dt.Rows[0]["UPLOAD_FLAG"].ToString().Trim().Equals("Y"))
-                    //{
-                    //    result += "移动类型：" + mt + "(Old), " + dt.Rows[0]["REMARK"].ToString() + "\r\n";
-                    //    continue;
-                    //}
-
                     List <Dictionary<string, object>> listSapUploadItem = new List<Dictionary<string, object>>();
                     foreach (DataRow dr in dt.Rows)
                     {
@@ -487,7 +483,7 @@ namespace WMS_Client.UI
                     try
                     {
                         //调PI018接口
-                        if (SapHelper.GetPI018(listSapUploadItem, mt, ref remark, ref tranno))
+                        if (SapHelper.GetPI018(listSapUploadItem, mt, stockNoType, ref remark, ref tranno))
                         {
                             result += "移动类型：" + mt + "(New), " + remark + "\r\n";
                             //数据库回写r_sap_material_shipping 
@@ -498,7 +494,8 @@ namespace WMS_Client.UI
                             result += "移动类型：" + mt + "(New), " + remark + "\r\n";
                             //数据库回写r_sap_material_shipping 
                             DBFunc.UpateSapMaterialShipping(dt, remark, tranno, "0", "N");
-
+                            ShowHint(result, Color.Red);
+                            return;
                         }
                     }
                     catch(Exception ex)
